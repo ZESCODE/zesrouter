@@ -1,0 +1,4 @@
+#!/data/data/com.termux/files/usr/bin/bash
+# zesrouter — ZESRouter CLI wrapper: runs the glibc BitRouter binary inside proot-distro Debian
+# Rebrand of bitrouter/bitrouter (Apache-2.0). See README.md for provenance.
+exec proot-distro login debian -- /data/data/com.termux/files/home/.local/bin/bitrouter.orig "$@"

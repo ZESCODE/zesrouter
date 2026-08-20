@@ -1,0 +1,54 @@
+#!/data/data/com.termux/files/usr/bin/bash
+# zesrouter-start — launch ZESRouter daemon (BitRouter 1.0.0-alpha.27) inside proot-distro Debian
+# Listens on 0.0.0.0:4356. Rebrand of bitrouter-start; upstream: bitrouter/bitrouter (Apache-2.0).
+# Config: /root/.bitrouter/bitrouter.yaml inside proot (copy from configs/bitrouter.yaml)
+
+# Get all API keys from master.env
+ENV_FILE="$HOME/.secure-credentials/master.env"
+if [ -f "$ENV_FILE" ]; then
+  eval "$(grep -E '^(OPENCODE_ZEN_API_KEY|ANTHROPIC_API_KEY|OPENAI_API_KEY|OPENROUTER_API_KEY)=' "$ENV_FILE")"
+fi
+
+# Check if already responding
+if curl -s --max-time 2 http://localhost:4356/v1/models >/dev/null 2>&1; then
+    echo "[OK] ZESRouter already running — http://localhost:4356"
+    exit 0
+fi
+
+echo "Starting ZESRouter inside proot-distro Debian..."
+
+# Clean stale socket/pid
+proot-distro login debian -- rm -f /root/.bitrouter/bitrouter.sock /root/.bitrouter/bitrouter.pid 2>/dev/null
+
+# Build env export string
+ENV_VARS="export OPENCODE_ZEN_API_KEY=$OPENCODE_ZEN_API_KEY"
+ENV_VARS="$ENV_VARS && export ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY"
+ENV_VARS="$ENV_VARS && export OPENAI_API_KEY=$OPENAI_API_KEY"
+[ -n "$OPENROUTER_API_KEY" ] && ENV_VARS="$ENV_VARS && export OPENROUTER_API_KEY=$OPENROUTER_API_KEY"
+
+# Launch daemon in background
+nohup proot-distro login debian -- bash -c "$ENV_VARS && \
+    /data/data/com.termux/files/home/.local/bin/bitrouter.orig serve \
+    --config /root/.bitrouter/bitrouter.yaml" \
+    > ~/logs/bitrouter/bitrouter.log 2>&1 &
+
+# Retry loop: BitRouter can take 5-30s to cold start
+echo "  Waiting for ZESRouter to be ready..."
+for i in 1 2 3 4 5 6; do
+    sleep 5
+    MODELS=$(curl -s --max-time 4 http://localhost:4356/v1/models 2>/dev/null | python3 -c "import sys,json;d=json.load(sys.stdin);print(len(d.get('data',[])))" 2>/dev/null)
+    if [ -n "$MODELS" ] && [ "$MODELS" -gt 0 ]; then
+        echo "[OK] ZESRouter running — http://localhost:4356 ($MODELS models)"
+        exit 0
+    fi
+done
+
+# Final check
+MODELS=$(curl -s --max-time 5 http://localhost:4356/v1/models 2>/dev/null | python3 -c "import sys,json;d=json.load(sys.stdin);print(len(d.get('data',[])))" 2>/dev/null)
+if [ -n "$MODELS" ] && [ "$MODELS" -gt 0 ]; then
+    echo "[OK] ZESRouter running — http://localhost:4356 ($MODELS models)"
+else
+    echo "[FAIL] ZESRouter failed to start — check ~/logs/bitrouter/bitrouter.log"
+    tail -10 ~/logs/bitrouter/bitrouter.log 2>/dev/null
+    exit 1
+fi

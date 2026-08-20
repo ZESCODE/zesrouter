@@ -1,0 +1,107 @@
+server:
+  listen: 0.0.0.0:4356
+  skip_auth: true
+
+providers:
+  opencode-zen:
+    enabled: true
+  openai:
+    enabled: true
+  anthropic:
+    enabled: true
+  openrouter:
+    enabled: true
+    auth:
+      kind: bearer
+      env: OPENROUTER_API_KEY
+  github-copilot:
+    enabled: true
+  pollinations:
+    id: pollinations
+    display_name: "Pollinations (no key)"
+    class: "third-party-api"
+    api_base: "https://gen.pollinations.ai/v1"
+    protocol_endpoints:
+      chat_completions: https://gen.pollinations.ai/v1
+    enabled: true
+
+models:
+  anthropic/claude-sonnet-5:
+    endpoints:
+      - provider: opencode-zen
+        service_id: deepseek-v4-flash-free
+      - provider: pollinations
+        service_id: deepseek
+  deepseek/deepseek-v4-flash:
+    endpoints:
+      - provider: opencode-zen
+        service_id: deepseek-v4-flash-free
+      - provider: pollinations
+        service_id: deepseek
+  deepseek/deepseek-v4-flash-free:
+    endpoints:
+      - provider: opencode-zen
+        service_id: deepseek-v4-flash-free
+      - provider: pollinations
+        service_id: deepseek
+  pollinations/qwen-coder:
+    endpoints:
+      - provider: pollinations
+        service_id: qwen-coder
+  pollinations/openai-fast:
+    endpoints:
+      - provider: pollinations
+        service_id: openai-fast
+  pollinations/openai:
+    endpoints:
+      - provider: pollinations
+        service_id: openai
+  pollinations/qwen-vision:
+    endpoints:
+      - provider: pollinations
+        service_id: qwen-vision
+  openrouter/nvidia/nemotron-nano-12b-v2-vl:free:
+    endpoints:
+      - provider: openrouter
+        service_id: nvidia/nemotron-nano-12b-v2-vl:free
+  openrouter/google/gemma-4-31b-it:free:
+    endpoints:
+      - provider: openrouter
+        service_id: google/gemma-4-31b-it:free
+
+policy_table:
+  tiers:
+    cheap: deepseek/deepseek-v4-flash-free
+    flagship: anthropic/claude-sonnet-5
+  fingerprints:
+    opening: flagship
+    after_read_file: cheap
+    after_write_file: cheap
+    after_search_files: cheap
+    after_terminal: cheap
+    midstream: cheap
+    after_tool_error: flagship
+    after_delegate_task: cheap
+  default_tier: flagship
+  tool_use_tier: flagship
+  tool_safe_tiers: [flagship]
+  adequacy:
+    enabled: true
+    escalation_tier: flagship
+
+plugins:
+  bitrouter-observe:
+    otel:
+      service_name: bitrouter
+      resource_attributes:
+        service.namespace: zes
+        host.name: termux
+      sampler: parentbased_always_on
+      traces:
+        batch:
+          max_queue_size: 2048
+          flush_ms: 5000
+      metrics:
+        enabled: true
+        export_interval_ms: 10000
+      content_capture: "off"

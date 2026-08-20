@@ -1,0 +1,18 @@
+# Secrets
+master.env
+*.env
+.env
+
+# Runtime data (regenerate via fetch-binary.sh + live config)
+*.orig
+*.db
+*.pid
+*.sock
+*.log
+logs/
+
+# Backup
+*.bak-*
+
+# OS
+.DS_Store

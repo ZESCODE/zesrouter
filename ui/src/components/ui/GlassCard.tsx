@@ -4,12 +4,12 @@ import { cn } from "../../utils/cn";
 export type FrostVariant = "blue" | "green" | "orange" | "red" | "cyan" | "purple" | "neutral";
 
 const variantClasses: Record<FrostVariant, string> = {
-  blue: "border-blue-400/25 shadow-[0_0_40px_-20px_rgba(59,130,246,0.6)]",
-  green: "border-green-400/25 shadow-[0_0_40px_-20px_rgba(34,197,94,0.6)]",
-  orange: "border-orange-400/25 shadow-[0_0_40px_-20px_rgba(249,115,22,0.6)]",
-  red: "border-red-400/25 shadow-[0_0_40px_-20px_rgba(239,68,68,0.6)]",
-  cyan: "border-cyan-400/25 shadow-[0_0_40px_-20px_rgba(34,211,238,0.6)]",
-  purple: "border-purple-400/25 shadow-[0_0_40px_-20px_rgba(168,85,247,0.6)]",
+  blue: "border-blue-400/40 shadow-[0_0_60px_-8px_rgba(59,130,246,0.85)]",
+  green: "border-green-400/40 shadow-[0_0_60px_-8px_rgba(34,197,94,0.85)]",
+  orange: "border-orange-400/40 shadow-[0_0_60px_-8px_rgba(249,115,22,0.85)]",
+  red: "border-red-400/40 shadow-[0_0_60px_-8px_rgba(239,68,68,0.85)]",
+  cyan: "border-cyan-400/40 shadow-[0_0_60px_-8px_rgba(34,211,238,0.85)]",
+  purple: "border-purple-400/40 shadow-[0_0_60px_-8px_rgba(168,85,247,0.85)]",
   neutral: "border-white/10",
 };
 

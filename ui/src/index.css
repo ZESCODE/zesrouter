@@ -37,6 +37,12 @@ pre,
   background: rgba(255, 255, 255, 0.22);
 }
 
+.backdrop-blur-lg,
+.backdrop-blur-xl {
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
 * {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.15) transparent;

@@ -16,3 +16,7 @@ logs/
 
 # OS
 .DS_Store
+
+# Node (ui/)
+node_modules/
+ui/package-lock.json

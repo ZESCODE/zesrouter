@@ -11,6 +11,7 @@ import shlex
 import shutil
 import sqlite3
 import subprocess
+import sys
 import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -19,7 +20,7 @@ from urllib.request import urlopen
 
 import yaml
 
-PORT = int(os.environ.get("ZESROUTER_PORT", "8080"))
+PORT = int(sys.argv[1]) if len(sys.argv) > 1 else int(os.environ.get("ZESROUTER_PORT", "8080"))
 BR_BIN = os.path.expanduser("~/.local/bin/bitrouter.orig")
 PROOT_ROOT = "/data/data/com.termux/files/usr/var/lib/proot-distro/containers/debian/rootfs/root"
 CFG_HOST = f"{PROOT_ROOT}/.bitrouter/bitrouter.yaml"

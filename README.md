@@ -14,6 +14,14 @@ Rebranded packaging only — binary is upstream BitRouter v1.0.0-alpha.27 (Apach
 
 ## Quick Start (Termux + proot-distro Debian)
 
+One command — clones repo, installs deps, fetches byte-verified binary, configures proot, starts daemon + web UI:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/zesxdev/zesrouter/main/install.sh | bash
+```
+
+Or manual:
+
 ```bash
 # 1. Fetch + byte-verify binary
 bash bin/fetch-binary.sh
@@ -22,11 +30,24 @@ bash bin/fetch-binary.sh
 proot-distro login debian -- mkdir -p /root/.bitrouter
 proot-distro login debian -- cp /data/data/com.termux/files/home/zesrouter/configs/bitrouter.yaml /root/.bitrouter/bitrouter.yaml
 
-# 3. Launch
+# 3. Launch daemon + UI
 bin/zesrouter-start
+cd ui && python3 server.py        # web panel on http://localhost:8080
 ```
 
 API keys come from `~/.secure-credentials/master.env` (OPENCODE_ZEN_API_KEY, ANTHROPIC_API_KEY, OPENAI_API_KEY, OPENROUTER_API_KEY) — not stored in this repo.
+
+## Web UI
+
+`ui/` is a self-contained dashboard (React 19 single-file build served by
+zero-dep Python3 backend `ui/server.py`):
+
+| Endpoint | What |
+|----------|------|
+| http://localhost:8080 | Dashboard — daemon status, traffic, models, policy, keys, config editor, backups, restore |
+| /api/* | JSON API (health, status, models, providers, policy, requests, route, keys, config, validate, backups, daemon) |
+
+Rebuild UI from source: `cd ui && npm install && npm run build` (node_modules + lockfile ignored; dist committed).
 
 ## Restore from this repo (fresh proot)
 

@@ -140,7 +140,7 @@ def api_providers():
         env_var = auth.get("env") if isinstance(auth, dict) else None
         if not env_var:
             env_var = DEFAULT_ENV.get(pid)
-        if pid == "pollinations":  # keyless provider
+        if pid in ("pollinations", "opencode-zen-relay"):  # keyless providers
             has_key, env_var = True, "none (keyless)"
         else:
             has_key = bool(env_var) and env_var in envs

@@ -24,62 +24,26 @@ providers:
     protocol_endpoints:
       chat_completions: https://gen.pollinations.ai/v1
     enabled: true
-  opencode-zen-relay:
-    id: opencode-zen-relay
-    display_name: "OpenCode Zen (keyless relay)"
-    class: "third-party-api"
-    api_base: "http://127.0.0.1:7077/v1"
-    protocol_endpoints:
-      chat_completions: http://127.0.0.1:7077/v1
-    enabled: true
 
 models:
   anthropic/claude-sonnet-5:
     endpoints:
-      - provider: opencode-zen-relay
+      - provider: opencode-zen
         service_id: deepseek-v4-flash-free
       - provider: pollinations
         service_id: deepseek
   deepseek/deepseek-v4-flash:
     endpoints:
-      - provider: opencode-zen-relay
+      - provider: opencode-zen
         service_id: deepseek-v4-flash-free
       - provider: pollinations
         service_id: deepseek
   deepseek/deepseek-v4-flash-free:
     endpoints:
-      - provider: opencode-zen-relay
+      - provider: opencode-zen
         service_id: deepseek-v4-flash-free
       - provider: pollinations
         service_id: deepseek
-  opencode/deepseek-v4-flash-free:
-    endpoints:
-      - provider: opencode-zen-relay
-        service_id: deepseek-v4-flash-free
-  opencode/hy3-free:
-    endpoints:
-      - provider: opencode-zen-relay
-        service_id: hy3-free
-  opencode/mimo-v2.5-free:
-    endpoints:
-      - provider: opencode-zen-relay
-        service_id: mimo-v2.5-free
-  opencode/nemotron-3-ultra-free:
-    endpoints:
-      - provider: opencode-zen-relay
-        service_id: nemotron-3-ultra-free
-  opencode/nemotron-3.5-lightning-free:
-    endpoints:
-      - provider: opencode-zen-relay
-        service_id: nemotron-3.5-lightning-free
-  opencode/laguna-s-2.1-free:
-    endpoints:
-      - provider: opencode-zen-relay
-        service_id: laguna-s-2.1-free
-  opencode/muse-spark-1.2-contributor-free:
-    endpoints:
-      - provider: opencode-zen-relay
-        service_id: muse-spark-1.2-contributor-free
   pollinations/qwen-coder:
     endpoints:
       - provider: pollinations

@@ -43,8 +43,8 @@ export default function Providers() {
               <div className="mb-3 flex items-center gap-1.5 text-xs text-white/50">
                 {p.hasKey ? <KeyRound size={13} className="text-green-400" /> : <KeySquare size={13} className="text-red-400" />}
                 <span className="font-mono text-[11px]">{p.authEnvVar}</span>
-                <Badge variant={p.hasKey ? "green" : "red"} className="ml-auto">
-                  {p.hasKey ? "key set" : "key missing"}
+                <Badge variant={p.hasKey ? (p.authEnvVar.startsWith("none") ? "cyan" : "green") : "red"} className="ml-auto">
+                  {p.authEnvVar.startsWith("none") ? "keyless" : p.hasKey ? "key set" : "key missing"}
                 </Badge>
               </div>
               <div className="grid grid-cols-2 gap-2 text-xs sm:grid-cols-4">

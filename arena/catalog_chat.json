@@ -1,0 +1,3957 @@
+[
+ {
+  "publicName": "gemini-3.1-pro",
+  "displayName": "gemini-3.1-pro",
+  "arenaId": "019cc544-4848-771d-947a-1121fad1acb4",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "gemini-3.1-pro-preview",
+  "displayName": "gemini-3.1-pro-preview",
+  "arenaId": "019f99d9-8538-7480-91f8-f482331eb8ac",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gemini-3.1-pro-preview",
+  "displayName": "gemini-3.1-pro-preview",
+  "arenaId": "019e1d78-5d58-79ea-8801-1bed09799b11",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gemini-3.1-pro-preview",
+  "displayName": "gemini-3.1-pro-preview",
+  "arenaId": "019df477-8246-789c-bbdf-054a5f712ce3",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gemini-3.1-pro-preview",
+  "displayName": "gemini-3.1-pro-preview",
+  "arenaId": "019ef1a6-88b9-7337-9214-91c57236b706",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gemini-3.1-pro-preview",
+  "displayName": "gemini-3.1-pro-preview",
+  "arenaId": "019f94f2-f3af-7984-9656-97e0c7515d61",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gemini-3-pro",
+  "displayName": "gemini-3-pro",
+  "arenaId": "019e1d78-1883-7609-9b3d-2a265c1b5e8c",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gemini-3-pro",
+  "displayName": "gemini-3-pro",
+  "arenaId": "019df477-3d05-7d5d-8852-b4cd85452379",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "glm-5.3",
+  "displayName": "glm-5.3 (max)",
+  "arenaId": "01a00134-44ac-7f9c-b4a7-b720acebaa97",
+  "vision": false,
+  "organization": "zai"
+ },
+ {
+  "publicName": "gemini-3.6-flash",
+  "displayName": "gemini-3.6-flash",
+  "arenaId": "019f8b06-4fa3-7bbe-9292-691f9feadc3c",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "gemini-3-flash",
+  "displayName": "gemini-3-flash",
+  "arenaId": "019df477-1160-7548-8d04-93bb58ff0502",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "claude-opus-4-5-20251101-thinking-32k",
+  "displayName": "claude-opus-4-5-20251101-thinking-32k",
+  "arenaId": "019ab8b2-9bcf-79b5-9fb5-149a7c67b7c0",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "claude-opus-4-5-20251101",
+  "displayName": "claude-opus-4-5-20251101",
+  "arenaId": "019adbec-8396-71cc-87d5-b47f8431a6a6",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "gpt-5.4-no-system-prompt",
+  "displayName": "gpt-5.4-no-system-prompt",
+  "arenaId": "019cfd71-33d0-7fb1-96f3-16780c95966d",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kiteki",
+  "displayName": "qwen3.5-max-preview",
+  "arenaId": "019cddbe-a52e-720f-9398-0f40a2914b99",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "kizen-beta",
+  "displayName": "kizen-beta",
+  "arenaId": "019daede-d9ea-74fd-b121-853740b8f2a0",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "gemini-3.5-flash-lite",
+  "displayName": "gemini-3.5-flash-lite",
+  "arenaId": "019fdda8-0e93-7973-b86e-05514781c608",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "glm-5",
+  "displayName": "glm-5",
+  "arenaId": "019c45d7-96f0-7d39-8143-9d57941b5523",
+  "vision": false,
+  "organization": "zai"
+ },
+ {
+  "publicName": "dola-seed-2.0-pro-text",
+  "displayName": "dola-seed-2.0-pro-text",
+  "arenaId": "019d2ac4-285d-7765-8296-d9a3aa2f2662",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "claude-sonnet-4-5-20250929-thinking-32k",
+  "displayName": "claude-sonnet-4-5-20250929-thinking-32k",
+  "arenaId": "b0ea1407-2f92-4515-b9cc-b22a6d6c14f2",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "claude-sonnet-4-5-20250929",
+  "displayName": "claude-sonnet-4-5-20250929",
+  "arenaId": "019a2d13-28a5-7205-908c-0a58de904617",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "claude-opus-4-1-20250805-thinking-16k",
+  "displayName": "claude-opus-4-1-20250805-thinking-16k",
+  "arenaId": "f1a2eb6f-fc30-4806-9e00-1efd0d73cbc4",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "claude-opus-4-1-20250805",
+  "displayName": "claude-opus-4-1-20250805",
+  "arenaId": "96ae95fd-b70d-49c3-91cc-b58c7da1090b",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "gemini-2.5-pro-grounding-exp",
+  "displayName": "gemini-2.5-pro-grounding-exp",
+  "arenaId": "51a47cc6-5ef9-4ac7-a59c-4009230d7564",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "glm-4.7",
+  "displayName": "glm-4.7",
+  "arenaId": "019becd0-af81-7883-a7ca-5c4a4e42ff7a",
+  "vision": false,
+  "organization": "zai"
+ },
+ {
+  "publicName": "gpt-5.2",
+  "displayName": "gpt-5.2",
+  "arenaId": "019cc543-573d-7a3f-b155-ad9cc5733aa6",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "qwen3-max-preview",
+  "displayName": "qwen3-max-preview",
+  "arenaId": "019b9784-470e-75b9-b2fb-f005d78972e1",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "kimi-k2-thinking-turbo",
+  "displayName": "kimi-k2-thinking-turbo",
+  "arenaId": "019a59bc-8bb8-7933-92eb-fe143770c211",
+  "vision": false,
+  "organization": "moonshot"
+ },
+ {
+  "publicName": "claude-opus-4-20250514-thinking-16k",
+  "displayName": "claude-opus-4-20250514-thinking-16k",
+  "arenaId": "3b5e9593-3dc0-4492-a3da-19784c4bde75",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "qwen3-max-2025-09-23",
+  "displayName": "qwen3-max-2025-09-23",
+  "arenaId": "98ad8b8b-12cd-46cd-98de-99edde7e03eb",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "qwen3-235b-a22b-instruct-2507",
+  "displayName": "qwen3-235b-a22b-instruct-2507",
+  "arenaId": "ee7cb86e-8601-4585-b1d0-7c7380f8f6f4",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "kimi-k2-0711-preview",
+  "displayName": "kimi-k2-0711-preview",
+  "arenaId": "7a3626fc-4e64-4c9e-821f-b449a4b43b6a",
+  "vision": false,
+  "organization": "moonshot"
+ },
+ {
+  "publicName": "kimi-k2-0905-preview",
+  "displayName": "kimi-k2-0905-preview",
+  "arenaId": "b88e983b-9459-473d-8bf1-753932f1679a",
+  "vision": false,
+  "organization": "moonshot"
+ },
+ {
+  "publicName": "deep-octo",
+  "displayName": "minimax-m2.7",
+  "arenaId": "019cf4e3-36a5-75a8-811d-1eaf867e3d0d",
+  "vision": false,
+  "organization": "minimax"
+ },
+ {
+  "publicName": "claude-haiku-4-5-20251001",
+  "displayName": "claude-haiku-4-5-20251001",
+  "arenaId": "0199e8e9-01ed-73e0-96ba-cf43b286bf10",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "claude-opus-4-20250514",
+  "displayName": "claude-opus-4-20250514",
+  "arenaId": "ee116d12-64d6-48a8-88e5-b2d06325cdd2",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "qwen3-235b-a22b-no-thinking",
+  "displayName": "qwen3-235b-a22b-no-thinking",
+  "arenaId": "1a400d9a-f61c-4bc2-89b4-a9b7e77dff12",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "qwen3-next-80b-a3b-instruct",
+  "displayName": "qwen3-next-80b-a3b-instruct",
+  "arenaId": "351fe482-eb6c-4536-857b-909e16c0bf52",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "longcat-flash-chat",
+  "displayName": "longcat-flash-chat",
+  "arenaId": "6fcbe051-f521-4dc7-8986-c429eb6191bf",
+  "vision": false,
+  "organization": "meituan"
+ },
+ {
+  "publicName": "claude-sonnet-4-20250514-thinking-32k",
+  "displayName": "claude-sonnet-4-20250514-thinking-32k",
+  "arenaId": "4653dded-a46b-442a-a8fe-9bb9730e2453",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "qwen3-235b-a22b-thinking-2507",
+  "displayName": "qwen3-235b-a22b-thinking-2507",
+  "arenaId": "16b8e53a-cc7b-4608-a29a-20d4dac77cf2",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "step-3.5-flash",
+  "displayName": "step-3.5-flash",
+  "arenaId": "019d22bb-fcf5-7866-9c07-de74fe05c9cc",
+  "vision": false,
+  "organization": "stepfun"
+ },
+ {
+  "publicName": "micro-mango",
+  "displayName": "micro-mango",
+  "arenaId": "019ade1a-a918-79dd-9ef9-ba22f97c977d",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "minimax-m2.5",
+  "displayName": "minimax-m2.5",
+  "arenaId": "019c52a8-650a-7a55-b321-7fbc1c56588b",
+  "vision": false,
+  "organization": "minimax"
+ },
+ {
+  "publicName": "claude-sonnet-4-20250514",
+  "displayName": "claude-sonnet-4-20250514",
+  "arenaId": "ac44dd10-0666-451c-b824-386ccfea7bcc",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "qwen3-coder-480b-a35b-instruct",
+  "displayName": "qwen3-coder-480b-a35b-instruct",
+  "arenaId": "af033cbd-ec6c-42cc-9afa-e227fc12efe8",
+  "vision": false,
+  "organization": "Alibaba"
+ },
+ {
+  "publicName": "minimax-m2.1-preview",
+  "displayName": "minimax-m2.1-preview",
+  "arenaId": "019b4231-1994-75a1-8567-8cba308fba55",
+  "vision": false,
+  "organization": "minimax"
+ },
+ {
+  "publicName": "qwen3-30b-a3b-instruct-2507",
+  "displayName": "qwen3-30b-a3b-instruct-2507",
+  "arenaId": "a8d1d310-e485-4c50-8f27-4bff18292a99",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "trinity-large",
+  "displayName": "trinity-large-preview",
+  "arenaId": "019c6e9c-b7f1-774b-8674-b0a795a49d8b",
+  "vision": false,
+  "organization": "arcee-ai"
+ },
+ {
+  "publicName": "qwen3-235b-a22b",
+  "displayName": "qwen3-235b-a22b",
+  "arenaId": "2595a594-fa54-4299-97cd-2d7380d21c80",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "qwen3-next-80b-a3b-thinking",
+  "displayName": "qwen3-next-80b-a3b-thinking",
+  "arenaId": "73cf8705-98c8-4b75-8d04-e3746e1c1565",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "trinity-large-thinking",
+  "displayName": "trinity-large-thinking",
+  "arenaId": "019d50aa-447d-74d6-8661-405b4b6de5de",
+  "vision": false,
+  "organization": "arcee-ai"
+ },
+ {
+  "publicName": "minimax-m1",
+  "displayName": "minimax-m1",
+  "arenaId": "87e8d160-049e-4b4e-adc4-7f2511348539",
+  "vision": false,
+  "organization": "minimax"
+ },
+ {
+  "publicName": "march26-chatbot1",
+  "displayName": "march26-chatbot1",
+  "arenaId": "019cbb13-c727-76ef-ba21-4f3affc274c6",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "intellect-3",
+  "displayName": "intellect-3",
+  "arenaId": "019aebfd-af0e-7f0c-8f0d-96c588e4cd3b",
+  "vision": false,
+  "organization": "prime-intellect"
+ },
+ {
+  "publicName": "gpt-oss-120b",
+  "displayName": "gpt-oss-120b",
+  "arenaId": "6ee9f901-17b5-4fbe-9cc2-13c16497c23b",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "o3-mini",
+  "displayName": "o3-mini",
+  "arenaId": "c680645e-efac-4a81-b0af-da16902b2541",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "mercury-2",
+  "displayName": "mercury-2",
+  "arenaId": "019cc65f-c1e3-7574-b332-898ab71c8211",
+  "vision": false,
+  "organization": "inception-ai"
+ },
+ {
+  "publicName": "ling-flash-2.0",
+  "displayName": "ling-flash-2.0",
+  "arenaId": "71f96ca9-4cf8-4be7-bac2-2231613930a6",
+  "vision": false,
+  "organization": "ant-group"
+ },
+ {
+  "publicName": "minimax-m2",
+  "displayName": "minimax-m2",
+  "arenaId": "019a27e0-e7d8-7b0b-877c-a2106c6eb87d",
+  "vision": false,
+  "organization": "minimax"
+ },
+ {
+  "publicName": "nova-2-lite",
+  "displayName": "nova-2-lite",
+  "arenaId": "019ae300-83b7-7717-a1e0-31accd1ff6fa",
+  "vision": false,
+  "organization": "amazon"
+ },
+ {
+  "publicName": "qwq-32b",
+  "displayName": "qwq-32b",
+  "arenaId": "885976d3-d178-48f5-a3f4-6e13e0718872",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "qwen3-30b-a3b",
+  "displayName": "qwen3-30b-a3b",
+  "arenaId": "9a066f6a-7205-4325-8d0b-d81cc4b049c0",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "ring-flash-2.0",
+  "displayName": "ring-flash-2.0",
+  "arenaId": "11ad4114-c868-4fed-b6e7-d535dc9c62f8",
+  "vision": false,
+  "organization": "ant-group"
+ },
+ {
+  "publicName": "gemma-3n-e4b-it",
+  "displayName": "gemma-3n-e4b-it",
+  "arenaId": "896a3848-ae03-4651-963b-7d8f54b61ae8",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gpt-oss-20b",
+  "displayName": "gpt-oss-20b",
+  "arenaId": "ec3beb4b-7229-4232-bab9-670ee52dd711",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "nvidia-nemotron-3-nano-30b-a3b-bf16",
+  "displayName": "nvidia-nemotron-3-nano-30b-a3b-bf16",
+  "arenaId": "019b0aa7-334a-78e8-b2a8-885f31f4fc0c",
+  "vision": false,
+  "organization": "nvidia"
+ },
+ {
+  "publicName": "mercury",
+  "displayName": "mercury",
+  "arenaId": "019a6f77-e20d-7c1d-a7cd-8bd926e7395d",
+  "vision": false,
+  "organization": "inception-ai"
+ },
+ {
+  "publicName": "granite-4.1-8b",
+  "displayName": "granite-4.1-8b",
+  "arenaId": "019de522-c5eb-722f-a907-c79891cc6795",
+  "vision": false,
+  "organization": "ibm"
+ },
+ {
+  "publicName": "ibm-granite-h-small",
+  "displayName": "ibm-granite-h-small",
+  "arenaId": "4ddb69f5-391a-4f78-af92-7d7328c18ab1",
+  "vision": false,
+  "organization": "ibm"
+ },
+ {
+  "publicName": "jebel_1",
+  "displayName": "jebel_1",
+  "arenaId": "019dc595-1a8e-7581-91bf-fa532e483a87",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "scooter",
+  "displayName": "scooter",
+  "arenaId": "019df929-5b0c-7935-acf6-82fb0264ef9e",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "jebel_2",
+  "displayName": "jebel_2",
+  "arenaId": "019dc595-4615-731e-a09a-5b3643a216a0",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kira-star",
+  "displayName": "kira-star",
+  "arenaId": "019e0d72-cd11-7ca4-89e9-743a1df2a7dd",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "segesta",
+  "displayName": "segesta",
+  "arenaId": "019e727a-1cca-7965-90c9-4ce5e27c8f13",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tetra-0429-1",
+  "displayName": "tetra-0429-1",
+  "arenaId": "019ddf34-bf27-7df6-8cba-35ac93ccbe7f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "ember",
+  "displayName": "ember",
+  "arenaId": "019ca598-ee91-746e-939f-16539b092010",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "artemis_1",
+  "displayName": "artemis_1",
+  "arenaId": "019e003d-d328-7d7b-9023-9806449ba243",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "artemis_2",
+  "displayName": "artemis_2",
+  "arenaId": "019e003d-f2b8-7a72-a164-429e9fef5a67",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "rover",
+  "displayName": "rover",
+  "arenaId": "019df929-7268-7b2e-8383-8e674ff98b3b",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tetra-0429-2",
+  "displayName": "tetra-0429-2",
+  "arenaId": "019ddf34-fdee-7e14-bdba-d739a2226467",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tetra-0429-3",
+  "displayName": "tetra-0429-3",
+  "arenaId": "019ddf35-3ac3-79a0-88c6-f3724e614513",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "may26-chatbot3",
+  "displayName": "may26-chatbot3",
+  "arenaId": "019e46fa-b37c-74d1-9871-334a2429306f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kiteki-beta",
+  "displayName": "kiteki-beta",
+  "arenaId": "019ddf1e-8098-7696-9f1b-71ced5c4b4a7",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tetra-0429-4",
+  "displayName": "tetra-0429-4",
+  "arenaId": "019ddf35-769d-7c63-9590-6ac742c73da5",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tetra-0429-5",
+  "displayName": "tetra-0429-5",
+  "arenaId": "019ddf35-be93-7d59-b054-7b7458ec0c03",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hofburg-1",
+  "displayName": "hofburg-1",
+  "arenaId": "019d78d3-f33f-7325-a76b-7eb9bd4eeeea",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "pulse",
+  "displayName": "pulse",
+  "arenaId": "019ca599-24b3-7204-8b62-e7286162888f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "mivan",
+  "displayName": "mivan",
+  "arenaId": "019e00ee-f6bf-7593-9f5b-d91757d47b21",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tetra-0429-6",
+  "displayName": "tetra-0429-6",
+  "arenaId": "019ddf36-1896-70d5-b420-1cf8c2030749",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "cloud-buddy",
+  "displayName": "cloud-buddy",
+  "arenaId": "019dc114-50a4-786e-a0e6-a4ebcd2c3d0c",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "luxor",
+  "displayName": "luxor",
+  "arenaId": "019e2cbc-046f-714a-9aa4-1094caf7b571",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "pisces-0309",
+  "displayName": "pisces-0309",
+  "arenaId": "019cd3cd-1298-7604-80f0-a46b16f9add0",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "pakson",
+  "displayName": "pakson",
+  "arenaId": "019ddf4c-1d0e-76e9-95b6-73e90db242da",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "globe_2",
+  "displayName": "globe_2",
+  "arenaId": "019d78f7-5e8d-7b01-94e3-65ed4918bd4d",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "mizar-beta",
+  "displayName": "mizar-beta",
+  "arenaId": "019e4b5f-7524-718e-a66e-f81324d2efea",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "beacon-qdn9",
+  "displayName": "beacon-qdn9",
+  "arenaId": "019e945e-3cb2-7b78-827c-d7e8996b36a7",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "nova",
+  "displayName": "nova",
+  "arenaId": "019f4815-9a88-7adb-9747-4618d8e04de9",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "anonymous-1800",
+  "displayName": "anonymous-1800",
+  "arenaId": "019cfdfe-6e21-7d6f-bea9-88db022db730",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tulip",
+  "displayName": "tulip",
+  "arenaId": "019fd851-acd6-7873-affd-57612842e5f5",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "spider",
+  "displayName": "spider",
+  "arenaId": "019e9139-f6f9-7f0d-9034-35f2af67cfe7",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "mammoth-newt-0206",
+  "displayName": "mammoth-newt-0206",
+  "arenaId": "019c4915-16ec-782c-abb2-4e4e73916394",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "gemini-3.5-flash",
+  "displayName": "gemini-3.5-flash",
+  "arenaId": "019ed8d8-12b0-75ca-a11f-943f9f8de2a3",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "pisces-0226d",
+  "displayName": "pisces-0226d",
+  "arenaId": "019cd857-d6e2-75e3-940e-b5ef0e92e62a",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hofburg_2",
+  "displayName": "hofburg_2",
+  "arenaId": "019d7a65-02da-7d73-9011-4d12f2793e2b",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "solar-open2",
+  "displayName": "solar-open2",
+  "arenaId": "019e8f83-e273-7b30-bb38-59a9eabe4b08",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "pancetta",
+  "displayName": "pancetta",
+  "arenaId": "019e913d-432b-7f79-b731-a24e15c928e9",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "victoria",
+  "displayName": "victoria",
+  "arenaId": "019ead72-6504-7d5d-83e7-489a976ad367",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "myrion",
+  "displayName": "myrion",
+  "arenaId": "019ead28-2f2a-7e96-b8ed-0634db4f5218",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tianyi",
+  "displayName": "tianyi",
+  "arenaId": "019ead72-680c-7f90-a050-e604badeeeeb",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "maymo-alpha",
+  "displayName": "maymo-alpha",
+  "arenaId": "019e6b7b-773e-7e38-91cb-83a38d6ca0d1",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hcx-lm-arena",
+  "displayName": "hcx-lm-arena",
+  "arenaId": "019e8a71-7a4f-7b87-9c22-0f1969e4c46b",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "blue-forge",
+  "displayName": "blue-forge",
+  "arenaId": "019d980d-4207-732c-b110-5a6587c1790d",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "rijks",
+  "displayName": "rijks",
+  "arenaId": "019e6c81-9a02-7a1c-80cc-482b7ca05ae2",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "saga-decima",
+  "displayName": "saga-decima",
+  "arenaId": "019f4828-2b10-75cd-bc28-904129c5148c",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "pisces-0309b",
+  "displayName": "pisces-0309b",
+  "arenaId": "019cdd8d-8142-7ad6-9a92-1119d449319e",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hofburg_3",
+  "displayName": "hofburg_3",
+  "arenaId": "019d7b55-1220-764e-8a5a-5e177d5c8181",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "leepwal",
+  "displayName": "leepwal",
+  "arenaId": "9af435c8-1f53-4b78-a400-c1f5e9fe09b0",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "blackhawk",
+  "displayName": "blackhawk",
+  "arenaId": "019a33c6-e248-7091-94c0-af68f29390b8",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "miles",
+  "displayName": "miles",
+  "arenaId": "019f6194-d096-7164-bfbe-714bc56bc95c",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "happy-friday-testing-1",
+  "displayName": "happy-friday-testing-1",
+  "arenaId": "019db753-2ce6-77e2-a2e1-c2db9b7f5640",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "marcus",
+  "displayName": "marcus",
+  "arenaId": "019f4ce8-a267-7e1d-aef7-cc3af4ae4fab",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "beluga-0311-1",
+  "displayName": "beluga-0311-1",
+  "arenaId": "019d06ba-bd13-75bb-b5ee-2ed495c57756",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "monster",
+  "displayName": "monster",
+  "arenaId": "0304b4de-e544-48d4-8490-ad9123bc26e3",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "deepseek-v4-flash-internal-test-v2",
+  "displayName": "deepseek-v4-flash-internal-test-v2",
+  "arenaId": "01a00197-e3fe-7965-9978-b4e35974daf4",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "monterey",
+  "displayName": "monterey",
+  "arenaId": "d8444b25-e302-4d3b-8561-7ded087ee03c",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "february26-chatbot4",
+  "displayName": "february26-chatbot4",
+  "arenaId": "019c9719-4d29-7e78-95ed-2cb3319494d1",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "whisperfall",
+  "displayName": "whisperfall",
+  "arenaId": "019a7b93-af36-7f06-bb46-2b6b0548fc93",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "neon",
+  "displayName": "neon",
+  "arenaId": "019a842c-7e62-725a-8a2a-f76f5ec786dd",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "anonymous-1835",
+  "displayName": "anonymous-1835",
+  "arenaId": "019d82b0-4993-79d9-a6fd-e46121a86029",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "mammoth-newt-0226",
+  "displayName": "mammoth-newt-0226",
+  "arenaId": "019cbb43-193c-770a-8e59-155f72b84e44",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "viper",
+  "displayName": "viper",
+  "arenaId": "019a6c82-2ead-7475-8612-55dabba11c31",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "anonymous-1825",
+  "displayName": "anonymous-1825",
+  "arenaId": "019d412c-1425-7e7f-afde-48f0957ae525",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "ring-1t",
+  "displayName": "ring-1t",
+  "arenaId": "019a19ad-a47e-7828-aa1f-5c7f2c4f65fe",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "gemini-3.1-pro",
+  "displayName": "gemini-3.1-pro",
+  "arenaId": "019f95f6-804a-7863-98db-8192fcfababc",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "marlowe",
+  "displayName": "marlowe",
+  "arenaId": "019f54c6-932d-7fe6-b995-2a530549e70f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "pisces-0318-text",
+  "displayName": "pisces-0318-text",
+  "arenaId": "019d0303-4f28-718c-bf82-e0965659bbcc",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "july26-chatbot2",
+  "displayName": "july26-chatbot2",
+  "arenaId": "019f9618-9d9d-7f31-a059-53ea168b642b",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "pisces-0309c",
+  "displayName": "pisces-0309c",
+  "arenaId": "019ce84b-5299-7477-9386-8d56c3d6ab2f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "redwood",
+  "displayName": "redwood",
+  "arenaId": "6c98ce8c-41d1-42cd-b2e3-292c6519add5",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "mirei",
+  "displayName": "mirei",
+  "arenaId": "019effd6-c9a3-7da0-852d-8068b1fbdd5f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "yivon-beta",
+  "displayName": "yivon-beta",
+  "arenaId": "019d3529-e393-7324-a575-79b765c45e8a",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tikal",
+  "displayName": "tikal",
+  "arenaId": "019e77c1-b9d8-71e6-bee3-7474513776e0",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "bronze",
+  "displayName": "bronze",
+  "arenaId": "019e77c5-4e97-7512-9670-89a15b94185a",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "march26-chatbot2",
+  "displayName": "march26-chatbot2",
+  "arenaId": "019d449a-2ac9-72f8-9e00-16ed16121325",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "march26-chatbot3",
+  "displayName": "march26-chatbot3",
+  "arenaId": "019d449a-8ba5-7279-af36-6ebe6b11fc0e",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "karyu",
+  "displayName": "karyu",
+  "arenaId": "019d5975-ed63-765e-8411-a2fe506b12a4",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "pisces-0320",
+  "displayName": "pisces-0320",
+  "arenaId": "019d0cda-66eb-7736-a1d7-f8545eae2b55",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "duomo-1-hero",
+  "displayName": "duomo-1-hero",
+  "arenaId": "019d45cf-a650-7bc4-bc44-f6e26c892ced",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "happy-friday-testing-1",
+  "displayName": "happy-friday-testing-1",
+  "arenaId": "019db1aa-0f8d-78bf-9d9d-d02dd20c94ca",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "anonymous-1218",
+  "displayName": "anonymous-1218",
+  "arenaId": "019b5da6-19e7-7dcd-8387-e6bac5d6145e",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "august26-chatbot1",
+  "displayName": "nvidia-nemotron-3.5-lightning-30b-a3b-nvfp4",
+  "arenaId": "019fde64-4042-75ce-955d-90f16327afe2",
+  "vision": false,
+  "organization": "nvidia"
+ },
+ {
+  "publicName": "zeylu-alpha",
+  "displayName": "zeylu-alpha",
+  "arenaId": "019cefb0-5816-7237-bbd4-7e2e180936a0",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "zeylu-beta",
+  "displayName": "zeylu-beta",
+  "arenaId": "019cefb0-9813-72c9-934a-47ae122b0c52",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "clawl",
+  "displayName": "clawl",
+  "arenaId": "019cf247-984e-72e6-93d6-ee4d0d7c8ee1",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "ernie-exp-251024",
+  "displayName": "ernie-exp-251024",
+  "arenaId": "019a184d-efba-7743-979a-324e949aa1c4",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "minicpm-sala",
+  "displayName": "minicpm-sala",
+  "arenaId": "019d932e-b539-7213-b395-bfd046a6db82",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "anonymous-1221",
+  "displayName": "anonymous-1221",
+  "arenaId": "019b5da7-c6eb-73f2-b228-0c1e8e1c77ce",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "u2-preview",
+  "displayName": "u2-preview",
+  "arenaId": "019e3d70-aa81-7f4d-ac56-b08c0b7609a0",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "pisces-0309d",
+  "displayName": "pisces-0309d",
+  "arenaId": "019cfcb1-61a1-7468-86a6-4bd1ca51b50d",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "stephen-v2",
+  "displayName": "stephen-v2",
+  "arenaId": "39b185cb-aba9-4232-99ea-074883a5ccd4",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "yotta-nexus",
+  "displayName": "yotta-nexus",
+  "arenaId": "019d938b-22e5-761d-a314-2adbb1f8b0a5",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "pisces-llm-0130",
+  "displayName": "pisces-llm-0130",
+  "arenaId": "019c0d66-8d57-74e4-b680-0003cb600b70",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "february26-chatbot2",
+  "displayName": "february26-chatbot2",
+  "arenaId": "019c59c3-0e69-713f-9afe-20f5b3b1e0df",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "february26-chatbot3",
+  "displayName": "february26-chatbot3",
+  "arenaId": "019c59c3-2a2d-73a3-85aa-355a6ac568a8",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "clinkz",
+  "displayName": "clinkz",
+  "arenaId": "019c59c3-4fd1-753a-984f-10791bd955e5",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "EB45-turbo",
+  "displayName": "EB45-turbo",
+  "arenaId": "e9dd5a96-c066-48b0-869f-eb762030b5ed",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "raptor-1.8-0120",
+  "displayName": "raptor-1.8-0120",
+  "arenaId": "019be171-20f6-7c7d-a31e-60fc4b90ee78",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "uros",
+  "displayName": "uros",
+  "arenaId": "019eae29-05cf-7df1-9aef-f9c0c4953a0b",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "cosmic-clotho",
+  "displayName": "cosmic-clotho",
+  "arenaId": "019eaec5-64d0-788c-9533-8850d77453b0",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "comet",
+  "displayName": "comet",
+  "arenaId": "019f47d0-b382-73c1-bc4a-92d9d51524b5",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "mimera",
+  "displayName": "mimera",
+  "arenaId": "019e746c-9884-716b-81a4-45957ae22fb9",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "happy-friday-testing-2",
+  "displayName": "happy-friday-testing-2",
+  "arenaId": "019dc09e-756d-74cd-92ab-ff6e7d71b6b8",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "ling-1t",
+  "displayName": "ling-1t",
+  "arenaId": "0199edd2-88be-76b8-9aaa-5fc6b9c53503",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "sunshine-ai",
+  "displayName": "sunshine-ai",
+  "arenaId": "019a3e64-eae6-7178-a9ae-2894c25ada46",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "ernie-exp-251025",
+  "displayName": "ernie-exp-251025",
+  "arenaId": "019a1dce-b0d7-75cc-8742-997a0639f061",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "ernie-exp-251023",
+  "displayName": "ernie-exp-251023",
+  "arenaId": "019a19ad-8f50-7282-8cb9-5e49b9052aff",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "flying-octopus",
+  "displayName": "flying-octopus",
+  "arenaId": "0199de70-e6ad-7276-9020-a7502bed99ad",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "ernie-exp-251026",
+  "displayName": "ernie-exp-251026",
+  "arenaId": "019a26b4-2540-7a7d-96bf-b6b377e8d1ec",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "ernie-exp-251027",
+  "displayName": "ernie-exp-251027",
+  "arenaId": "019a26b4-2a20-7864-b1f7-d471ec1f4e3f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "ling-1t-1031",
+  "displayName": "ling-1t-1031",
+  "arenaId": "019aa3fb-ec59-7b49-af33-57d0981509e0",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "morian",
+  "displayName": "morian",
+  "arenaId": "019ed9a9-eba7-7d5e-ac9f-eeb98bf5065b",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "april26-chatbot1",
+  "displayName": "april26-chatbot1",
+  "arenaId": "019d6f03-0a09-72d7-9f40-8d99454e68a0",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "april26-chatbot2",
+  "displayName": "april26-chatbot2",
+  "arenaId": "019d6f03-4632-772e-97cb-debfa5452860",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hofburg_4",
+  "displayName": "hofburg_4",
+  "arenaId": "019d97b9-605a-7251-b5a3-559118c38cc0",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "qwen3-max-2025-10-30",
+  "displayName": "qwen3-max-2025-10-30",
+  "arenaId": "019a3aeb-371d-7474-a1b7-b8f4207a9a2c",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hofburg_5",
+  "displayName": "hofburg_5",
+  "arenaId": "019d97b9-8b6c-7beb-957b-4cf7eb645a91",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "maelox",
+  "displayName": "maelox",
+  "arenaId": "019e83e2-3591-7996-a42d-c0df88dc127e",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "apex-atlas",
+  "displayName": "apex-atlas",
+  "arenaId": "019d97d0-c5ab-7016-a9d9-9484cccb45a2",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "anonymous-1815",
+  "displayName": "anonymous-1815",
+  "arenaId": "019d0dd2-89e1-794c-a124-d06aff5c354d",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "dola-seed-2.0-preview-text",
+  "displayName": "dola-seed-2.0-preview-text",
+  "arenaId": "019c6453-8727-7186-9523-e130170d2fb9",
+  "vision": false,
+  "organization": "bytedance"
+ },
+ {
+  "publicName": "moryn",
+  "displayName": "moryn",
+  "arenaId": "019df8ec-2d44-79d8-a629-d518b48e7d09",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "july26-agentbot1-latv",
+  "displayName": "july26-agentbot1-latv",
+  "arenaId": "019f4423-4a1e-7451-837b-c7b27e54b5ac",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "fiddle",
+  "displayName": "fiddle",
+  "arenaId": "019e8be4-3001-7fa4-a2a3-9f0a9f41a92b",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "theaceae-alpha",
+  "displayName": "theaceae-alpha",
+  "arenaId": "019f5c1b-9478-7f96-995e-0e7b261392ac",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "delphi",
+  "displayName": "delphi",
+  "arenaId": "019e8afb-f7ca-7df1-9fd3-5b147c216c40",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "july26-chatbot1",
+  "displayName": "july26-chatbot1",
+  "arenaId": "019f1f40-8ff2-787e-af74-cf80b7fff9f2",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tetra-0505-1",
+  "displayName": "tetra-0505-1",
+  "arenaId": "019dfa7d-930c-75ab-9f8c-740dbf7ac5ec",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tetra-0505-2",
+  "displayName": "tetra-0505-2",
+  "arenaId": "019dfa7d-cd37-78c1-a662-608b631633e1",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "may26-chatbot4-public",
+  "displayName": "nvidia-nemotron-3-ultra-550b-a55b-nvfp4",
+  "arenaId": "019e8ea8-2052-7f2e-b1b6-59bd94be5203",
+  "vision": false,
+  "organization": "nvidia"
+ },
+ {
+  "publicName": "deepseek-v4-pro-max",
+  "displayName": "deepseek-v4-pro-max",
+  "arenaId": "019ff726-084a-7050-8e72-484f784786e6",
+  "vision": false,
+  "organization": "deepseek"
+ },
+ {
+  "publicName": "qwen3.8-27b",
+  "displayName": "qwen3.8-27b",
+  "arenaId": "01a01326-36b7-7b0d-8af1-ccba21cf001f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "astral-lachesis",
+  "displayName": "astral-lachesis",
+  "arenaId": "019eaedd-debf-7f60-825e-4bf50a658334",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "celestial-atropos",
+  "displayName": "celestial-atropos",
+  "arenaId": "019eaefc-515d-7a70-8f99-a8e1cd8ff072",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "ling-3.0-flash",
+  "displayName": "ling-3.0-flash",
+  "arenaId": "019faa2e-92fe-7f7c-a459-e0295ba13250",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "march26-chatbot1-public",
+  "displayName": "nvidia-nemotron-3-super-120b-a12b",
+  "arenaId": "019cd9e3-c3ff-7225-92f2-c392259b1fbe",
+  "vision": false,
+  "organization": "nvidia"
+ },
+ {
+  "publicName": "april26-chatbot3",
+  "displayName": "april26-chatbot3",
+  "arenaId": "019dd1e6-05cc-70f3-9900-b604b1edfa46",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "gs-b1-4096-s200",
+  "displayName": "gs-b1-4096-s200",
+  "arenaId": "019feeec-8dd9-70c5-ad82-bf03f453ceed",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "miyami",
+  "displayName": "miyami",
+  "arenaId": "019de42c-5c72-7c36-8b55-6abafffbb8ae",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "gs-b1-4096-s250",
+  "displayName": "gs-b1-4096-s250",
+  "arenaId": "019feeec-d857-7751-abe4-372d48387bfb",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "olympia",
+  "displayName": "olympia",
+  "arenaId": "019e5acc-3609-71e5-b91b-cc19547d059a",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "petra",
+  "displayName": "petra",
+  "arenaId": "019e5ae4-07f0-792b-a84a-fad923d17fe5",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "gs-b1-2048-s300",
+  "displayName": "gs-b1-2048-s300",
+  "arenaId": "019feeed-3158-7653-83cc-57894011b24f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "gs-b1-2048-s100",
+  "displayName": "gs-b1-2048-s100",
+  "arenaId": "019feeed-868a-70f1-a129-01b5ad81038d",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "ring-2.5-1t",
+  "displayName": "ring-2.5-1t",
+  "arenaId": "019c6e77-1b9f-7649-9136-43d07566c6c5",
+  "vision": false,
+  "organization": "ant-group"
+ },
+ {
+  "publicName": "onyx-v1-3",
+  "displayName": "onyx-v1-3",
+  "arenaId": "019f8c85-b8d9-7676-a3b7-8a84f58be132",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kimi-k2.6",
+  "displayName": "kimi-k2.6",
+  "arenaId": "019e2dc1-5604-79a3-92e3-cd8578960cd9",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "deepseek-v4-pro",
+  "displayName": "deepseek-v4-pro",
+  "arenaId": "019e2dc2-0e07-7772-a3e3-8db3790f4d1c",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "minimax-m2.7",
+  "displayName": "minimax-m2.7",
+  "arenaId": "019e2dc2-c89a-7c0d-88e8-10f1a0baeeca",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "luxor-alt",
+  "displayName": "luxor-alt",
+  "arenaId": "019e2dfe-8104-7738-b35c-37f8a3ae5cae",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "gemini-3.1-pro",
+  "displayName": "gemini-3.1-pro",
+  "arenaId": "019e2dff-e12a-7790-a846-520f73a5709a",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "ling-2.5-1t",
+  "displayName": "ling-2.5-1t",
+  "arenaId": "019c6e76-fbbc-7e92-b0ba-784c7ef3ad8b",
+  "vision": false,
+  "organization": "ant-group"
+ },
+ {
+  "publicName": "mymodel-v2-6-4wld",
+  "displayName": "mymodel-v2-6-4wld",
+  "arenaId": "019e9956-3b90-70aa-8fb5-8ab4cd1aa2c0",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "glm-5.2",
+  "displayName": "glm-5.2",
+  "arenaId": "019faec4-4a81-765c-832f-9b2d909acee3",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "gpt-5.5-high",
+  "displayName": "gpt-5.5-high",
+  "arenaId": "019e758b-2694-7e2e-9045-240864321d63",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "rc3-vscmodeld-s110-sgl",
+  "displayName": "rc3-vscmodeld-s110-sgl",
+  "arenaId": "019e760e-7bcc-7c85-857c-74e62d5abb8b",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "deepseek-v4-flash",
+  "displayName": "deepseek-v4-flash",
+  "arenaId": "019faec4-ae17-7a22-b3c8-6eed2a52a090",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "may26-chatbot4",
+  "displayName": "may26-chatbot4",
+  "arenaId": "019e70a5-6aa9-7b01-9095-a5e123c44087",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "xanadu",
+  "displayName": "xanadu",
+  "arenaId": "019fc399-9c11-7a47-9751-0d832b169a6a",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "brooklyn",
+  "displayName": "brooklyn",
+  "arenaId": "019fc39a-2d91-7783-a8a6-d1644fa245b2",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "deepseek-v4-flash-max-20260731",
+  "displayName": "deepseek-v4-flash-max-20260731",
+  "arenaId": "019fb95f-214d-79ba-bf8c-2b1749f1feca",
+  "vision": false,
+  "organization": "deepseek"
+ },
+ {
+  "publicName": "inkling-small-rc-1",
+  "displayName": "inkling-small-rc-1",
+  "arenaId": "019f91be-74b9-743a-ac59-659a3a7f4b22",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "inkling-small-rc-2-5",
+  "displayName": "inkling-small-rc-2-5",
+  "arenaId": "019f91c3-e947-7e5c-867d-f0ff8b572558",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "chickadee",
+  "displayName": "chickadee",
+  "arenaId": "019e27a8-6c30-7dcc-bd39-4b629dd851eb",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "soren",
+  "displayName": "soren",
+  "arenaId": "019ee221-dfec-79d6-955a-9cf48230a9e3",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "torin",
+  "displayName": "torin",
+  "arenaId": "019ee222-2bd1-7d34-b5b5-14ea1a45974f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "varga",
+  "displayName": "varga",
+  "arenaId": "019ee222-6868-7c3c-917b-973c1eafe164",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "vis",
+  "displayName": "vis",
+  "arenaId": "019f1a5e-f7a2-79ec-b674-a2c8dba2f42e",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "coolers",
+  "displayName": "coolers",
+  "arenaId": "019de20c-ef1d-7b13-b8ee-087313ce197a",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "cooler",
+  "displayName": "cooler",
+  "arenaId": "019de20d-3bea-7007-a983-1ad49c0a44c8",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "blankies",
+  "displayName": "blankies",
+  "arenaId": "019de20d-8b9e-71ca-932c-e6b07d15cb55",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "mekai",
+  "displayName": "mekai",
+  "arenaId": "019df3e8-18e8-761a-8eeb-6c9f7f8f8114",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "deepseek-v4-flash",
+  "displayName": "deepseek-v4-flash",
+  "arenaId": "019e2dc2-4991-7f7b-af53-d7743a937b14",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "may26-chatbot1",
+  "displayName": "may26-chatbot1",
+  "arenaId": "019de9ad-7752-7bbb-a5d3-dd64400fb106",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "qwen3.6-27b",
+  "displayName": "qwen3.6-27b",
+  "arenaId": "019dc239-99a2-7747-9042-d1c47c8a3c24",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "mimo-v2.5-pro",
+  "displayName": "mimo-v2.5-pro",
+  "arenaId": "019e94a8-6dfc-7a23-a3ae-eead29cdb0ee",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hy3",
+  "displayName": "hy3",
+  "arenaId": "019f685a-7be6-7d81-8a53-17151295a453",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "deepseek-v4-pro-low",
+  "displayName": "deepseek-v4-pro-low",
+  "arenaId": "019ff723-7de4-7e71-b96a-846ef6a8b4c6",
+  "vision": false,
+  "organization": "deepseek"
+ },
+ {
+  "publicName": "mimo-v2.5-pro",
+  "displayName": "mimo-v2.5-pro",
+  "arenaId": "019db650-909d-7dec-8711-1907d7233cd4",
+  "vision": false,
+  "organization": "xiaomi"
+ },
+ {
+  "publicName": "tetra-0507-1",
+  "displayName": "tetra-0507-1",
+  "arenaId": "019e04c9-ed3a-711d-b9e9-dee25ad7c177",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tetra-0507-4",
+  "displayName": "tetra-0507-4",
+  "arenaId": "019e04cc-7faa-776c-b888-dd396d13a42c",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tetra-0507-2",
+  "displayName": "tetra-0507-2",
+  "arenaId": "019e04cc-9017-749b-a27e-ef792f76819e",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tetra-0507-5",
+  "displayName": "tetra-0507-5",
+  "arenaId": "019e04cc-9755-7277-94fc-d6fd4830028f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tetra-0507-3",
+  "displayName": "tetra-0507-3",
+  "arenaId": "019e04cc-b8ff-7610-9cbd-889dce21ac93",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "artemis_3",
+  "displayName": "artemis_3",
+  "arenaId": "019e14a0-531b-76c5-a02d-0cff373a6dec",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "artemis_4",
+  "displayName": "artemis_4",
+  "arenaId": "019e14b1-fc7f-7c2f-b24e-ffc034fd4814",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "dark-matter",
+  "displayName": "dark-matter",
+  "arenaId": "019e460b-fd6e-74b4-9238-523e6ca3899c",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "mylen",
+  "displayName": "mylen",
+  "arenaId": "019dfdf4-ce8c-7953-817a-0c436b733fe7",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "thunbergia-alpha",
+  "displayName": "thunbergia-alpha",
+  "arenaId": "019fa72b-193c-79c9-9fbf-e30fb6a5bb49",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "maelis",
+  "displayName": "maelis",
+  "arenaId": "019e6524-079a-75dd-9983-9a2509fd7a6d",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "qwen3-max-thinking",
+  "displayName": "qwen3-max-thinking",
+  "arenaId": "019bf8c6-3678-7e81-a0f7-0fe16e71d1cc",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "pergamon",
+  "displayName": "pergamon",
+  "arenaId": "019fb96c-0bb4-7b12-8b0d-09bb43bb8045",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "may26-chatbot2",
+  "displayName": "may26-chatbot2",
+  "arenaId": "019e1d96-9710-760d-8299-1acaebc9e6c5",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "anonymous-1840",
+  "displayName": "anonymous-1840",
+  "arenaId": "019fafa7-51cf-795c-a2b0-caf0437a14b2",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "deepseek-v4-flash-dlp-test",
+  "displayName": "deepseek-v4-flash-dlp-test",
+  "arenaId": "019ed7ef-eb0a-76f2-b7c6-99ef1c470a60",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "onyx-v1-4",
+  "displayName": "muse-glimmer",
+  "arenaId": "019fb542-0691-7552-89b9-198fbe5da905",
+  "vision": false,
+  "organization": "meta"
+ },
+ {
+  "publicName": "middlemist",
+  "displayName": "middlemist",
+  "arenaId": "01a0041a-d95f-713e-b2de-2fc2a64f798a",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "torenia-alpha",
+  "displayName": "torenia-alpha",
+  "arenaId": "019f9cf3-76ac-7326-8268-018f0f1c0c11",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "ray",
+  "displayName": "ray",
+  "arenaId": "019f1b5f-d486-7ff8-a76e-1372e143276a",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "mayura",
+  "displayName": "mayura",
+  "arenaId": "019efac9-358d-7344-93e2-9f17a79de652",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "inkling-small-rc-3",
+  "displayName": "inkling-small",
+  "arenaId": "019f91cc-dd2e-720a-9fb1-186ca0b977ca",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "deepseek-v4-flash-low",
+  "displayName": "deepseek-v4-flash-low-20260731",
+  "arenaId": "019fb9c5-21ca-72b6-9c3d-1a4354d36dca",
+  "vision": false,
+  "organization": "deepseek"
+ },
+ {
+  "publicName": "qwen3.6-plus",
+  "displayName": "qwen3.6-plus",
+  "arenaId": "019d688c-b540-75ff-994d-338e3aec20ce",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "kizen-alpha",
+  "displayName": "qwen3.6-max-preview",
+  "arenaId": "019daede-adf8-7f17-8545-d840f387a75c",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "luna-hope",
+  "displayName": "luna-hope",
+  "arenaId": "019dfec2-612d-7c11-b54f-5236d830213d",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "mira-sky",
+  "displayName": "mira-sky",
+  "arenaId": "019dfec2-6d88-77ba-b822-230ecbf14c56",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "solstica",
+  "displayName": "solstica",
+  "arenaId": "019f7143-0fea-7507-bb5e-2503df131bbe",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "ephesus",
+  "displayName": "ephesus",
+  "arenaId": "019f7161-93fc-7b50-aca5-2e56c8240262",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "mistral-small-2603",
+  "displayName": "mistral-small-2603",
+  "arenaId": "019cf983-532b-73fa-a057-7658e1e1c5ee",
+  "vision": false,
+  "organization": "mistral"
+ },
+ {
+  "publicName": "melyora",
+  "displayName": "qwen3.7-max-preview",
+  "arenaId": "019e128d-bc7d-744c-8854-67a38b15b3a1",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "glm-5.1",
+  "displayName": "glm-5.1",
+  "arenaId": "019d5e8d-d53e-75f3-bcf5-815ae0cf202a",
+  "vision": false,
+  "organization": "zai"
+ },
+ {
+  "publicName": "solar-pro4",
+  "displayName": "solar-pro4",
+  "arenaId": "019fd787-0b16-7d0d-b878-47ec0fb8aee9",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "deepseek-v4-flash",
+  "displayName": "deepseek-v4-flash-20260731",
+  "arenaId": "019fb6fe-2537-75d5-97e7-0b383f3c9ce5",
+  "vision": false,
+  "organization": "deepseek"
+ },
+ {
+  "publicName": "qwen3-max-2025-09-26",
+  "displayName": "qwen3-max-2025-09-26",
+  "arenaId": "ac31e980-8bf1-4637-adba-cf9ffa8b6343",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "qwen3.7-max",
+  "displayName": "qwen3.7-max",
+  "arenaId": "019e6530-f140-77b1-b6b8-5c859829d992",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "minimax-m2-preview",
+  "displayName": "minimax-m2-preview",
+  "arenaId": "019a17b5-5e1e-7df6-9e1a-6c4338f8b6ff",
+  "vision": false,
+  "organization": "minimax"
+ },
+ {
+  "publicName": "deepseek-v4-flash-thinking",
+  "displayName": "deepseek-v4-flash-high-20260731",
+  "arenaId": "019fb6fe-2a83-72ba-9d88-d221d780bae8",
+  "vision": false,
+  "organization": "deepseek"
+ },
+ {
+  "publicName": "deepseek-v4-pro",
+  "displayName": "deepseek-v4-pro",
+  "arenaId": "019ff722-292b-7b56-8f3b-b3217df5311b",
+  "vision": false,
+  "organization": "deepseek"
+ },
+ {
+  "publicName": "kinsley",
+  "displayName": "qwen3.8-max",
+  "arenaId": "019faec4-558c-793a-b7b1-ea94c392877e",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "deepseek-v4-pro-high",
+  "displayName": "deepseek-v4-pro-high",
+  "arenaId": "019ff724-a6da-7a59-89bb-c2a12e6d3c88",
+  "vision": false,
+  "organization": "deepseek"
+ },
+ {
+  "publicName": "glm-5.1",
+  "displayName": "glm-5.2 (max)",
+  "arenaId": "019ebf6a-94d4-7649-b704-1dbbd5eb0942",
+  "vision": false,
+  "organization": "zai"
+ },
+ {
+  "publicName": "longcat-2.0",
+  "displayName": "longcat-2.0",
+  "arenaId": "019f3a0a-bd19-7b19-9eed-a98453759b48",
+  "vision": false,
+  "organization": "meituan"
+ },
+ {
+  "publicName": "gemini-3.1-pro-preview",
+  "displayName": "gemini-3.1-pro-preview",
+  "arenaId": "019d6e6f-5eff-7584-a51d-376e01b77598",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gemini-3.1-pro-preview",
+  "displayName": "gemini-3.1-pro-preview",
+  "arenaId": "019f4041-4c11-73fe-bd79-1b9e41737007",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gemini-3.1-pro-preview",
+  "displayName": "gemini-3.1-pro-preview",
+  "arenaId": "019d91d3-bbc0-731b-9b21-c7351fb0780a",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gemini-3.1-pro-preview",
+  "displayName": "gemini-3.1-pro-preview",
+  "arenaId": "019dc23a-fa4b-7469-9339-fc5254442b05",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gemini-3.1-pro-preview",
+  "displayName": "gemini-3.1-pro-preview",
+  "arenaId": "019efd05-8389-792d-8b7f-c7edc29f0e62",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gemini-3-flash",
+  "displayName": "gemini-3-flash",
+  "arenaId": "019dc23b-2470-7047-b336-b7f2f864dc25",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gemini-3-flash",
+  "displayName": "gemini-3-flash",
+  "arenaId": "019e3e9d-ca77-77de-8e4a-a3208e849388",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gemini-3-flash",
+  "displayName": "gemini-3-flash",
+  "arenaId": "019e132d-8508-7f1b-b937-9274fb1417b6",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gemini-3-flash",
+  "displayName": "gemini-3-flash",
+  "arenaId": "019e6207-491d-7098-8b30-cf2277eccf5e",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gemini-3-flash",
+  "displayName": "gemini-3-flash",
+  "arenaId": "019de0fb-8644-7917-96d1-1c2dd4a25d4b",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gemini-3-pro",
+  "displayName": "gemini-3-pro",
+  "arenaId": "019d502c-6bd3-7714-b1de-247f0e7aa9e1",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gpt-5-medium",
+  "displayName": "gpt-5-medium",
+  "arenaId": "019a0ec1-e54d-7354-be40-62fb6f0e5d43",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "gpt-5.4-mini-high",
+  "displayName": "gpt-5.4-mini-high",
+  "arenaId": "019d0397-20a6-7e01-8bc6-ec5df604696d",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "gpt-5.1-medium",
+  "displayName": "gpt-5.1-medium",
+  "arenaId": "019a95f0-02c7-7f62-a820-c809f767a222",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "laguna-m.1-v2",
+  "displayName": "laguna-m.1",
+  "arenaId": "019e6b66-c122-7556-a8c9-c42ade3ac335",
+  "vision": false,
+  "organization": "poolside"
+ },
+ {
+  "publicName": "gpt-5.2-codex",
+  "displayName": "gpt-5.2-codex",
+  "arenaId": "019bbe75-406e-73de-8eeb-b2a60457cdf6",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "gpt-5.1-codex",
+  "displayName": "gpt-5.1-codex",
+  "arenaId": "019a84e2-e1b7-718b-8b8d-589079121b9b",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "KAT-Coder-Pro-V1",
+  "displayName": "KAT-Coder-Pro-V1",
+  "arenaId": "019c030b-d0ae-7849-9fa4-8730f05aaaa3",
+  "vision": false,
+  "organization": "kwai"
+ },
+ {
+  "publicName": "gpt-5.1-codex-mini",
+  "displayName": "gpt-5.1-codex-mini",
+  "arenaId": "019a84e2-e6bd-7123-a5f6-626d1766d4f2",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "devstral-2",
+  "displayName": "devstral-2",
+  "arenaId": "019be7bf-bd7e-74d3-97ee-674fe4d9d8a9",
+  "vision": false,
+  "organization": "mistral"
+ },
+ {
+  "publicName": "devstral-medium-2507",
+  "displayName": "devstral-medium-2507",
+  "arenaId": "019a6a30-cd7d-7431-8c4a-7be88deebf43",
+  "vision": false,
+  "organization": "mistral"
+ },
+ {
+  "publicName": "gallant",
+  "displayName": "gallant",
+  "arenaId": "019d4d43-7066-7f2e-8e0c-8ebbe2de560c",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "vero-noesis",
+  "displayName": "vero-noesis",
+  "arenaId": "019dda8f-d4c4-7466-9093-5094edee586d",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kartoffeln",
+  "displayName": "kartoffeln",
+  "arenaId": "019de6ed-097f-7b47-8093-37e3f4a49f43",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "dove",
+  "displayName": "dove",
+  "arenaId": "019c8e68-2623-7228-bdfd-0284ed5144be",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "robin",
+  "displayName": "robin",
+  "arenaId": "019abd9a-f6ff-7081-8bdb-ff0a352dc601",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "dart-frog-0206",
+  "displayName": "dart-frog-0206",
+  "arenaId": "019c490c-bf30-7a8c-9eba-479f3710f261",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "vulcan",
+  "displayName": "vulcan",
+  "arenaId": "019d4d43-09d6-7f53-adb0-b1b011cb2a4e",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "miraidon",
+  "displayName": "miraidon",
+  "arenaId": "01a01d26-4a27-7c2f-8229-d70cd7261312",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kiravel",
+  "displayName": "kiravel",
+  "arenaId": "019e2230-4a6d-7d5f-b066-d081ed2c08d2",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "robin-high",
+  "displayName": "robin-high",
+  "arenaId": "019ac30c-70ce-72af-b6e9-cfbc52d46c19",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "immortal",
+  "displayName": "immortal",
+  "arenaId": "019fc557-d5e3-7f1a-a5db-0c2dc18062f7",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "gemini-3.1-pro",
+  "displayName": "gemini-3.1-pro",
+  "arenaId": "019e3462-1988-71f0-a741-1d7c909650d2",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kymir",
+  "displayName": "kymir",
+  "arenaId": "019e3bbb-ef47-761f-a297-dd85b6280e6f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "colossus",
+  "displayName": "colossus",
+  "arenaId": "019fcaa1-b52e-7d28-bddd-8a63da46f749",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kyros-alpha",
+  "displayName": "kyros-alpha",
+  "arenaId": "019f23d7-c852-7600-9c5d-8e5b6142f11a",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hunyuan-hy3-preview",
+  "displayName": "hunyuan-hy3-preview",
+  "arenaId": "019eb55e-3544-7672-b1a6-f06bd37e1323",
+  "vision": false,
+  "organization": "tencent"
+ },
+ {
+  "publicName": "jester",
+  "displayName": "jester",
+  "arenaId": "019cdb71-ad5f-7caa-af3e-a705555e0937",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "next-mind",
+  "displayName": "next-mind",
+  "arenaId": "019ed208-590b-7833-8e0e-e5de170c0d4c",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "juniper",
+  "displayName": "juniper",
+  "arenaId": "019d3c9d-31cb-7261-89a4-bf352c152d31",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "external-lw-v4-cd1-20260624",
+  "displayName": "external-lw-v4-cd1-20260624",
+  "arenaId": "019f23ec-ee62-7069-9561-d6c8d5e60d1a",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kyros-beta",
+  "displayName": "kyros-beta",
+  "arenaId": "019f24cd-6d9a-7eec-9909-7a0146c539bf",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "sphinx",
+  "displayName": "sphinx",
+  "arenaId": "019d7b56-f238-7bf1-b228-43fa9ea330e9",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "vulcan",
+  "displayName": "vulcan",
+  "arenaId": "019d561b-9c05-7a00-a729-e606dac1c4df",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "star-drift",
+  "displayName": "star-drift",
+  "arenaId": "019c6553-77c6-7363-966a-e4292cdcaabc",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "emu",
+  "displayName": "emu",
+  "arenaId": "019d2cf9-a55b-7d78-abe0-f4d5dc87a3b7",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "gallant",
+  "displayName": "gallant",
+  "arenaId": "019d561b-6cfc-720b-b986-dbd56eb25732",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "pepper",
+  "displayName": "pepper",
+  "arenaId": "019d3341-6887-7ce2-ab74-756d752ef380",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kiwire",
+  "displayName": "kiwire",
+  "arenaId": "019da1dc-d2f8-758b-a1d7-9f82cbae77f0",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "spire",
+  "displayName": "spire",
+  "arenaId": "019cf062-9465-71de-9bb5-19ead2a9fc2d",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "zorik",
+  "displayName": "zorik",
+  "arenaId": "019d6e0b-72a1-7fed-9395-17622781e7e2",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "alligator",
+  "displayName": "alligator",
+  "arenaId": "019c00e2-8c86-7a1f-8712-35979d27027c",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kayla",
+  "displayName": "kayla",
+  "arenaId": "019f47d9-4e0e-7e87-b1d7-de7c46849049",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "roaring_waters_1",
+  "displayName": "roaring_waters_1",
+  "arenaId": "019e5151-2eb3-7713-899c-cc64bf34e828",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "roaring_waters_2",
+  "displayName": "roaring_waters_2",
+  "arenaId": "019e5151-c63e-72a4-8f7c-0421778c3a29",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "badger",
+  "displayName": "badger",
+  "arenaId": "019c2258-b6d1-7a61-890f-5f3f11e7c3b1",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "pine",
+  "displayName": "pine",
+  "arenaId": "019c48f7-653b-74c2-9036-d2e2f321ca46",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "chipmunk",
+  "displayName": "chipmunk",
+  "arenaId": "019c4901-a133-75a6-bf06-0e6eba27b195",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "mewtwo",
+  "displayName": "mewtwo",
+  "arenaId": "019f6c14-5b0d-7e41-9ba4-c27490082718",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "ext-agents-v4-20260625",
+  "displayName": "ext-agents-v4-20260625",
+  "arenaId": "019f050e-8092-73bb-a312-196ba85cdf77",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "external-agentsv4-540-0706",
+  "displayName": "external-agentsv4-540-0706",
+  "arenaId": "019f39ad-94c0-7ed9-90f6-f5fc8f9cc8c9",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "glassy_lagoon",
+  "displayName": "glassy_lagoon",
+  "arenaId": "019eaa65-3cef-7fe1-b76c-f830a0aad155",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "external-model-b-071026",
+  "displayName": "external-model-b-071026",
+  "arenaId": "019f4fca-7441-7ff6-9a58-b310f02ae77b",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hunyuan-hy3-preview",
+  "displayName": "hunyuan-hy3-preview",
+  "arenaId": "019f2e6b-bc8b-7faf-a877-0b90b2e48679",
+  "vision": false,
+  "organization": "tencent"
+ },
+ {
+  "publicName": "external-model-a-071026",
+  "displayName": "external-model-a-071026",
+  "arenaId": "019f4fca-43ab-70d8-b99c-be04be9199f3",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "external-model-c-071026",
+  "displayName": "external-model-c-071026",
+  "arenaId": "019f4fca-51c6-71d7-9b6f-fb0771dea56b",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hunyuan-hy3-preview",
+  "displayName": "hunyuan-hy3-preview",
+  "arenaId": "019f2e6c-8c5e-71ec-ac95-7855dc231e34",
+  "vision": false,
+  "organization": "tencent"
+ },
+ {
+  "publicName": "solar-pro-3",
+  "displayName": "solar-pro-3",
+  "arenaId": "019e0952-6f72-7cc8-b379-5daf72b6cddc",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "external-lw-v4-20260624",
+  "displayName": "external-lw-v4-20260624",
+  "arenaId": "019f11fd-114f-7150-8508-413755e70469",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "emerald_lagoon",
+  "displayName": "emerald_lagoon",
+  "arenaId": "019eb870-94d9-7644-9d7a-88a0422f6134",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "inkling-small-rc-1",
+  "displayName": "inkling-small-rc-1",
+  "arenaId": "019f924c-461c-7bcb-a62a-ebe9cc637cdb",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "inkling-small-rc-2-5",
+  "displayName": "inkling-small-rc-2-5",
+  "arenaId": "019f924c-7b6d-73d5-a385-4f9edf478f4f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "gemini-3.5-flash",
+  "displayName": "gemini-3.5-flash",
+  "arenaId": "019ee20f-7cd5-7588-937a-0f8111378605",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "kavel",
+  "displayName": "kavel",
+  "arenaId": "019df3d8-017b-7f1a-bd76-b1882d21654f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "nemos_reef",
+  "displayName": "nemos_reef",
+  "arenaId": "019e8938-ba2b-7343-a9f2-38f736cf86fc",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kaleb",
+  "displayName": "kaleb",
+  "arenaId": "019f75d9-4adb-777f-9e40-ffae2bca3b32",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kinsley",
+  "displayName": "qwen3.8-max",
+  "arenaId": "019faa02-bc24-70f4-afbe-6ae1e20d685a",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "qwen3.6-plus-preview",
+  "displayName": "qwen3.6-plus-preview",
+  "arenaId": "019d4ec3-b69b-724b-9c43-4e7c6125dcbb",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "hunyuan-hy3-preview",
+  "displayName": "hunyuan-hy3-preview",
+  "arenaId": "01a01468-ecd9-7cad-b6d6-581b9ac295ac",
+  "vision": false,
+  "organization": "tencent"
+ },
+ {
+  "publicName": "qwen3-max-thinking",
+  "displayName": "qwen3-max-thinking",
+  "arenaId": "019c1b89-cd55-7d2f-8a69-4da2372dbc41",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "korin",
+  "displayName": "korin",
+  "arenaId": "019e90eb-d086-799e-b09c-3431a7383881",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "gpt-5.2-high",
+  "displayName": "gpt-5.2-high",
+  "arenaId": "019bec66-03fe-7c18-8ee1-9c1414762f99",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "inkling-small-rc-3",
+  "displayName": "inkling-small",
+  "arenaId": "019f924b-7cb3-7c9f-89bf-4a86ef3c6f3d",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hunyuan-hy3-preview",
+  "displayName": "hunyuan-hy3-preview",
+  "arenaId": "019efac9-375a-7a26-a92b-c139232b5479",
+  "vision": false,
+  "organization": "tencent"
+ },
+ {
+  "publicName": "qwen3.7-max",
+  "displayName": "qwen3.7-max",
+  "arenaId": "019f1c0a-c560-7a17-9acd-7d8d8c489dda",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "korin",
+  "displayName": "qwen3.7-max-20260517",
+  "arenaId": "019e36c3-691f-7ae8-b1eb-5db5435e29fe",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "gpt-5.2",
+  "displayName": "gpt-5.2",
+  "arenaId": "019bec65-0700-7279-911b-34e6aab53ad6",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "delphi-alpha",
+  "displayName": "delphi-alpha",
+  "arenaId": "019f7758-45ea-79a4-9963-9b7c096e936e",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kiana",
+  "displayName": "kiana",
+  "arenaId": "019fe219-105a-7392-9098-379f0951580c",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kieran",
+  "displayName": "kieran",
+  "arenaId": "019f9378-8838-7d9e-96b7-49e7a1608b2c",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "deepseek-v4-flash-0731-fireworks",
+  "displayName": "deepseek-v4-flash-0731-fireworks",
+  "arenaId": "019fbb36-6f0e-7158-afe9-110a2567d9b1",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "bulbasaur",
+  "displayName": "bulbasaur",
+  "arenaId": "019fbfde-d013-7e0f-9c50-8774a2c99c26",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "gpt-5.1-codex-max",
+  "displayName": "gpt-5.1-codex-max",
+  "arenaId": "019aeb38-cc3b-7421-a472-0bfaaeace035",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "qwen3.6-max-preview",
+  "displayName": "qwen3.6-max-preview",
+  "arenaId": "019dd7a4-f384-79f0-aa10-c91147438642",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "laguna-xs-2.1",
+  "displayName": "laguna-xs-2.1",
+  "arenaId": "019f383c-727f-73cd-b1f6-5cf152447b6a",
+  "vision": false,
+  "organization": "poolside"
+ },
+ {
+  "publicName": "oracle",
+  "displayName": "oracle",
+  "arenaId": "01a00aa3-a560-7865-9404-ee2df3463aaf",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "qwen3.7-max",
+  "displayName": "qwen3.7-max",
+  "arenaId": "019e6534-c9b7-7531-91f7-8d6ab180e67d",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "grok-4.20-beta-0309-reasoning",
+  "displayName": "grok-4.20-beta-0309-reasoning",
+  "arenaId": "019ce35b-20d0-7ff9-b788-19c010555fc5",
+  "vision": false,
+  "organization": "xai"
+ },
+ {
+  "publicName": "nonnas-meatballs-open-weight",
+  "displayName": "ideogram-4.0-quality",
+  "arenaId": "019e703c-5dd4-7f94-b941-9f8b46c168dc",
+  "vision": false,
+  "organization": "ideogram"
+ },
+ {
+  "publicName": "recraft-v4.1-utility-pro",
+  "displayName": "recraft-v4.1-utility-pro",
+  "arenaId": "019e24be-1462-72f5-9d42-2b6a40b8b2f3",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "recraft-v4.1-pro",
+  "displayName": "recraft-v4.1-pro",
+  "arenaId": "019e24bc-ba1d-7809-baa9-cbde3b575acb",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "qwen-image-2512",
+  "displayName": "qwen-image-2512",
+  "arenaId": "019b8194-58e4-7975-ad6b-d966909a0eb8",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "krea-2-medium",
+  "displayName": "krea-2-medium",
+  "arenaId": "019e8ebd-8102-7dd1-aedb-af5a0ab5f83b",
+  "vision": false,
+  "organization": "krea"
+ },
+ {
+  "publicName": "hidream-o1-image",
+  "displayName": "hidream-o1-image",
+  "arenaId": "019e1cd7-5cc5-75d2-8b3e-275616dec624",
+  "vision": false,
+  "organization": "hidream"
+ },
+ {
+  "publicName": "wan2.5-preview",
+  "displayName": "wan2.5-preview",
+  "arenaId": "019a5050-1695-7b5d-b045-ba01ff08ec28",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "wan2.5-t2i-preview",
+  "displayName": "wan2.5-t2i-preview",
+  "arenaId": "019a5050-2875-78ed-ae3a-d9a51a438685",
+  "vision": false,
+  "organization": "wan"
+ },
+ {
+  "publicName": "recraft-v4",
+  "displayName": "recraft-v4",
+  "arenaId": "019c6e76-a7c0-7b05-8dce-bbe3d52c8f4e",
+  "vision": false,
+  "organization": "Recraft"
+ },
+ {
+  "publicName": "krea-2-turbo",
+  "displayName": "krea-2-turbo",
+  "arenaId": "019f049d-7de4-7fae-8237-1c2103b9e730",
+  "vision": false,
+  "organization": "krea"
+ },
+ {
+  "publicName": "krea-2-large",
+  "displayName": "krea-2-large",
+  "arenaId": "019e8ebd-6cfb-7492-949c-a2c4a00301aa",
+  "vision": false,
+  "organization": "krea"
+ },
+ {
+  "publicName": "seedream-3",
+  "displayName": "seedream-3",
+  "arenaId": "d8771262-8248-4372-90d5-eb41910db034",
+  "vision": false,
+  "organization": "bytedance"
+ },
+ {
+  "publicName": "z-image",
+  "displayName": "z-image",
+  "arenaId": "019b4782-79d7-721c-a56c-6bb09bc3a437",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "ideogram-v3-quality",
+  "displayName": "ideogram-v3-quality",
+  "arenaId": "73378be5-cdba-49e7-b3d0-027949871aa6",
+  "vision": false,
+  "organization": "Ideogram"
+ },
+ {
+  "publicName": "photon",
+  "displayName": "photon",
+  "arenaId": "e7c9fa2d-6f5d-40eb-8305-0980b11c7cab",
+  "vision": false,
+  "organization": "luma-ai"
+ },
+ {
+  "publicName": "recraft-v3",
+  "displayName": "recraft-v3",
+  "arenaId": "b88d5814-1d20-49cc-9eb6-e362f5851661",
+  "vision": false,
+  "organization": "Recraft"
+ },
+ {
+  "publicName": "lucid-origin",
+  "displayName": "lucid-origin",
+  "arenaId": "5a3b3520-c87d-481f-953c-1364687b6e8f",
+  "vision": false,
+  "organization": "leonardo-ai"
+ },
+ {
+  "publicName": "harbor",
+  "displayName": "harbor",
+  "arenaId": "019dd7b9-334b-7b02-b57f-b54bc35931c8",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "thunder",
+  "displayName": "thunder",
+  "arenaId": "019dd7ba-5ea2-74ec-9488-c068b8e88b2d",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "citrus",
+  "displayName": "citrus",
+  "arenaId": "019c45d5-00a7-7c59-92e2-856f7e9f86b0",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "spinosaurus",
+  "displayName": "spinosaurus",
+  "arenaId": "019e866b-c95f-7cdd-811a-d64cd7cdf340",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kelly",
+  "displayName": "kelly",
+  "arenaId": "019e5398-cef6-7db6-a46b-5a34051eb2c8",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hidream-o1-image-1.5",
+  "displayName": "hidream-o1-image-1.5",
+  "arenaId": "019e86c4-fe9f-7189-a975-839da98e1602",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "nonnos-meatballs-open-weight",
+  "displayName": "nonnos-meatballs-open-weight",
+  "arenaId": "019e76cf-0432-71eb-b148-d8407693e07e",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "waffle",
+  "displayName": "waffle",
+  "arenaId": "019cfdba-8650-74a0-af6f-1ff2ebbb64da",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "pebble-1",
+  "displayName": "pebble-1",
+  "arenaId": "019cb611-a2cb-7b3c-83e0-573644a80f75",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "pebble-2",
+  "displayName": "pebble-2",
+  "arenaId": "019cb611-cccc-779f-979f-56bc9417f9ef",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "auto-bear-v3",
+  "displayName": "auto-bear-v3",
+  "arenaId": "019eb54c-803b-7e39-8c40-9e55021b531e",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "fiddler",
+  "displayName": "fiddler",
+  "arenaId": "019fddb2-32d1-718f-a423-001c9f4330d4",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "flashbrown-a",
+  "displayName": "flashbrown-a",
+  "arenaId": "019d69fe-b55c-7af8-94a2-199997d66666",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hunyuan-image-3.0-fal",
+  "displayName": "hunyuan-image-3.0-fal",
+  "arenaId": "0199e980-d247-7dd3-9ca1-77092f126f05",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "khong-bah-png",
+  "displayName": "khong-bah-png",
+  "arenaId": "019fde11-689c-7055-81ce-6b309d43e880",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "soft-shell",
+  "displayName": "soft-shell",
+  "arenaId": "019d4002-95d4-7b0e-accb-0d0d2f263cc5",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "flashbrown-b",
+  "displayName": "flashbrown-b",
+  "arenaId": "019d69fe-e309-7d4d-aa34-cd550fe3597f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hairy-stone",
+  "displayName": "hairy-stone",
+  "arenaId": "019f9600-6322-76e0-af58-cfd80ab9411f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "text-to-image-autoeval-test",
+  "displayName": "text-to-image-autoeval-test",
+  "arenaId": "019e4bc1-ca09-75b8-8d6a-5a2b7e627a0f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "super-cara",
+  "displayName": "super-cara",
+  "arenaId": "019c0dbe-439d-7074-a477-be0a0ee43537",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "frenchfry",
+  "displayName": "frenchfry",
+  "arenaId": "019db1cb-1bc1-774a-9bb2-376e74c0c97e",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "shakshouka",
+  "displayName": "shakshouka",
+  "arenaId": "019db1cb-7b41-7da2-8672-7c62539ada22",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "auto-bear-v7",
+  "displayName": "auto-bear-v7",
+  "arenaId": "019f61ca-91a9-7db3-8911-5dab3de54f8a",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "ellsworth",
+  "displayName": "ellsworth",
+  "arenaId": "019e3195-7a3b-762f-a45a-81dc37214b86",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "parasaurolophus",
+  "displayName": "parasaurolophus",
+  "arenaId": "019ec2f7-364e-74b7-bdc1-d3c920693ffc",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "zen-bear-v11r",
+  "displayName": "zen-bear-v11r",
+  "arenaId": "019f8c08-0dfc-7512-97e0-961866178ea6",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "zen-bear-v6",
+  "displayName": "zen-bear-v6",
+  "arenaId": "019f47d5-0e06-70ac-a5cd-356188ffd21b",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "zen-bear-v10r",
+  "displayName": "zen-bear-v10r",
+  "arenaId": "019f792b-d0a3-7b57-96a5-7972e047728e",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "altair",
+  "displayName": "altair",
+  "arenaId": "019ea47c-9ebe-70dc-80f8-266ed934ab7b",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "king-crab",
+  "displayName": "king-crab",
+  "arenaId": "019e4db0-0ab3-7133-bd41-1a837cc86114",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "crepe",
+  "displayName": "crepe",
+  "arenaId": "019dd068-9595-7b76-8228-9c1f41ab7897",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "zen-bear-v3",
+  "displayName": "zen-bear-v3",
+  "arenaId": "019f38c2-002d-7f0f-a391-db6df024b734",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "zen-bear-v14r",
+  "displayName": "qwen-image-3.0-pro",
+  "arenaId": "019faa36-5563-74a3-938c-1105c79bdd92",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "hidream-o1-image-1.5",
+  "displayName": "hidream-o1-image-1.5",
+  "arenaId": "019f16dd-8647-7061-9c27-24e2371f8c49",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "lo-bah-png",
+  "displayName": "mai-image-2.6-preview",
+  "arenaId": "019fde11-e7c8-7394-ac43-8fd3b37ba81c",
+  "vision": false,
+  "organization": "microsoft-ai"
+ },
+ {
+  "publicName": "mei-mei-lljk",
+  "displayName": "mei-mei-lljk",
+  "arenaId": "019f6814-0f42-7cc9-a0f1-b567b7af087d",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "babylon",
+  "displayName": "reve-2.0 (text-to-image)",
+  "arenaId": "019e86c6-a3dc-73ac-9adc-8c5f304dc2fb",
+  "vision": false,
+  "organization": "reve"
+ },
+ {
+  "publicName": "zen-bear-v16r",
+  "displayName": "zen-bear-v16r",
+  "arenaId": "019fbe66-bfad-7c7e-bce2-4246dbaa74ae",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "zen-bear-v12r",
+  "displayName": "zen-bear-v12r",
+  "arenaId": "019fa034-e19d-7e83-80a2-222b80af3b9f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "caudipteryx",
+  "displayName": "caudipteryx",
+  "arenaId": "019e527f-08f9-7b20-9d6e-0b3eeec07870",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "mussaurus",
+  "displayName": "mussaurus",
+  "arenaId": "019e753c-c701-7c22-aef1-78cb6b0834da",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tyrannosaurus",
+  "displayName": "tyrannosaurus",
+  "arenaId": "019e7540-fb92-7dff-bdb3-e19d21563606",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "avalon",
+  "displayName": "avalon",
+  "arenaId": "019e708b-b1e3-7851-a9ce-7e22e38e7b28",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hotate",
+  "displayName": "hotate",
+  "arenaId": "019ecf0b-1f4b-7bc5-9705-a609e39e3999",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "bramble-k4dj",
+  "displayName": "bramble-k4dj",
+  "arenaId": "019f873e-80bd-735f-ba9f-ef307128ad4f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "sequoia-m2vt",
+  "displayName": "sequoia-m2vt",
+  "arenaId": "019f873e-8639-71fc-b68f-ad75b335961a",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "thistle-p8wn",
+  "displayName": "thistle-p8wn",
+  "arenaId": "019f873e-9a35-760c-8d2a-8c6e48fb19d6",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "dandelion",
+  "displayName": "dandelion",
+  "arenaId": "019f5eb5-29e2-7b55-810e-d988a4ba3bbb",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "carillon",
+  "displayName": "reve-2.1",
+  "arenaId": "019f268f-0ba8-7c7f-8861-1f9579a14f9d",
+  "vision": false,
+  "organization": "reve"
+ },
+ {
+  "publicName": "archaeopteryx",
+  "displayName": "archaeopteryx",
+  "arenaId": "019e0b3a-5f5b-745c-9416-094799115a1f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "snow-crab",
+  "displayName": "snow-crab",
+  "arenaId": "019e5645-ce30-73a5-82c5-6891cc7f68df",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "flow-state-2",
+  "displayName": "flow-state-2",
+  "arenaId": "019de0fc-472b-77e9-b15a-34aa2868f825",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "flow-state-3",
+  "displayName": "flow-state-3",
+  "arenaId": "019de0fc-7480-78b1-b6a0-f5d2adf478b5",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "porcelain",
+  "displayName": "porcelain",
+  "arenaId": "019fac44-b246-722d-ad6c-50863aff71fb",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "flow-state-3",
+  "displayName": "flow-state-3",
+  "arenaId": "019dd579-7ee0-7ef9-9a01-2cc76f59b2a1",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "flow-state-2",
+  "displayName": "flow-state-2",
+  "arenaId": "019dd579-4fc3-76a7-8ed8-ef12d7f1a48d",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "zen-bear-v13r",
+  "displayName": "zen-bear-v13r",
+  "arenaId": "019fa737-2520-7afb-a2be-540574af2810",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hunyuan-image-2.1",
+  "displayName": "hunyuan-image-2.1",
+  "arenaId": "a9a26426-5377-4efa-bef9-de71e29ad943",
+  "vision": false,
+  "organization": "tencent"
+ },
+ {
+  "publicName": "dimetrodon",
+  "displayName": "dimetrodon",
+  "arenaId": "019e1d88-45c1-7d54-aa6b-ccd1c8cbb409",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "zen-bear-v15r",
+  "displayName": "zen-bear-v15r",
+  "arenaId": "019fb4d7-bd5c-784c-9297-2afc42dea1f2",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "sui-mai",
+  "displayName": "sui-mai",
+  "arenaId": "019f887c-2854-79f5-b59b-9e2f3ab5e9d9",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "mondrian",
+  "displayName": "mondrian",
+  "arenaId": "019dfec5-a13a-7e56-af8f-b40ab392c88e",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "qq-dan",
+  "displayName": "qq-dan",
+  "arenaId": "019fb5a5-0708-7673-af88-419c63f2d676",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "auto-bear-v2",
+  "displayName": "qwen-image-2.0-pro-2026-06-22",
+  "arenaId": "019e7565-e0cc-7f7e-ab49-a9352e70f2b4",
+  "vision": false,
+  "organization": "alibaba"
+ },
+ {
+  "publicName": "cosmos3-super-agentic",
+  "displayName": "cosmos3-super-agentic",
+  "arenaId": "019f91af-7ebe-7b8f-87c4-f3b16070a5d0",
+  "vision": false,
+  "organization": "nvidia"
+ },
+ {
+  "publicName": "baryonyx",
+  "displayName": "mai-image-2.5 (text-to-image)",
+  "arenaId": "019e530d-2a50-75e3-95d1-a5ef41d4c24c",
+  "vision": false,
+  "organization": "microsoft-ai"
+ },
+ {
+  "publicName": "cosmos3-super",
+  "displayName": "cosmos3-super",
+  "arenaId": "019f91aa-b945-7411-a0cf-359f9f9f2360",
+  "vision": false,
+  "organization": "nvidia"
+ },
+ {
+  "publicName": "wan2.6-t2i",
+  "displayName": "wan2.6-t2i",
+  "arenaId": "019c2473-76cc-76a0-a73d-3393599366ed",
+  "vision": false,
+  "organization": "wan"
+ },
+ {
+  "publicName": "claude-opus-4-6-search",
+  "displayName": "claude-opus-4-6-search",
+  "arenaId": "019c6f55-308b-71ac-95af-f023a48253cf",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "gpt-5.5-search",
+  "displayName": "gpt-5.5-search",
+  "arenaId": "019dc0ba-5395-7db4-9731-472e97acf221",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "claude-fable-5-search",
+  "displayName": "claude-fable-5-search",
+  "arenaId": "019f1e98-ccba-72c4-8841-c1cf48dc78f4",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "claude-opus-4-7-search",
+  "displayName": "claude-opus-4-7-search",
+  "arenaId": "019dc1ff-c88d-7106-bba7-b2358c26c590",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "claude-sonnet-4-6-search",
+  "displayName": "claude-sonnet-4-6-search",
+  "arenaId": "019c6f55-70d6-7a9c-b89b-9a0db36a3582",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "gemini-3.1-pro-grounding",
+  "displayName": "gemini-3.1-pro-grounding",
+  "arenaId": "019ce84a-f675-780c-a2bb-f86498a34de5",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gpt-5.2-search",
+  "displayName": "gpt-5.2-search",
+  "arenaId": "019b1448-f74a-72de-b25d-8666618f8c5a",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "grok-4.20-multi-agent-beta-0309",
+  "displayName": "grok-4.20-multi-agent-beta-0309",
+  "arenaId": "019ceb00-eef3-7df6-a025-00c9805ebd65",
+  "vision": false,
+  "organization": "xai"
+ },
+ {
+  "publicName": "claude-opus-4-8-search",
+  "displayName": "claude-opus-4-8-search",
+  "arenaId": "019e716b-0c56-71f1-b744-866b07e73040",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "gpt-5.1-search",
+  "displayName": "gpt-5.1-search",
+  "arenaId": "019abdb7-50a5-7c05-9308-4491d069578b",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "gemini-3-flash-grounding",
+  "displayName": "gemini-3-flash-grounding",
+  "arenaId": "019bda1f-3abc-783f-aac0-1ee102b247ba",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "gpt-5.4-search",
+  "displayName": "gpt-5.4-search",
+  "arenaId": "019cc0b6-0650-72eb-9294-47cb7e9a5d47",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "claude-sonnet-5-search",
+  "displayName": "claude-sonnet-5-search",
+  "arenaId": "019f1a07-de72-7fbe-8d82-56dbd7348360",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "claude-opus-4-5-search",
+  "displayName": "claude-opus-4-5-search",
+  "arenaId": "019bda1f-2da5-7e9b-b357-2ed018d39393",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "gpt-5.2-search-non-reasoning",
+  "displayName": "gpt-5.2-search-non-reasoning",
+  "arenaId": "019bda1e-bf3f-705b-b791-36db7a6ba906",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "grok-4-1-fast-search",
+  "displayName": "grok-4-1-fast-search",
+  "arenaId": "019af19c-0658-7566-9c60-112ae5bdb8db",
+  "vision": false,
+  "organization": "xai"
+ },
+ {
+  "publicName": "claude-sonnet-4-5-search",
+  "displayName": "claude-sonnet-4-5-search",
+  "arenaId": "019bda1f-3664-75d3-91b9-ede8f7561e44",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "claude-opus-4-1-search",
+  "displayName": "claude-opus-4-1-search",
+  "arenaId": "d942b564-191c-41c5-ae22-400a930a2cfe",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "o3-search",
+  "displayName": "o3-search",
+  "arenaId": "fbe08e9a-3805-4f9f-a085-7bc38e4b51d1",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "gemini-2.5-pro-grounding",
+  "displayName": "gemini-2.5-pro-grounding",
+  "arenaId": "b222be23-bd55-4b20-930b-a30cc84d3afd",
+  "vision": false,
+  "organization": "google"
+ },
+ {
+  "publicName": "grok-4-search",
+  "displayName": "grok-4-search",
+  "arenaId": "86d767b0-2574-4e47-a256-a22bcace9f56",
+  "vision": false,
+  "organization": "xai"
+ },
+ {
+  "publicName": "ppl-sonar-reasoning-pro-high",
+  "displayName": "ppl-sonar-reasoning-pro-high",
+  "arenaId": "24145149-86c9-4690-b7c9-79c7db216e5c",
+  "vision": false,
+  "organization": "perplexity"
+ },
+ {
+  "publicName": "gpt-5-search",
+  "displayName": "gpt-5-search",
+  "arenaId": "d14d9b23-1e46-4659-b157-a3804ba7e2ef",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "claude-opus-4-search",
+  "displayName": "claude-opus-4-search",
+  "arenaId": "25bcb878-749e-49f4-ac05-de84d964bcee",
+  "vision": false,
+  "organization": "anthropic"
+ },
+ {
+  "publicName": "anonymous-0410",
+  "displayName": "openhard-1.0-search-non-reasoning-0410",
+  "arenaId": "019d888a-4f52-7a31-a253-769424b91df9",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "openhard-2.0-search-nocot-0721",
+  "displayName": "openhard-2.0-search-nocot-0721",
+  "arenaId": "019f8af6-f273-720b-b7d7-869c7a9d46cb",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "openhard-1.5-search-cot-0601",
+  "displayName": "openhard-1.5-search-cot-0601",
+  "arenaId": "019e8a71-6abd-7d39-ac59-2070517d6854",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tanager-search-v4",
+  "displayName": "tanager-search-v4",
+  "arenaId": "019f4d01-75f1-7bce-9779-0d769f32850f",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "wild-bits",
+  "displayName": "wild-bits",
+  "arenaId": "019da20e-0d8e-718a-9187-a3fa69de67fd",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tanager-search",
+  "displayName": "tanager-search",
+  "arenaId": "019e0836-a13f-7e4f-ad00-3f32140afff3",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "basalt-0303-1",
+  "displayName": "basalt-0303-1",
+  "arenaId": "019cc4af-dae4-7d38-acf6-3c2c867138ce",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tanager-search-v5",
+  "displayName": "tanager-search-v5",
+  "arenaId": "019fb8c5-4796-7f8d-bd9b-0e278b3d9de7",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tanager-search-v2",
+  "displayName": "tanager-search-v2",
+  "arenaId": "019e9966-8501-77e8-85c3-c49fca914a0c",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "grok-4.5-search",
+  "displayName": "grok-4.5-search",
+  "arenaId": "019f4e39-a888-7430-a6e7-ca2c33ec78f1",
+  "vision": false,
+  "organization": "xai"
+ },
+ {
+  "publicName": "basalt-0422-1-v2",
+  "displayName": "basalt-0422-1-v2",
+  "arenaId": "019dda58-5541-705e-9db1-fce7ac5d55e5",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "tanager-search-v3",
+  "displayName": "tanager-search-v3",
+  "arenaId": "019ef6b1-c0f2-7d47-a366-4085324dc49a",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "openhard-2.0-search-nocot-0807",
+  "displayName": "openhard-2.0-search-nocot-0807",
+  "arenaId": "019fd7f0-b50f-75c7-a22d-1526ade8fee9",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "grok-4.3",
+  "displayName": "grok-4.3",
+  "arenaId": "019de22d-1445-7296-9c88-a5877bc66ef8",
+  "vision": false,
+  "organization": "xai"
+ },
+ {
+  "publicName": "yotta-prime",
+  "displayName": "yotta-prime",
+  "arenaId": "019ff26b-3a89-752d-8f3f-c87c660d2c00",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "gpt-5.1-search-sp",
+  "displayName": "gpt-5.1-search-sp",
+  "arenaId": "019b2f68-97ae-75b1-9e2f-456470bd5332",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "gpt-5.6-sol-search-xhigh",
+  "displayName": "gpt-5.6-sol-search-xhigh",
+  "arenaId": "019f4805-8efe-7437-bd2e-b78d3c9c28c4",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "sora-2-pro",
+  "displayName": "sora-2-pro",
+  "arenaId": "01f39601-03ed-4d66-8afb-5039c90b27ea",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "wan2.7-t2v",
+  "displayName": "wan2.7-t2v",
+  "arenaId": "019de5a8-bff1-7059-a714-a62306010c70",
+  "vision": false,
+  "organization": "wan"
+ },
+ {
+  "publicName": "sora-2",
+  "displayName": "sora-2",
+  "arenaId": "043a03a9-a792-4045-9f6d-4bcd747dac43",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "wan2.6-t2v",
+  "displayName": "wan2.6-t2v",
+  "arenaId": "019c48d2-6244-73d5-b6f0-c138efff5331",
+  "vision": false,
+  "organization": "wan"
+ },
+ {
+  "publicName": "wan2.5-t2v-preview",
+  "displayName": "wan2.5-t2v-preview",
+  "arenaId": "019a74c8-5bf5-7f37-b0c4-4d597ea6f831",
+  "vision": false,
+  "organization": "wan"
+ },
+ {
+  "publicName": "runway-gen-4.5",
+  "displayName": "runway-gen-4.5",
+  "arenaId": "019c920d-8d0e-7625-a023-635cf4e9f5d5",
+  "vision": false,
+  "organization": "runway"
+ },
+ {
+  "publicName": "pixel-parrot",
+  "displayName": "pixel-parrot",
+  "arenaId": "019c7c99-f606-714a-9791-e51f3c1ac0b5",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kling-o1-pro",
+  "displayName": "kling-o1-pro",
+  "arenaId": "019c78d9-c9b1-777a-9792-e0790121359d",
+  "vision": false,
+  "organization": "kling"
+ },
+ {
+  "publicName": "kling-o1-pro",
+  "displayName": "kling-o1-pro",
+  "arenaId": "019be7ad-5596-7d09-adf2-bf3ada092cf3",
+  "vision": false,
+  "organization": "kling"
+ },
+ {
+  "publicName": "hailuo-02-pro",
+  "displayName": "hailuo-02-pro",
+  "arenaId": "55069e04-a634-4d98-8765-95113b945f5e",
+  "vision": false,
+  "organization": "minimax"
+ },
+ {
+  "publicName": "seedance-v1-pro",
+  "displayName": "seedance-v1-pro",
+  "arenaId": "e705b65f-82cd-40cb-9630-d9e6ca92d06f",
+  "vision": false,
+  "organization": "bytedance"
+ },
+ {
+  "publicName": "hailuo-02-standard",
+  "displayName": "hailuo-02-standard",
+  "arenaId": "e652c45e-8699-4392-94f0-7834e7464137",
+  "vision": false,
+  "organization": "minimax"
+ },
+ {
+  "publicName": "kandinsky-5.0-t2v-pro",
+  "displayName": "kandinsky-5.0-t2v-pro",
+  "arenaId": "019a997a-92dd-7588-ac3c-bdca7e81af37",
+  "vision": false,
+  "organization": "kandinsky"
+ },
+ {
+  "publicName": "hunyuan-video-1.5",
+  "displayName": "hunyuan-video-1.5",
+  "arenaId": "019b28b8-5801-708c-9a7c-e77999d624d6",
+  "vision": false,
+  "organization": "tencent"
+ },
+ {
+  "publicName": "kling-v2.1-master",
+  "displayName": "kling-v2.1-master",
+  "arenaId": "d63b03fb-8bc8-4ed8-9a50-6ccb683ac2b1",
+  "vision": false,
+  "organization": "kling"
+ },
+ {
+  "publicName": "ltx-2-19b",
+  "displayName": "ltx-2-19b",
+  "arenaId": "019bb42e-a2f0-73e6-a96e-a6f925341d9c",
+  "vision": false,
+  "organization": "lightricks"
+ },
+ {
+  "publicName": "wan-v2.2-a14b",
+  "displayName": "wan-v2.2-a14b",
+  "arenaId": "264e6e2f-b66a-4e27-a859-8145ff32d6f6",
+  "vision": false,
+  "organization": "wan"
+ },
+ {
+  "publicName": "kandinsky-5.0-t2v-lite",
+  "displayName": "kandinsky-5.0-t2v-lite",
+  "arenaId": "019a997a-88a7-7e5c-9214-ed2a946eb739",
+  "vision": false,
+  "organization": "kandinsky"
+ },
+ {
+  "publicName": "seedance-v1-lite",
+  "displayName": "seedance-v1-lite",
+  "arenaId": "13ce11ba-def2-4c80-a70b-b0b2c14d293e",
+  "vision": false,
+  "organization": "bytedance"
+ },
+ {
+  "publicName": "sora",
+  "displayName": "sora",
+  "arenaId": "c3d0e5c8-f4b3-417a-8cb8-2ccf757d3869",
+  "vision": false,
+  "organization": "openai"
+ },
+ {
+  "publicName": "ray2",
+  "displayName": "ray2",
+  "arenaId": "217158f9-793e-4ffe-a197-6de9448432fc",
+  "vision": false,
+  "organization": "luma-ai"
+ },
+ {
+  "publicName": "pika-v2.2",
+  "displayName": "pika-v2.2",
+  "arenaId": "86de5aea-fc0c-4c36-b65a-7afc443a32d2",
+  "vision": false,
+  "organization": "pika"
+ },
+ {
+  "publicName": "mochi-v1",
+  "displayName": "mochi-v1",
+  "arenaId": "f4809219-14a8-47fe-9705-8685085513e7",
+  "vision": false,
+  "organization": "genmo"
+ },
+ {
+  "publicName": "tbd",
+  "displayName": "tbd",
+  "arenaId": "019de0ba-9071-7116-894f-0bfef86db47c",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "latent-sauce",
+  "displayName": "latent-sauce",
+  "arenaId": "019fca99-f166-79da-a2a6-63ac6a16eb25",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "chai-tea",
+  "displayName": "chai-tea",
+  "arenaId": "019f24c0-90db-742d-a794-22d79d2a3bf1",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hailuo-3",
+  "displayName": "minimax-h3",
+  "arenaId": "019fb712-f49a-7258-aee2-28709a533d41",
+  "vision": false,
+  "organization": "minimax"
+ },
+ {
+  "publicName": "busy-bee",
+  "displayName": "busy-bee",
+  "arenaId": "019f9618-d7e0-7cb8-97f7-5faabd67bb87",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "potato",
+  "displayName": "potato",
+  "arenaId": "019f9618-eac9-7ae8-9d0e-f2d8f73d3400",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "polaris",
+  "displayName": "polaris",
+  "arenaId": "019feceb-bf62-71a6-8238-aea19b7b9d9b",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "runway-gen4-aleph",
+  "displayName": "runway-gen4-aleph",
+  "arenaId": "019c78da-3629-73c6-8e04-0aba8eae64c8",
+  "vision": false,
+  "organization": "runway"
+ },
+ {
+  "publicName": "grok-imagine-video",
+  "displayName": "grok-imagine-video",
+  "arenaId": "019c78d9-8148-794d-ba5e-59c1a29a1dc3",
+  "vision": false,
+  "organization": "xai"
+ },
+ {
+  "publicName": "bubble-tea",
+  "displayName": "bubble-tea",
+  "arenaId": "019ee7e7-87ad-78d6-aaf2-486832e822f5",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kling-v3",
+  "displayName": "kling-v3",
+  "arenaId": "019c59fa-6567-7c42-97af-f51b52ce47d5",
+  "vision": false,
+  "organization": "kling"
+ },
+ {
+  "publicName": "happyhorse-1.1",
+  "displayName": "happyhorse-1.1",
+  "arenaId": "019f05cc-5c22-75d8-b99e-ffab36d62851",
+  "vision": false,
+  "organization": "aorizon"
+ },
+ {
+  "publicName": "happyhorse-1.1",
+  "displayName": "happyhorse-1.1",
+  "arenaId": "019f05cc-d477-712a-a9c8-3a3ec1c61324",
+  "vision": false,
+  "organization": "aorizon"
+ },
+ {
+  "publicName": "lighthouse",
+  "displayName": "lighthouse",
+  "arenaId": "01a003a5-fdf1-7294-831f-08fcd8711db0",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "culumus",
+  "displayName": "culumus",
+  "arenaId": "019ee155-911f-7ca5-a87e-909dbd0dcfd7",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "matcha_latte",
+  "displayName": "matcha_latte",
+  "arenaId": "019f1009-0843-7d0e-8f25-15085fa931aa",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "alpaca1.0",
+  "displayName": "alpaca1.0",
+  "arenaId": "019fab37-630f-73b3-a79c-b846021f7bfb",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "cold_brew",
+  "displayName": "muse-video",
+  "arenaId": "019f24bf-9c2c-74dc-b218-deddd57fa496",
+  "vision": false,
+  "organization": "meta"
+ },
+ {
+  "publicName": "sprout",
+  "displayName": "sprout",
+  "arenaId": "019f9cf8-e13c-7f9b-b0c2-804374374a24",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "rigel",
+  "displayName": "rigel",
+  "arenaId": "019fb0ad-d13a-73b4-b4bb-44df67c8a889",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "hailuo-3",
+  "displayName": "minimax-h3",
+  "arenaId": "019fbbc9-b0ee-7912-83fe-a8afd9062c8f",
+  "vision": false,
+  "organization": "minimax"
+ },
+ {
+  "publicName": "polaris",
+  "displayName": "polaris",
+  "arenaId": "019ff19e-a4b0-70c0-9379-1116ca8b4457",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "saiph",
+  "displayName": "saiph",
+  "arenaId": "01a00b65-90c3-764e-9bfb-bca000dfbf4e",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "wan-vace",
+  "displayName": "wan-vace",
+  "arenaId": "019c78d9-2a0f-7d8d-8b01-94bf9907d65e",
+  "vision": false,
+  "organization": "wan"
+ },
+ {
+  "publicName": "vega",
+  "displayName": "vega",
+  "arenaId": "01a010ff-f14f-7953-bb48-27baf9105203",
+  "vision": false,
+  "organization": null
+ },
+ {
+  "publicName": "kling-o3-pro",
+  "displayName": "kling-o3-pro",
+  "arenaId": "019c78d9-ffe4-7a3a-913f-9570e3927788",
+  "vision": false,
+  "organization": "kling"
+ }
+]

@@ -207,7 +207,7 @@ def api_requests(qs):
     provider = qs.get("provider", [""])[0]
     errors_only = qs.get("errors", ["0"])[0] == "1"
     page = max(1, int(qs.get("page", ["1"])[0]))
-    size = min(500, max(10, int(qs.get("page_size", ["50"])[0])))
+    size = min(500, max(1, int(qs.get("page_size", ["50"])[0])))
 
     where = ["created_at >= datetime('now', ?)"]
     args = [f"-{hours} hours"]

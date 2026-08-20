@@ -1,4 +1,4 @@
-# ZESRouter Web UI — Build Prompt (for Claude/Sonnet on arena.ai)
+# ZESRouter Web UI — Build Prompt (for agents on arena.ai)
 
 You are building the management UI for **ZESRouter** — a ZES-branded packaging of
 BitRouter 1.0.0-alpha.27 (Apache-2.0), an LLM router daemon. Repo: github.com/zesxdev/zesrouter

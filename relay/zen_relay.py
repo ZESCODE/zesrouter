@@ -9,6 +9,9 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import tokensaver as tokensaver
+
 ZEN_BASE = "https://opencode.ai/zen/v1"
 UA = "opencode/1.15.0 ai-sdk/provider-utils/4.0.23 runtime/bun/1.3.13"
 PORT = int(os.environ.get("ZEN_RELAY_PORT", "7077"))
@@ -23,6 +26,9 @@ EXTRA_MODELS = [
     {"id": "opencode/kimi-k2.5-free", "object": "model", "owned_by": "opencode"},
     {"id": "deepseek-v4-flash-free", "object": "model", "owned_by": "opencode"},
 ]
+
+
+from urllib.parse import urlparse, parse_qs
 
 
 def zen_headers(client_ip=None):
@@ -107,6 +113,11 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
+        if "/tokensaver/" in self.path:
+            parsed = urlparse(self.path)
+            result = tokensaver.handle_api(parsed.path, parse_qs(parsed.query))
+            if result:
+                return self._send(result[0], json.dumps(result[1]), "application/json")
         if self.path.rstrip("/") == "/v1/models" or self.path.rstrip("/") == "/models":
             models = fetch_models()
             return self._send(200, json.dumps({"object": "list", "data": models}), "application/json")
@@ -127,6 +138,13 @@ class Handler(BaseHTTPRequestHandler):
         model = payload.get("model", "")
         clean = model.split("/")[-1]
         payload["model"] = clean
+        try:
+            payload, _metas = tokensaver.process_chat_payload(payload)
+            if _metas:
+                saved = sum(m.get("saved_pct", 0) for m in _metas)
+                print(f"[zen-relay] tokensaver: {len(_metas)} blobs compacted (avg {saved // len(_metas)}%)", flush=True)
+        except Exception:
+            pass
         stream = bool(payload.get("stream", False))
 
         data = json.dumps(payload).encode()

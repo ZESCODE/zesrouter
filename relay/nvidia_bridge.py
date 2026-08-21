@@ -5,6 +5,10 @@ import sys
 import urllib.error
 import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from urllib.parse import urlparse, parse_qs
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import tokensaver as tokensaver
 
 UPSTREAM = "https://integrate.api.nvidia.com"
 PORT = int(os.environ.get("NVIDIA_BRIDGE_PORT", "9456"))
@@ -26,9 +30,9 @@ def forward(path, body, headers, method="POST"):
 class H(BaseHTTPRequestHandler):
     protocol_version = "HTTP/1.1"
 
-    def _relay(self, method):
+    def _relay(self, method, body_override=None):
         ln = int(self.headers.get("Content-Length", 0) or 0)
-        body = self.rfile.read(ln) if ln else None
+        body = body_override if body_override is not None else (self.rfile.read(ln) if ln else None)
         try:
             up = forward(self.path, body, self.headers, method)
         except urllib.error.HTTPError as e:
@@ -78,9 +82,33 @@ class H(BaseHTTPRequestHandler):
             self.wfile.write(data)
 
     def do_POST(self):
+        if self.path.rstrip("/").endswith("/chat/completions"):
+            ln = int(self.headers.get("Content-Length", 0) or 0)
+            body = self.rfile.read(ln) if ln else None
+            try:
+                payload = json.loads(body or b"{}")
+                payload, metas = tokensaver.process_chat_payload(payload)
+                body = json.dumps(payload).encode()
+                if metas:
+                    saved = sum(m.get("saved_pct", 0) for m in metas)
+                    sys.stderr.write(f"[nvidia-bridge] tokensaver: {len(metas)} blobs compacted (avg {saved // len(metas)}%)\n")
+            except Exception:
+                pass
+            return self._relay("POST", body)
         self._relay("POST")
 
     def do_GET(self):
+        if "/tokensaver/" in self.path:
+            parsed = urlparse(self.path)
+            result = tokensaver.handle_api(parsed.path, parse_qs(parsed.query))
+            if result:
+                data = json.dumps(result[1]).encode()
+                self.send_response(result[0])
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Content-Length", str(len(data)))
+                self.end_headers()
+                self.wfile.write(data)
+                return
         self._relay("GET")
 
     def log_message(self, fmt, *args):

@@ -6,7 +6,7 @@
 # Get all API keys from master.env
 ENV_FILE="$HOME/.secure-credentials/master.env"
 if [ -f "$ENV_FILE" ]; then
-  eval "$(grep -E '^(OPENCODE_ZEN_API_KEY|ANTHROPIC_API_KEY|OPENAI_API_KEY|OPENROUTER_API_KEY)=' "$ENV_FILE")"
+  eval "$(grep -E '^(ANTHROPIC_API_KEY|OPENAI_API_KEY|OPENROUTER_API_KEY|NVIDIA_API_KEY)=' "$ENV_FILE")"
 fi
 
 # Check if already responding
@@ -17,14 +17,21 @@ fi
 
 echo "Starting ZESRouter inside proot-distro Debian..."
 
+# Start the NVIDIA bridge (127.0.0.1:9456) if not already running
+if ! curl -s --max-time 2 http://localhost:9456/v1/models >/dev/null 2>&1; then
+    setsid -f env NVIDIA_API_KEY="$NVIDIA_API_KEY" python3 "$HOME/zesrouter/relay/nvidia_bridge.py" \
+        </dev/null >"$HOME/logs/nvidia-bridge.log" 2>&1
+    sleep 1
+fi
+
 # Clean stale socket/pid
 proot-distro login debian -- rm -f /root/.bitrouter/bitrouter.sock /root/.bitrouter/bitrouter.pid 2>/dev/null
 
 # Build env export string
-ENV_VARS="export OPENCODE_ZEN_API_KEY=$OPENCODE_ZEN_API_KEY"
-ENV_VARS="$ENV_VARS && export ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY"
+ENV_VARS="export ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY"
 ENV_VARS="$ENV_VARS && export OPENAI_API_KEY=$OPENAI_API_KEY"
 [ -n "$OPENROUTER_API_KEY" ] && ENV_VARS="$ENV_VARS && export OPENROUTER_API_KEY=$OPENROUTER_API_KEY"
+[ -n "$NVIDIA_API_KEY" ] && ENV_VARS="$ENV_VARS && export NVIDIA_API_KEY=$NVIDIA_API_KEY"
 
 # Launch daemon in background
 nohup proot-distro login debian -- bash -c "$ENV_VARS && \

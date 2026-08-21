@@ -8,6 +8,10 @@ import {
   Settings,
   HeartPulse,
   Radio,
+  Wallet,
+  FileClock,
+  ScrollText,
+  SlidersHorizontal,
   type LucideIcon,
 } from "lucide-react";
 
@@ -18,6 +22,10 @@ export type PageId =
   | "policy"
   | "keys"
   | "traffic"
+  | "costs"
+  | "logs"
+  | "backups"
+  | "router"
   | "settings"
   | "health"
   | "events";
@@ -36,6 +44,10 @@ export const NAV_ITEMS: NavItem[] = [
   { id: "policy", label: "Policy", shortLabel: "Policy", icon: ShieldCheck },
   { id: "keys", label: "Virtual API Keys", shortLabel: "Keys", icon: KeyRound },
   { id: "traffic", label: "Traffic / Request Log", shortLabel: "Traffic", icon: Activity },
+  { id: "costs", label: "Costs / Usage", shortLabel: "Costs", icon: Wallet },
+  { id: "logs", label: "Daemon Logs", shortLabel: "Logs", icon: ScrollText },
+  { id: "backups", label: "Backups", shortLabel: "Backups", icon: FileClock },
+  { id: "router", label: "Routing Editor", shortLabel: "Editor", icon: SlidersHorizontal },
   { id: "settings", label: "Settings", shortLabel: "Settings", icon: Settings },
   { id: "health", label: "System Health", shortLabel: "Health", icon: HeartPulse },
   { id: "events", label: "Live Event Stream", shortLabel: "Events", icon: Radio },

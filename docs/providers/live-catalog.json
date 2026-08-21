@@ -1,0 +1,260 @@
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "anthropic/claude-sonnet-5",
+      "object": "model",
+      "providers": [
+        "opencode-zen-relay",
+        "pollinations"
+      ]
+    },
+    {
+      "id": "opencode/mimo-v2.5-free",
+      "object": "model",
+      "providers": [
+        "opencode-zen-relay"
+      ]
+    },
+    {
+      "id": "openrouter/google/gemma-4-31b-it:free",
+      "object": "model",
+      "providers": [
+        "openrouter"
+      ]
+    },
+    {
+      "id": "nvidia/nvidia/llama-3.1-nemotron-nano-vl-8b-v1",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "nvidia/nvidia/llama-3.1-nemoguard-8b-content-safety",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "opencode/muse-spark-1.2-contributor-free",
+      "object": "model",
+      "providers": [
+        "opencode-zen-relay"
+      ]
+    },
+    {
+      "id": "pollinations/openai",
+      "object": "model",
+      "providers": [
+        "pollinations"
+      ]
+    },
+    {
+      "id": "pollinations/qwen-vision",
+      "object": "model",
+      "providers": [
+        "pollinations"
+      ]
+    },
+    {
+      "id": "nvidia/z-ai/glm-5.2",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "nvidia/meta/llama-3.2-11b-vision-instruct",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "nvidia/nvidia/llama-3.3-nemotron-super-49b-v1",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "nvidia/nvidia/nemotron-3-nano-30b-a3b",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "nvidia/minimaxai/minimax-m3",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "deepseek/deepseek-v4-flash",
+      "object": "model",
+      "providers": [
+        "opencode-zen-relay",
+        "pollinations"
+      ]
+    },
+    {
+      "id": "deepseek/deepseek-v4-flash-free",
+      "object": "model",
+      "providers": [
+        "opencode-zen-relay",
+        "pollinations"
+      ]
+    },
+    {
+      "id": "opencode/hy3-free",
+      "object": "model",
+      "providers": [
+        "opencode-zen-relay"
+      ]
+    },
+    {
+      "id": "nvidia/nvidia/nemotron-mini-4b-instruct",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "nvidia/meta/llama-3.1-8b-instruct",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "pollinations/qwen-coder",
+      "object": "model",
+      "providers": [
+        "pollinations"
+      ]
+    },
+    {
+      "id": "opencode/nemotron-3.5-lightning-free",
+      "object": "model",
+      "providers": [
+        "opencode-zen-relay"
+      ]
+    },
+    {
+      "id": "opencode/deepseek-v4-flash-free",
+      "object": "model",
+      "providers": [
+        "opencode-zen-relay"
+      ]
+    },
+    {
+      "id": "nvidia/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "nvidia/deepseek-ai/deepseek-v4-flash-0731",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "nvidia/openai/gpt-oss-20b",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "nvidia/nvidia/nemotron-3.5-content-safety",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "opencode/nemotron-3-ultra-free",
+      "object": "model",
+      "providers": [
+        "opencode-zen-relay"
+      ]
+    },
+    {
+      "id": "pollinations/openai-fast",
+      "object": "model",
+      "providers": [
+        "pollinations"
+      ]
+    },
+    {
+      "id": "nvidia/nvidia/nemotron-3-super-120b-a12b",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "nvidia/nvidia/llama-3.1-nemotron-safety-guard-8b-v3",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "nvidia/mistralai/mistral-nemotron",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "nvidia/nvidia/llama-3.1-nemoguard-8b-topic-control",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "openrouter/nvidia/nemotron-nano-12b-v2-vl:free",
+      "object": "model",
+      "providers": [
+        "openrouter"
+      ]
+    },
+    {
+      "id": "nvidia/nvidia/nemotron-3-ultra-550b-a55b",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "nvidia/google/gemma-4-31b-it",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    },
+    {
+      "id": "opencode/laguna-s-2.1-free",
+      "object": "model",
+      "providers": [
+        "opencode-zen-relay"
+      ]
+    },
+    {
+      "id": "nvidia/nvidia/nemotron-nano-12b-v2-vl",
+      "object": "model",
+      "providers": [
+        "nvidia"
+      ]
+    }
+  ]
+}

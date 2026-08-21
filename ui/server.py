@@ -31,8 +31,31 @@ CONFIG_DIR = f"{PROOT_ROOT}/.bitrouter"
 MASTER_ENV = os.path.expanduser("~/.secure-credentials/master.env")
 STATIC_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "dist")
 HEALTH_URL = "http://localhost:4356/health"
+AUTH_TOKEN_FILE = os.path.expanduser("~/.secure-credentials/zesrouter-ui.token")
 
 _lock = threading.Lock()
+
+
+def load_ui_token():
+    """Token gating the dashboard API. Env > token file > auto-generate (persisted)."""
+    tok = os.environ.get("ZESROUTER_UI_TOKEN", "").strip()
+    if not tok and os.path.isfile(AUTH_TOKEN_FILE):
+        try:
+            tok = open(AUTH_TOKEN_FILE).read().strip()
+        except OSError:
+            tok = ""
+    if not tok:
+        tok = "zr-" + os.urandom(18).hex()
+        try:
+            with open(AUTH_TOKEN_FILE, "w") as f:
+                f.write(tok + "\n")
+            os.chmod(AUTH_TOKEN_FILE, 0o600)
+        except OSError:
+            pass
+    return tok
+
+
+UI_TOKEN = load_ui_token()
 
 
 def run_cli(args, with_config=True, timeout=25):
@@ -127,7 +150,129 @@ DEFAULT_ENV = {
     "anthropic": "ANTHROPIC_API_KEY",
     "github-copilot": "GITHUB_PAT_ZESXDEV",
     "google": "GEMINI_API_KEY",
+    "nvidia": "NVIDIA_API_KEY",
+    "openrouter": "OPENROUTER_API_KEY",
+    "groq": "GROQ_API_KEY",
+    "deepseek": "DEEPSEEK_API_KEY",
 }
+
+KEYLESS_PROVIDERS = ("pollinations", "opencode-zen-relay")
+
+
+def resolve_env_var(pid, cfg=None):
+    """Env var a provider's API key lives in (config auth.env > DEFAULT_ENV > <PID>_API_KEY)."""
+    if pid in KEYLESS_PROVIDERS:
+        return "none"
+    p = ((cfg or load_config()).get("providers") or {}).get(pid)
+    if isinstance(p, dict) and isinstance(p.get("auth"), dict) and p.get("auth", {}).get("env"):
+        return p["auth"]["env"]
+    return DEFAULT_ENV.get(pid) or f"{pid.upper().replace('-', '_')}_API_KEY"
+
+
+def api_provider_key(body):
+    """Set/clear an upstream provider API key in master.env. Never echoes the value back."""
+    pid = (body or {}).get("providerId", "")
+    action = (body or {}).get("action", "set")
+    cfg = load_config()
+    if pid not in (cfg.get("providers") or {}):
+        return {"ok": False, "error": f"unknown provider '{pid}'"}
+    env_var = resolve_env_var(pid, cfg)
+    if env_var == "none":
+        return {"ok": False, "error": f"provider '{pid}' is keyless — nothing to set"}
+    if not re.match(r"^[A-Z][A-Z0-9_]*$", env_var):
+        return {"ok": False, "error": f"unsafe env var name '{env_var}'"}
+
+    lines = []
+    if os.path.isfile(MASTER_ENV):
+        with open(MASTER_ENV) as f:
+            lines = f.read().splitlines()
+
+    if action == "clear":
+        kept = [l for l in lines if not re.match(rf"^\s*{re.escape(env_var)}=", l)]
+        if len(kept) == len(lines):
+            return {"ok": False, "error": f"{env_var} not present in master.env"}
+        lines = kept
+        msg = f"{env_var} removed — daemon restart needed to apply"
+    else:
+        key = str((body or {}).get("key") or "").strip()
+        if len(key) < 8 or any(c.isspace() for c in key) or "\x00" in key:
+            return {"ok": False, "error": "key looks invalid (min 8 chars, no whitespace)"}
+        if len(key) > 2000:
+            return {"ok": False, "error": "key too long"}
+        replaced = False
+        for i, l in enumerate(lines):
+            if re.match(rf"^\s*{re.escape(env_var)}=", l):
+                lines[i] = f"{env_var}={key}"
+                replaced = True
+                break
+        if not replaced:
+            lines.append(f"{env_var}={key}")
+        msg = f"{env_var} saved — daemon restart needed to apply"
+
+    try:
+        os.chmod(MASTER_ENV, 0o600) if os.path.exists(MASTER_ENV) else None
+        with open(MASTER_ENV, "w") as f:
+            f.write("\n".join(lines).rstrip("\n") + "\n")
+        os.chmod(MASTER_ENV, 0o600)
+    except Exception as e:
+        return {"ok": False, "error": f"write failed: {e}"}
+
+    if env_var == "NVIDIA_API_KEY":
+        threading.Thread(target=restart_bridge, daemon=True).start()
+    return {"ok": True, "envVar": env_var, "action": action, "message": msg, "restartNeeded": True}
+
+
+def restart_bridge():
+    """Restart the NVIDIA bridge so it picks up a new NVIDIA_API_KEY."""
+    try:
+        subprocess.run(["pkill", "-f", "relay/nvidia_bridge.py"], capture_output=True, timeout=10)
+    except Exception:
+        pass
+    try:
+        env = {"PATH": os.environ.get("PATH", "/data/data/com.termux/files/usr/bin")}
+        if os.path.isfile(MASTER_ENV):
+            for line in open(MASTER_ENV):
+                m = re.match(r"^\s*([A-Z0-9_]+)=(.+)$", line.strip())
+                if m:
+                    env[m.group(1)] = m.group(2).strip()
+        bridge = os.path.expanduser("~/zesrouter/relay/nvidia_bridge.py")
+        subprocess.Popen(
+            ["setsid", "-f", "env", "NVIDIA_API_KEY=" + env.get("NVIDIA_API_KEY", ""), "python3", bridge],
+            stdin=subprocess.DEVNULL, stdout=open(os.path.expanduser("~/logs/nvidia-bridge.log"), "a"),
+            stderr=subprocess.STDOUT,
+        )
+    except Exception:
+        pass
+
+
+def _restart_daemon():
+    try:
+        subprocess.run(
+            ["timeout", "35", "proot-distro", "login", "debian", "--", "bash", "-c",
+             "pkill -f bitrouter.orig; rm -f /root/.bitrouter/bitrouter.sock /root/.bitrouter/bitrouter.pid"],
+            capture_output=True, timeout=45)
+    except Exception:
+        pass
+    try:
+        subprocess.run(["bash", os.path.expanduser("~/zesrouter/bin/zesrouter-start")],
+                       capture_output=True, timeout=120)
+    except Exception:
+        pass
+
+
+def api_daemon(body):
+    action = body.get("action", "")
+    if action == "restart":
+        threading.Thread(target=_restart_daemon, daemon=True).start()
+        return {"ok": True, "output": "restarting daemon in background", "restarting": True}
+    if action not in ("start", "stop", "reload"):
+        return {"ok": False, "error": f"bad action {action}"}
+    rc, out, err = run_cli([action])
+    ok = rc == 0
+    msg = out or err
+    if action == "reload" and "reload" not in msg.lower():
+        msg = "reload command accepted" if ok else msg
+    return {"ok": ok, "output": msg[:500]}
 
 
 def api_providers():
@@ -262,6 +407,117 @@ def api_stats_dashboard():
         return {"ok": False, "error": str(e)}
 
 
+def api_stats_costs():
+    """Spend breakdown: by provider, by model, and a 14-day daily series."""
+    try:
+        c = db_conn()
+        by_provider = [dict(r) for r in c.execute("""
+            SELECT provider_id, COUNT(*) AS requests,
+                   COALESCE(SUM(estimated_charge_micro_usd),0) AS cost_micro,
+                   AVG(latency_ms) AS avg_latency_ms
+            FROM requests WHERE created_at >= datetime('now','-1 day')
+            GROUP BY provider_id ORDER BY cost_micro DESC
+        """).fetchall()]
+        by_model = [dict(r) for r in c.execute("""
+            SELECT model_id, COUNT(*) AS requests,
+                   COALESCE(SUM(estimated_charge_micro_usd),0) AS cost_micro
+            FROM requests WHERE created_at >= datetime('now','-1 day') AND model_id != ''
+            GROUP BY model_id ORDER BY cost_micro DESC LIMIT 30
+        """).fetchall()]
+        daily = [dict(r) for r in c.execute("""
+            SELECT date(created_at) AS day, COUNT(*) AS requests,
+                   COALESCE(SUM(estimated_charge_micro_usd),0) AS cost_micro,
+                   COALESCE(SUM(CASE WHEN error IS NOT NULL AND error != '' THEN 1 ELSE 0 END),0) AS errors
+            FROM requests WHERE created_at >= datetime('now','-13 days')
+            GROUP BY day ORDER BY day
+        """).fetchall()]
+        return {"ok": True, "byProvider": by_provider, "byModel": by_model, "daily": daily}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+def api_backup_create():
+    """Snapshot config + DB into CONFIG_DIR with timestamp; prune to last 20."""
+    ts = time.strftime("%Y%m%d-%H%M%S")
+    made = []
+    for src_name, src_host in (("bitrouter.yaml", CFG_HOST), ("bitrouter.db", DB_HOST)):
+        if not os.path.isfile(src_host):
+            continue
+        dst = os.path.join(CONFIG_DIR, f"{src_name}.bak-{ts}")
+        try:
+            shutil.copy2(src_host, dst)
+            made.append(os.path.basename(dst))
+        except OSError as e:
+            return {"ok": False, "error": f"backup {src_name} failed: {e}"}
+    snaps = sorted(f for f in os.listdir(CONFIG_DIR) if ".bak-" in f)
+    for old in snaps[:-40]:
+        try:
+            os.remove(os.path.join(CONFIG_DIR, old))
+        except OSError:
+            pass
+    return {"ok": True, "created": made, "totalSnapshots": len(snaps)}
+
+
+LOG_HOST = os.path.expanduser("~/logs/bitrouter/bitrouter.log")
+
+
+def api_logs(qs):
+    """Tail the daemon log (ANSI stripped). lines=1..1000, level=debug|info|warn|error."""
+    lines = min(1000, max(1, int(qs.get("lines", ["200"])[0])))
+    level = qs.get("level", [""])[0].lower()
+    if not os.path.isfile(LOG_HOST):
+        return {"ok": True, "lines": [], "logPath": LOG_HOST}
+    raw = open(LOG_HOST, "rb").read().decode(errors="replace")
+    raw = re.sub(r"\x1b\[[0-9;]*m", "", raw)
+    out = []
+    for l in raw.splitlines()[-lines:]:
+        m = re.match(r"^(\S+)\s+(\S+)\s+(\S+)\s+(.*)$", l)
+        if m:
+            ts, lvl, target, msg = m.group(1), m.group(2).strip("[]"), m.group(3), m.group(4)
+            if level and lvl.lower() != level:
+                continue
+            out.append({"ts": ts, "level": lvl, "target": target, "msg": msg[:600]})
+    return {"ok": True, "lines": out, "logPath": LOG_HOST}
+
+
+def api_provider_test(body):
+    """End-to-end probe: tiny completion through the daemon on the provider's first model."""
+    pid = (body or {}).get("providerId", "")
+    cfg = load_config()
+    if pid not in (cfg.get("providers") or {}):
+        return {"ok": False, "error": f"unknown provider '{pid}'"}
+    model = None
+    for m, conf in (cfg.get("models") or {}).items():
+        ep = conf.get("endpoints") or []
+        if isinstance(ep, list) and any(e.get("provider") == pid for e in ep if isinstance(e, dict)):
+            model = m
+            break
+        if isinstance(ep, dict) and ep.get("provider") == pid:
+            model = m
+            break
+    if not model:
+        return {"ok": False, "error": f"no model routed through '{pid}'"}
+    payload = json.dumps({
+        "model": f"{pid}:{model}", "messages": [{"role": "user", "content": "Reply OK"}],
+        "max_tokens": 4, "temperature": 0, "stream": False,
+    }).encode()
+    t0 = time.time()
+    import urllib.request
+    try:
+        r = urllib.request.urlopen(urllib.request.Request(
+            "http://localhost:4356/v1/chat/completions", data=payload,
+            headers={"Content-Type": "application/json"}), timeout=30)
+        body2 = r.read().decode(errors="replace")[:2000]
+        lat_ms = round((time.time() - t0) * 1000)
+        if r.status == 200:
+            return {"ok": True, "providerId": pid, "model": model, "latencyMs": lat_ms, "status": 200}
+        return {"ok": False, "providerId": pid, "model": model, "latencyMs": lat_ms,
+                "status": r.status, "detail": body2[:300]}
+    except Exception as e:
+        lat_ms = round((time.time() - t0) * 1000)
+        return {"ok": False, "providerId": pid, "model": model, "latencyMs": lat_ms, "detail": str(e)[:300]}
+
+
 def api_keys():
     c = db_conn()
     rows = c.execute("SELECT * FROM api_keys ORDER BY created_at DESC").fetchall()
@@ -349,18 +605,6 @@ def api_backup_restore(body):
     return api_daemon({"action": "reload"})
 
 
-def api_daemon(body):
-    action = body.get("action", "")
-    if action not in ("start", "stop", "reload"):
-        return {"ok": False, "error": f"bad action {action}"}
-    rc, out, err = run_cli([action])
-    ok = rc == 0
-    msg = out or err
-    if action == "reload" and "reload" not in msg.lower():
-        msg = "reload command accepted" if ok else msg
-    return {"ok": ok, "output": msg[:500]}
-
-
 # ---------------------------------------------------------------- HTTP glue
 
 class Handler(BaseHTTPRequestHandler):
@@ -415,7 +659,20 @@ class Handler(BaseHTTPRequestHandler):
             u = urlparse(self.path)
             self._route_api(u, self._read_body())
 
+    def _authorized(self):
+        """Bearer token check for API routes. Static assets stay public."""
+        if not UI_TOKEN:
+            return True
+        auth = self.headers.get("Authorization", "")
+        if auth.startswith("Bearer "):
+            import hmac
+            return hmac.compare_digest(auth[7:].strip(), UI_TOKEN)
+        return False
+
     def _route_api(self, u, body):
+        if not self._authorized():
+            self._json(401, {"ok": False, "error": "unauthorized"})
+            return
         p = u.path
         qs = parse_qs(u.query)
         try:
@@ -434,12 +691,22 @@ class Handler(BaseHTTPRequestHandler):
                     self._json(200, {"ok": rc == 0, "result": (out or err)[:500]})
             elif p == "/api/providers":
                 self._json(200, api_providers())
+            elif p == "/api/providers/key":
+                self._json(200, api_provider_key(body or {}))
             elif p == "/api/policy":
                 self._json(200, api_policy())
             elif p == "/api/requests":
                 self._json(200, api_requests(qs))
             elif p == "/api/stats/dashboard":
                 self._json(200, api_stats_dashboard())
+            elif p == "/api/stats/costs":
+                self._json(200, api_stats_costs())
+            elif p == "/api/logs":
+                self._json(200, api_logs(qs))
+            elif p == "/api/backups/create":
+                self._json(200, api_backup_create())
+            elif p == "/api/providers/test":
+                self._json(200, api_provider_test(body or {}))
             elif p == "/api/keys" and self.command == "GET":
                 self._json(200, api_keys())
             elif p == "/api/keys/create":
@@ -467,4 +734,8 @@ class Handler(BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     print(f"ZESRouter UI — http://localhost:{PORT} (static: {STATIC_DIR})")
+    if UI_TOKEN:
+        print(f"Dashboard API token: {UI_TOKEN}  (see ~/.secure-credentials/zesrouter-ui.token)")
+    else:
+        print("WARNING: dashboard API is OPEN (no token configured)")
     ThreadingHTTPServer(("0.0.0.0", PORT), Handler).serve_forever()

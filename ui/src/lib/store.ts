@@ -1,11 +1,14 @@
 import { useSyncExternalStore } from "react";
 import type {
   Backup,
+  CostStats,
   HealthState,
+  LogLine,
   ModelRoute,
   OmniRouteState,
   PolicyTable,
   ProviderConfig,
+  ProviderTestResult,
   RequestRecord,
   SSEEvent,
   VirtualKey,
@@ -25,11 +28,43 @@ interface StoreState {
   policy: PolicyTable | null;
   config: string | null;
   backups: Backup[];
+  costs: CostStats | null;
+  logs: LogLine[];
+  logUpdatedAt: number;
   prevErrors: Set<string>;
 }
 
-async function getJSON<T>(path: string, init?: RequestInit): Promise<T> {
-  const r = await fetch(path, init);
+export const TOKEN_KEY = "zesrouter_ui_token";
+
+export function getToken(): string {
+  try {
+    return localStorage.getItem(TOKEN_KEY) ?? "";
+  } catch {
+    return "";
+  }
+}
+
+export function setToken(tok: string) {
+  try {
+    localStorage.setItem(TOKEN_KEY, tok);
+  } catch {
+    /* ignore */
+  }
+}
+
+export function authEvent(): void {
+  window.dispatchEvent(new CustomEvent("zesrouter:unauthorized"));
+}
+
+export async function getJSON<T>(path: string, init?: RequestInit): Promise<T> {
+  const tok = getToken();
+  const headers = new Headers(init?.headers);
+  if (tok) headers.set("Authorization", `Bearer ${tok}`);
+  const r = await fetch(path, { ...init, headers });
+  if (r.status === 401) {
+    authEvent();
+    throw new Error("HTTP 401");
+  }
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   return r.json() as Promise<T>;
 }
@@ -67,6 +102,9 @@ const state: StoreState = {
   policy: null,
   config: null,
   backups: [],
+  costs: null,
+  logs: [],
+  logUpdatedAt: 0,
   prevErrors: new Set<string>(),
 };
 
@@ -178,6 +216,35 @@ async function refreshConfig() {
   emit();
 }
 
+async function refreshCosts() {
+  try {
+    const r = await getJSON<{ ok: boolean } & CostStats>("/api/stats/costs");
+    if (r.ok) {
+      state.costs = {
+        byProvider: r.byProvider ?? [],
+        byModel: r.byModel ?? [],
+        daily: r.daily ?? [],
+      };
+    }
+  } catch {
+    /* keep */
+  }
+  emit();
+}
+
+async function refreshLogs() {
+  try {
+    const r = await getJSON<{ ok: boolean; lines: LogLine[] }>("/api/logs?lines=300");
+    if (r.ok) {
+      state.logs = r.lines;
+      state.logUpdatedAt = Date.now();
+    }
+  } catch {
+    /* keep */
+  }
+  emit();
+}
+
 async function refreshEvents() {
   if (!state.sseConnected || !state.daemonRunning) return;
   try {
@@ -208,12 +275,16 @@ export function startEngine() {
   refreshKeys();
   refreshCatalog();
   refreshConfig();
+  refreshCosts();
+  refreshLogs();
   refreshEvents();
   setInterval(refreshHealth, 10_000);
   setInterval(refreshRequests, 15_000);
   setInterval(refreshKeys, 30_000);
   setInterval(refreshCatalog, 60_000);
   setInterval(refreshConfig, 30_000);
+  setInterval(refreshCosts, 60_000);
+  setInterval(refreshLogs, 5_000);
   setInterval(refreshEvents, 5_000);
 }
 
@@ -265,6 +336,63 @@ export async function revokeKey(idToRevoke: string) {
     body: JSON.stringify({ id: idToRevoke }),
   });
   await refreshKeys();
+}
+
+export async function setProviderKey(providerId: string, key: string | null): Promise<{ ok: boolean; error?: string; message?: string }> {
+  const r = await getJSON<{ ok: boolean; error?: string; message?: string }>("/api/providers/key", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ providerId, action: key === null ? "clear" : "set", key }),
+  });
+  await refreshCatalog();
+  return r;
+}
+
+export async function restartDaemon() {
+  try {
+    await getJSON("/api/daemon", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "restart" }),
+    });
+  } catch {
+    /* keep */
+  }
+  setTimeout(refreshHealth, 2000);
+  setTimeout(refreshHealth, 10000);
+  setTimeout(refreshHealth, 25000);
+}
+
+export async function createBackup(): Promise<{ ok: boolean; created?: string[]; error?: string }> {
+  const r = await getJSON<{ ok: boolean; created?: string[]; error?: string }>("/api/backups/create", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({}),
+  });
+  await refreshConfig();
+  return r;
+}
+
+export async function restoreBackup(name: string) {
+  await getJSON("/api/backups/restore", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name }),
+  });
+  await refreshConfig();
+}
+
+export async function testProvider(providerId: string): Promise<ProviderTestResult> {
+  try {
+    const r = await getJSON<{ ok: boolean; error?: string } & ProviderTestResult>("/api/providers/test", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ providerId }),
+    });
+    return r;
+  } catch (e) {
+    return { ok: false, providerId, detail: String(e) };
+  }
 }
 
 export function useStore(): StoreState {

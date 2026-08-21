@@ -104,3 +104,40 @@ export interface Backup {
   name: string;
   mtime: string;
 }
+
+export interface CostRow {
+  provider_id?: string;
+  model_id?: string;
+  requests: number;
+  cost_micro: number;
+  avg_latency_ms?: number | null;
+}
+
+export interface DailyCost {
+  day: string;
+  requests: number;
+  cost_micro: number;
+  errors: number;
+}
+
+export interface CostStats {
+  byProvider: CostRow[];
+  byModel: CostRow[];
+  daily: DailyCost[];
+}
+
+export interface LogLine {
+  ts: string;
+  level: string;
+  target: string;
+  msg: string;
+}
+
+export interface ProviderTestResult {
+  ok: boolean;
+  providerId: string;
+  model?: string;
+  latencyMs?: number;
+  status?: number;
+  detail?: string;
+}

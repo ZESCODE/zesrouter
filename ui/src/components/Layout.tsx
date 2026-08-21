@@ -33,7 +33,7 @@ export default function Layout({
   const activeLabel = NAV_ITEMS.find((n) => n.id === page)?.label ?? "Dashboard";
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-[100dvh] bg-black text-white">
       {/* Ambient background glow */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-blue-600/20 blur-3xl" />
@@ -95,7 +95,7 @@ export default function Layout({
       </div>
 
       {/* Mobile bottom quick-nav */}
-      <nav className="fixed inset-x-0 bottom-0 z-20 flex border-t border-white/10 bg-black/85 backdrop-blur-xl md:hidden">
+      <nav className="fixed inset-x-0 bottom-0 z-30 flex border-t border-white/10 bg-black/85 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl md:hidden">
         {NAV_ITEMS.slice(0, 5).map((item) => {
           const Icon = item.icon;
           const active = page === item.id;
@@ -123,7 +123,7 @@ export default function Layout({
       </nav>
 
       {/* Spacer so content isn't hidden behind mobile bottom nav */}
-      <div className="h-16 md:hidden" />
+      <div className="h-[calc(4rem+env(safe-area-inset-bottom))] md:hidden" />
     </div>
   );
 }

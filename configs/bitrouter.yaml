@@ -32,6 +32,38 @@ providers:
     protocol_endpoints:
       chat_completions: http://127.0.0.1:7077/v1
     enabled: true
+  nvidia:
+    id: nvidia
+    display_name: "NVIDIA Build (nvapi)"
+    class: "third-party-api"
+    api_base: "http://127.0.0.1:9456/v1"
+    auth:
+      kind: bearer
+      env: NVIDIA_API_KEY
+    protocol_endpoints:
+      chat_completions: http://127.0.0.1:9456/v1
+    models:
+      - { id: nvidia/z-ai/glm-5.2, provider_model_id: z-ai/glm-5.2 }
+      - { id: nvidia/google/gemma-4-31b-it, provider_model_id: google/gemma-4-31b-it }
+      - { id: nvidia/openai/gpt-oss-20b, provider_model_id: openai/gpt-oss-20b }
+      - { id: nvidia/nvidia/nemotron-3-super-120b-a12b, provider_model_id: nvidia/nemotron-3-super-120b-a12b }
+      - { id: nvidia/nvidia/nemotron-3-ultra-550b-a55b, provider_model_id: nvidia/nemotron-3-ultra-550b-a55b }
+      - { id: nvidia/meta/llama-3.1-8b-instruct, provider_model_id: meta/llama-3.1-8b-instruct }
+      - { id: nvidia/meta/llama-3.2-11b-vision-instruct, provider_model_id: meta/llama-3.2-11b-vision-instruct }
+      - { id: nvidia/mistralai/mistral-nemotron, provider_model_id: mistralai/mistral-nemotron }
+      - { id: nvidia/nvidia/llama-3.1-nemoguard-8b-content-safety, provider_model_id: nvidia/llama-3.1-nemoguard-8b-content-safety }
+      - { id: nvidia/nvidia/llama-3.1-nemoguard-8b-topic-control, provider_model_id: nvidia/llama-3.1-nemoguard-8b-topic-control }
+      - { id: nvidia/nvidia/llama-3.1-nemotron-nano-vl-8b-v1, provider_model_id: nvidia/llama-3.1-nemotron-nano-vl-8b-v1 }
+      - { id: nvidia/nvidia/llama-3.1-nemotron-safety-guard-8b-v3, provider_model_id: nvidia/llama-3.1-nemotron-safety-guard-8b-v3 }
+      - { id: nvidia/nvidia/llama-3.3-nemotron-super-49b-v1, provider_model_id: nvidia/llama-3.3-nemotron-super-49b-v1 }
+      - { id: nvidia/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning, provider_model_id: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning }
+      - { id: nvidia/nvidia/nemotron-3.5-content-safety, provider_model_id: nvidia/nemotron-3.5-content-safety }
+      - { id: nvidia/nvidia/nemotron-3-nano-30b-a3b, provider_model_id: nvidia/nemotron-3-nano-30b-a3b }
+      - { id: nvidia/nvidia/nemotron-mini-4b-instruct, provider_model_id: nvidia/nemotron-mini-4b-instruct }
+      - { id: nvidia/nvidia/nemotron-nano-12b-v2-vl, provider_model_id: nvidia/nemotron-nano-12b-v2-vl }
+      - { id: nvidia/deepseek-ai/deepseek-v4-flash-0731, provider_model_id: deepseek-ai/deepseek-v4-flash-0731 }
+      - { id: nvidia/minimaxai/minimax-m3, provider_model_id: minimaxai/minimax-m3 }
+    enabled: true
 
 models:
   anthropic/claude-sonnet-5:
@@ -104,6 +136,86 @@ models:
     endpoints:
       - provider: openrouter
         service_id: google/gemma-4-31b-it:free
+  nvidia/z-ai/glm-5.2:
+    endpoints:
+      - provider: nvidia
+        service_id: z-ai/glm-5.2
+  nvidia/google/gemma-4-31b-it:
+    endpoints:
+      - provider: nvidia
+        service_id: google/gemma-4-31b-it
+  nvidia/openai/gpt-oss-20b:
+    endpoints:
+      - provider: nvidia
+        service_id: openai/gpt-oss-20b
+  nvidia/nvidia/nemotron-3-super-120b-a12b:
+    endpoints:
+      - provider: nvidia
+        service_id: nvidia/nemotron-3-super-120b-a12b
+  nvidia/nvidia/nemotron-3-ultra-550b-a55b:
+    endpoints:
+      - provider: nvidia
+        service_id: nvidia/nemotron-3-ultra-550b-a55b
+  nvidia/meta/llama-3.1-8b-instruct:
+    endpoints:
+      - provider: nvidia
+        service_id: meta/llama-3.1-8b-instruct
+  nvidia/meta/llama-3.2-11b-vision-instruct:
+    endpoints:
+      - provider: nvidia
+        service_id: meta/llama-3.2-11b-vision-instruct
+  nvidia/mistralai/mistral-nemotron:
+    endpoints:
+      - provider: nvidia
+        service_id: mistralai/mistral-nemotron
+  nvidia/nvidia/llama-3.1-nemoguard-8b-content-safety:
+    endpoints:
+      - provider: nvidia
+        service_id: nvidia/llama-3.1-nemoguard-8b-content-safety
+  nvidia/nvidia/llama-3.1-nemoguard-8b-topic-control:
+    endpoints:
+      - provider: nvidia
+        service_id: nvidia/llama-3.1-nemoguard-8b-topic-control
+  nvidia/nvidia/llama-3.1-nemotron-nano-vl-8b-v1:
+    endpoints:
+      - provider: nvidia
+        service_id: nvidia/llama-3.1-nemotron-nano-vl-8b-v1
+  nvidia/nvidia/llama-3.1-nemotron-safety-guard-8b-v3:
+    endpoints:
+      - provider: nvidia
+        service_id: nvidia/llama-3.1-nemotron-safety-guard-8b-v3
+  nvidia/nvidia/llama-3.3-nemotron-super-49b-v1:
+    endpoints:
+      - provider: nvidia
+        service_id: nvidia/llama-3.3-nemotron-super-49b-v1
+  nvidia/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:
+    endpoints:
+      - provider: nvidia
+        service_id: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning
+  nvidia/nvidia/nemotron-3.5-content-safety:
+    endpoints:
+      - provider: nvidia
+        service_id: nvidia/nemotron-3.5-content-safety
+  nvidia/nvidia/nemotron-3-nano-30b-a3b:
+    endpoints:
+      - provider: nvidia
+        service_id: nvidia/nemotron-3-nano-30b-a3b
+  nvidia/nvidia/nemotron-mini-4b-instruct:
+    endpoints:
+      - provider: nvidia
+        service_id: nvidia/nemotron-mini-4b-instruct
+  nvidia/nvidia/nemotron-nano-12b-v2-vl:
+    endpoints:
+      - provider: nvidia
+        service_id: nvidia/nemotron-nano-12b-v2-vl
+  nvidia/deepseek-ai/deepseek-v4-flash-0731:
+    endpoints:
+      - provider: nvidia
+        service_id: deepseek-ai/deepseek-v4-flash-0731
+  nvidia/minimaxai/minimax-m3:
+    endpoints:
+      - provider: nvidia
+        service_id: minimaxai/minimax-m3
 
 policy_table:
   tiers:

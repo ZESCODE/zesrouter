@@ -33,7 +33,7 @@ export default function Layout({
   const activeLabel = NAV_ITEMS.find((n) => n.id === page)?.label ?? "Dashboard";
 
   return (
-    <div className="min-h-[100dvh] bg-black text-white">
+    <div className="min-h-screen bg-black text-white">
       {/* Ambient background glow */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-blue-600/20 blur-3xl" />
@@ -91,11 +91,11 @@ export default function Layout({
           </div>
         </header>
 
-        <main className="relative z-10 px-3 py-4 sm:px-6 sm:py-6">{children}</main>
+        <main className="relative z-10 px-3 py-4 pb-20 sm:px-6 sm:py-6 md:pb-6">{children}</main>
       </div>
 
-      {/* Mobile bottom quick-nav */}
-      <nav className="fixed inset-x-0 bottom-0 z-30 flex border-t border-white/10 bg-black/85 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl md:hidden">
+      {/* Mobile bottom nav — rebuilt clean, fixed 56px, no dvh/calc, no resize on scroll */}
+      <nav className="fixed bottom-0 left-0 right-0 z-30 flex h-14 items-stretch border-t border-white/10 bg-black/95 backdrop-blur-xl md:hidden">
         {NAV_ITEMS.slice(0, 5).map((item) => {
           const Icon = item.icon;
           const active = page === item.id;
@@ -104,26 +104,23 @@ export default function Layout({
               key={item.id}
               onClick={() => setPage(item.id)}
               className={cn(
-                "flex flex-1 flex-col items-center gap-0.5 py-2 text-[10px] transition-colors",
-                active ? "text-blue-400" : "text-white/45",
+                "flex flex-1 flex-col items-center justify-center gap-0.5 text-[10px] leading-none transition-colors active:scale-95",
+                active ? "text-blue-400" : "text-white/50 hover:text-white/80",
               )}
             >
               <Icon size={18} strokeWidth={active ? 2.4 : 2} />
-              {item.shortLabel}
+              <span className="mt-0.5">{item.shortLabel}</span>
             </button>
           );
         })}
         <button
           onClick={() => setDrawerOpen(true)}
-          className="flex flex-1 flex-col items-center gap-0.5 py-2 text-[10px] text-white/45"
+          className="flex flex-1 flex-col items-center justify-center gap-0.5 text-[10px] leading-none text-white/50 hover:text-white/80 active:scale-95"
         >
           <Menu size={18} />
-          More
+          <span className="mt-0.5">More</span>
         </button>
       </nav>
-
-      {/* Spacer so content isn't hidden behind mobile bottom nav */}
-      <div className="h-[calc(4rem+env(safe-area-inset-bottom))] md:hidden" />
     </div>
   );
 }

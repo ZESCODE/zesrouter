@@ -16,10 +16,33 @@ import LiveEvents from "./pages/LiveEvents";
 import { startEngine, getToken, setToken, authEvent, getJSON } from "./lib/store";
 import type { PageId } from "./lib/nav";
 
+function hashToPage(): PageId | null {
+  const raw = window.location.hash.replace(/^#\/?/, "").trim() as PageId;
+  const valid: PageId[] = ["dashboard","models","providers","policy","keys","traffic","costs","logs","backups","router","settings","health","events"];
+  return (valid as string[]).includes(raw) ? (raw as PageId) : null;
+}
+
 export default function App() {
-  const [page, setPage] = useState<PageId>("dashboard");
+  const [page, setPage] = useState<PageId>(() => hashToPage() ?? "dashboard");
   const [locked, setLocked] = useState(false);
   const [tokenInput, setTokenInput] = useState("");
+
+  // hash → page
+  useEffect(() => {
+    const onHash = () => {
+      const p = hashToPage();
+      if (p) setPage(p);
+    };
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+
+  // page → hash (keeps URL shareable)
+  const setPageWithHash = (p: PageId) => {
+    setPage(p);
+    const h = `#${p}`;
+    if (window.location.hash !== h) window.location.hash = h;
+  };
 
   useEffect(() => {
     const off = () => setLocked(true);
@@ -52,11 +75,11 @@ export default function App() {
   }
 
   return (
-    <Layout page={page} setPage={setPage}>
+    <Layout page={page} setPage={setPageWithHash}>
       {locked && <LoginGate token={tokenInput} setToken={setTokenInput} onUnlock={tryUnlock} />}
       {!locked && (
         <>
-          {page === "dashboard" && <Dashboard setPage={setPage} />}
+          {page === "dashboard" && <Dashboard setPage={setPageWithHash} />}
           {page === "models" && <Models />}
           {page === "providers" && <Providers />}
           {page === "policy" && <Policy />}

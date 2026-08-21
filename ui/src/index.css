@@ -48,10 +48,9 @@ pre,
   scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
 }
 
-/* Prevent horizontal overflow bugs on small screens */
+/* Root — fixed height, no dvh to avoid url-bar resize jumps */
 #root {
   min-height: 100vh;
-  min-height: 100dvh;
   overflow-x: hidden;
 }
 

@@ -526,11 +526,16 @@ def api_keys():
 
 def api_key_create(body):
     user = (body.get("label") or "default").strip() or "default"
-    rc, out, err = run_cli(["key", "sign", "--user", user, "--db", DB_PROOT_URL])
+    # key subcommand does NOT accept --config (run_cli with_config=False)
+    rc, out, err = run_cli(["key", "sign", "--user", user, "--db", DB_PROOT_URL], with_config=False)
     if rc != 0:
         return {"ok": False, "error": (out or err)[:500]}
     try:
-        return {"ok": True, "result": json.loads(out[out.find("{"):])}
+        parsed = json.loads(out[out.find("{"):]) if "{" in out else {}
+        # normalize: CLI returns {id, secret, hash_stored} → expose as {id, plaintext, secret}
+        if "secret" in parsed and "plaintext" not in parsed:
+            parsed["plaintext"] = parsed["secret"]
+        return {"ok": True, "result": parsed}
     except Exception:
         return {"ok": True, "result": {"raw": out[:500]}}
 
@@ -546,6 +551,132 @@ def api_key_revoke(body):
         return {"ok": True, "revoked": kid}
     except Exception as e:
         return {"ok": False, "error": str(e)}
+
+
+def api_provider_add(body):
+    """Add a new provider entry to bitrouter.yaml. Creates minimal third-party-api provider."""
+    pid = str((body or {}).get("id") or "").strip()
+    display = str((body or {}).get("displayName") or "").strip()
+    api_base = str((body or {}).get("apiBase") or "").strip()
+    auth_env = str((body or {}).get("authEnv") or "").strip()
+    enabled = body.get("enabled", True)
+
+    if not pid or not re.match(r"^[a-zA-Z0-9._-]+$", pid):
+        return {"ok": False, "error": "invalid provider id — use a-z, 0-9, . _ -"}
+    if len(pid) > 64:
+        return {"ok": False, "error": "provider id too long (max 64)"}
+    if api_base and not re.match(r"^https?://", api_base):
+        return {"ok": False, "error": "apiBase must start with http:// or https://"}
+    if auth_env and auth_env != "none" and not re.match(r"^[A-Z][A-Z0-9_]*$", auth_env):
+        return {"ok": False, "error": "authEnv must be UPPER_SNAKE or 'none'"}
+
+    cfg = load_config()
+    providers = cfg.get("providers") or {}
+    if pid in providers:
+        return {"ok": False, "error": f"provider '{pid}' already exists"}
+
+    entry: dict = {"enabled": bool(enabled)}
+    if display:
+        entry["display_name"] = display
+    else:
+        entry["display_name"] = pid
+    # default to third-party-api if apiBase given
+    if api_base:
+        entry["id"] = pid
+        entry["class"] = "third-party-api"
+        entry["api_base"] = api_base
+        entry["protocol_endpoints"] = {"chat_completions": api_base}
+    if auth_env and auth_env != "none":
+        entry["auth"] = {"kind": "bearer", "env": auth_env}
+    elif auth_env == "none":
+        # explicitly keyless — no auth
+        pass
+
+    providers[pid] = entry
+    cfg["providers"] = providers
+
+    # backup before write
+    try:
+        ts = time.strftime("%Y%m%d-%H%M%S")
+        if os.path.isfile(CFG_HOST):
+            shutil.copy2(CFG_HOST, os.path.join(CONFIG_DIR, f"bitrouter.yaml.bak-{ts}"))
+    except Exception:
+        pass
+
+    try:
+        with open(CFG_HOST, "w") as f:
+            yaml.safe_dump(cfg, f, sort_keys=False, allow_unicode=True)
+    except Exception as e:
+        return {"ok": False, "error": f"write failed: {e}"}
+
+    # reload daemon async — don't block handler _lock
+    try:
+        threading.Thread(target=lambda: api_daemon({"action": "reload"}), daemon=True).start()
+    except Exception:
+        pass
+    return {"ok": True, "providerId": pid, "message": f"provider '{pid}' added — reload queued"}
+
+
+def api_provider_remove(body):
+    """Remove provider from bitrouter.yaml and clean model routes referencing it."""
+    pid = str((body or {}).get("id") or "").strip()
+    if not pid:
+        return {"ok": False, "error": "missing provider id"}
+    cfg = load_config()
+    providers = cfg.get("providers") or {}
+    if pid not in providers:
+        return {"ok": False, "error": f"provider '{pid}' not found"}
+
+    # prevent removing last provider? allow but warn
+    del providers[pid]
+    cfg["providers"] = providers
+
+    # clean model endpoints referencing this provider
+    models = cfg.get("models") or {}
+    cleaned = 0
+    removed_models = []
+    for mid, mconf in list(models.items()):
+        eps = mconf.get("endpoints")
+        if isinstance(eps, list):
+            new_eps = [e for e in eps if isinstance(e, dict) and e.get("provider") != pid]
+            if len(new_eps) != len(eps):
+                cleaned += len(eps) - len(new_eps)
+                if new_eps:
+                    mconf["endpoints"] = new_eps
+                else:
+                    # no endpoints left — remove model entry
+                    del models[mid]
+                    removed_models.append(mid)
+        elif isinstance(eps, dict) and eps.get("provider") == pid:
+            del models[mid]
+            removed_models.append(mid)
+            cleaned += 1
+    cfg["models"] = models
+
+    try:
+        ts = time.strftime("%Y%m%d-%H%M%S")
+        if os.path.isfile(CFG_HOST):
+            shutil.copy2(CFG_HOST, os.path.join(CONFIG_DIR, f"bitrouter.yaml.bak-{ts}"))
+    except Exception:
+        pass
+
+    try:
+        with open(CFG_HOST, "w") as f:
+            yaml.safe_dump(cfg, f, sort_keys=False, allow_unicode=True)
+    except Exception as e:
+        return {"ok": False, "error": f"write failed: {e}"}
+
+    try:
+        threading.Thread(target=lambda: api_daemon({"action": "reload"}), daemon=True).start()
+    except Exception:
+        pass
+
+    msg = f"provider '{pid}' removed"
+    if cleaned:
+        msg += f" — cleaned {cleaned} endpoint(s)"
+    if removed_models:
+        msg += f" — removed models: {', '.join(removed_models[:3])}" + ("…" if len(removed_models) > 3 else "")
+    return {"ok": True, "providerId": pid, "message": msg}
 
 
 def api_config_save(body, reload_after):
@@ -693,6 +824,10 @@ class Handler(BaseHTTPRequestHandler):
                 self._json(200, api_providers())
             elif p == "/api/providers/key":
                 self._json(200, api_provider_key(body or {}))
+            elif p == "/api/providers/add":
+                self._json(200, api_provider_add(body or {}))
+            elif p == "/api/providers/remove":
+                self._json(200, api_provider_remove(body or {}))
             elif p == "/api/policy":
                 self._json(200, api_policy())
             elif p == "/api/requests":

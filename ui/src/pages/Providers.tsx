@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { KeyRound, KeySquare, PenBox, Server, Save, Trash2, RefreshCw, FlaskConical } from "lucide-react";
+import { KeyRound, KeySquare, PenBox, Server, Save, Trash2, RefreshCw, FlaskConical, Plus, X, Shield } from "lucide-react";
 import GlassCard from "../components/ui/GlassCard";
 import Badge from "../components/ui/Badge";
-import { useStore, setProviderKey, restartDaemon, testProvider } from "../lib/store";
+import { useStore, setProviderKey, restartDaemon, testProvider, addProvider, removeProvider } from "../lib/store";
 import { avgLatency, costSum, errorRate, withinHours } from "../lib/stats";
 import { usd } from "../lib/format";
 import { EmptyState } from "./Dashboard";
@@ -14,6 +14,16 @@ export default function Providers() {
   const [testing, setTesting] = useState<string | null>(null);
   const [testResult, setTestResult] = useState<Record<string, { ok: boolean; text: string }>>({});
   const [notice, setNotice] = useState<{ pid: string; kind: "ok" | "err"; text: string } | null>(null);
+  const [addOpen, setAddOpen] = useState(false);
+  const [newId, setNewId] = useState("");
+  const [newDisplay, setNewDisplay] = useState("");
+  const [newApi, setNewApi] = useState("");
+  const [newAuth, setNewAuth] = useState("");
+  const [newEnabled, setNewEnabled] = useState(true);
+  const [addBusy, setAddBusy] = useState(false);
+  const [addNotice, setAddNotice] = useState<{ kind: "ok" | "err"; text: string } | null>(null);
+  const [removeConfirm, setRemoveConfirm] = useState<string | null>(null);
+  const [removeBusy, setRemoveBusy] = useState<string | null>(null);
 
   const last24h = withinHours(requests, 24);
 
@@ -33,7 +43,7 @@ export default function Providers() {
     };
   }).sort((a, b) => b.rate - a.rate);
 
-  const keyless = (p: { authEnvVar: string }) => p.authEnvVar === "none";
+  const keyless = (p: { authEnvVar: string }) => p.authEnvVar === "none" || p.authEnvVar === "none (keyless)";
 
   async function runTest(pid: string) {
     setTesting(pid);
@@ -61,8 +71,135 @@ export default function Providers() {
     restartDaemon();
   }
 
+  async function handleAdd() {
+    const id = newId.trim();
+    if (!id) {
+      setAddNotice({ kind: "err", text: "provider id required (a-z, 0-9, . _ -)" });
+      return;
+    }
+    setAddBusy(true);
+    setAddNotice(null);
+    const r = await addProvider({ id, displayName: newDisplay.trim(), apiBase: newApi.trim(), authEnv: newAuth.trim() || "none", enabled: newEnabled });
+    if (!r.ok) {
+      setAddNotice({ kind: "err", text: r.error ?? "failed" });
+      setAddBusy(false);
+      return;
+    }
+    setAddNotice({ kind: "ok", text: r.message ?? "added" });
+    setNewId("");
+    setNewDisplay("");
+    setNewApi("");
+    setNewAuth("");
+    setNewEnabled(true);
+    setAddBusy(false);
+    setTimeout(() => setAddOpen(false), 900);
+  }
+
+  async function handleRemove(pid: string) {
+    setRemoveBusy(pid);
+    const r = await removeProvider(pid);
+    if (!r.ok) {
+      setNotice({ pid, kind: "err", text: r.error ?? "failed" });
+      setRemoveBusy(null);
+      setRemoveConfirm(null);
+      return;
+    }
+    setNotice({ pid, kind: "ok", text: r.message ?? "removed" });
+    setRemoveBusy(null);
+    setRemoveConfirm(null);
+  }
+
   return (
     <div className="space-y-4 sm:space-y-6">
+      {/* Add provider */}
+      <GlassCard
+        variant="blue"
+        title="Providers"
+        subtitle={`${providers.length} configured — add or remove provider cards`}
+        icon={<Server size={16} />}
+        action={
+          <button
+            onClick={() => setAddOpen((v) => !v)}
+            className={`flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition active:scale-95 ${addOpen ? "border-white/20 bg-white/10 text-white" : "border-blue-400/30 bg-blue-500/15 text-blue-300 hover:bg-blue-500/25"}`}
+          >
+            {addOpen ? <X size={13} /> : <Plus size={13} />} {addOpen ? "Close" : "Add provider"}
+          </button>
+        }
+      >
+        {addOpen && (
+          <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <label className="flex flex-col gap-1">
+                <span className="text-[10px] uppercase tracking-wide text-white/40">Provider ID *</span>
+                <input
+                  value={newId}
+                  onChange={(e) => setNewId(e.target.value)}
+                  placeholder="e.g. my-provider"
+                  className="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs text-white placeholder:text-white/25 focus:border-blue-400/50 focus:outline-none"
+                />
+              </label>
+              <label className="flex flex-col gap-1">
+                <span className="text-[10px] uppercase tracking-wide text-white/40">Display name</span>
+                <input
+                  value={newDisplay}
+                  onChange={(e) => setNewDisplay(e.target.value)}
+                  placeholder="My Provider"
+                  className="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs text-white placeholder:text-white/25 focus:border-blue-400/50 focus:outline-none"
+                />
+              </label>
+              <label className="flex flex-col gap-1 sm:col-span-2">
+                <span className="text-[10px] uppercase tracking-wide text-white/40">API base URL</span>
+                <input
+                  value={newApi}
+                  onChange={(e) => setNewApi(e.target.value)}
+                  placeholder="https://api.example.com/v1  (leave empty for built-in)"
+                  className="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs text-white placeholder:text-white/25 focus:border-blue-400/50 focus:outline-none"
+                />
+              </label>
+              <label className="flex flex-col gap-1">
+                <span className="text-[10px] uppercase tracking-wide text-white/40">Auth env var</span>
+                <input
+                  value={newAuth}
+                  onChange={(e) => setNewAuth(e.target.value)}
+                  placeholder="MY_API_KEY or none for keyless"
+                  className="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs text-white placeholder:text-white/25 focus:border-blue-400/50 focus:outline-none"
+                />
+                <span className="text-[10px] text-white/30">Use <code className="text-white/50">none</code> for keyless (pollinations style) or <code className="text-white/50">MY_KEY</code> → master.env</span>
+              </label>
+              <label className="flex items-center gap-2 py-2 text-xs text-white/60">
+                <input type="checkbox" checked={newEnabled} onChange={(e) => setNewEnabled(e.target.checked)} className="accent-blue-500" />
+                Enabled
+                <Shield size={12} className="ml-1 text-white/30" />
+                <span className="text-[10px] text-white/30">disable to keep config but skip routing</span>
+              </label>
+            </div>
+            <div className="mt-3 flex items-center gap-2">
+              <button
+                onClick={handleAdd}
+                disabled={addBusy || !newId.trim()}
+                className="flex items-center gap-1.5 rounded-lg border border-blue-400/30 bg-blue-500/15 px-4 py-1.5 text-xs font-medium text-blue-300 hover:bg-blue-500/25 disabled:opacity-40 active:scale-95"
+              >
+                {addBusy ? <RefreshCw size={12} className="animate-spin" /> : <Plus size={12} />} Add provider
+              </button>
+              <button
+                onClick={() => {
+                  setNewId("");
+                  setNewDisplay("");
+                  setNewApi("");
+                  setNewAuth("");
+                  setAddNotice(null);
+                }}
+                className="rounded-lg border border-white/10 px-3 py-1.5 text-xs text-white/50 hover:bg-white/5"
+              >
+                Clear
+              </button>
+              {addNotice && <span className={`text-xs ${addNotice.kind === "ok" ? "text-green-300" : "text-red-300"}`}>{addNotice.text}</span>}
+            </div>
+          </div>
+        )}
+        {!addOpen && <p className="text-xs text-white/40">Add a new provider card (writes <code className="text-white/60">bitrouter.yaml</code> → reload). Remove via trash icon on each card.</p>}
+      </GlassCard>
+
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {rows.map((p) => {
           const isHot = p.rate > 20;
@@ -72,9 +209,38 @@ export default function Providers() {
               key={p.id}
               variant={isHot ? "red" : "green"}
               title={p.name}
-              subtitle={p.apiBase}
+              subtitle={p.apiBase || p.id}
               icon={<Server size={16} />}
-              action={<Badge variant={p.enabled ? "green" : "neutral"} dot>{p.enabled ? "enabled" : "disabled"}</Badge>}
+              action={
+                <div className="flex items-center gap-1.5">
+                  <Badge variant={p.enabled ? "green" : "neutral"} dot>{p.enabled ? "enabled" : "disabled"}</Badge>
+                  {removeConfirm === p.id ? (
+                    <div className="flex items-center gap-1">
+                      <button
+                        onClick={() => handleRemove(p.id)}
+                        disabled={removeBusy === p.id}
+                        className="rounded-md border border-red-400/40 bg-red-500/20 px-2 py-1 text-[10px] font-medium text-red-200 hover:bg-red-500/30 disabled:opacity-50"
+                      >
+                        {removeBusy === p.id ? "…" : "Confirm"}
+                      </button>
+                      <button
+                        onClick={() => setRemoveConfirm(null)}
+                        className="rounded-md border border-white/10 px-2 py-1 text-[10px] text-white/60 hover:bg-white/5"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => setRemoveConfirm(p.id)}
+                      title="Remove provider"
+                      className="rounded-md border border-white/10 bg-white/5 p-1 text-white/40 hover:bg-red-500/10 hover:text-red-300 hover:border-red-400/20 active:scale-95"
+                    >
+                      <Trash2 size={13} />
+                    </button>
+                  )}
+                </div>
+              }
             >
               <div className="mb-3 flex items-center gap-1.5 text-xs text-white/50">
                 {keyless(p) ? (
@@ -168,6 +334,24 @@ export default function Providers() {
                       </span>
                     )}
                   </div>
+                </div>
+              )}
+              {keyless(p) && (
+                <div className="mt-3 flex items-center gap-2 border-t border-white/10 pt-3">
+                  <button
+                    onClick={() => runTest(p.id)}
+                    disabled={testing === p.id}
+                    className="flex shrink-0 items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs text-white/70 transition hover:bg-white/10 active:scale-95 disabled:opacity-40"
+                  >
+                    {testing === p.id ? <RefreshCw size={12} className="animate-spin" /> : <FlaskConical size={12} />}
+                    Test
+                  </button>
+                  {testResult[p.id] && (
+                    <span className={`truncate text-[11px] font-mono ${testResult[p.id].ok ? "text-green-300" : "text-red-300"}`}>
+                      {testResult[p.id].text}
+                    </span>
+                  )}
+                  <span className="ml-auto text-[10px] text-white/25">keyless — no key needed</span>
                 </div>
               )}
             </GlassCard>

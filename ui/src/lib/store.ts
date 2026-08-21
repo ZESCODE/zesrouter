@@ -320,13 +320,15 @@ export async function reloadDaemon() {
 }
 
 export async function createKey(label: string): Promise<VirtualKey & { plaintext?: string }> {
-  const r = await getJSON<{ ok: boolean; result: { plaintext?: string; key?: string } }>("/api/keys/create", {
+  const r = await getJSON<{ ok: boolean; result: { plaintext?: string; secret?: string; key?: string; id?: string } }>("/api/keys/create", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ label }),
   });
   await refreshKeys();
-  return { id: "", key_hash: r.result.key ?? "", label, user_id: label, spend_limit_micro_usd: 0, rpm_limit: 0, policy_id: "default", expires_at: null, active: true, created_at: new Date().toISOString(), plaintext: r.result.plaintext };
+  const pt = r.result.plaintext ?? r.result.secret ?? r.result.key ?? "";
+  const rid = r.result.id ?? "";
+  return { id: rid, key_hash: pt ? pt.slice(0, 12) + "…" : "", label, user_id: label, spend_limit_micro_usd: 0, rpm_limit: 0, policy_id: "default", expires_at: null, active: true, created_at: new Date().toISOString(), plaintext: pt };
 }
 
 export async function revokeKey(idToRevoke: string) {
@@ -343,6 +345,26 @@ export async function setProviderKey(providerId: string, key: string | null): Pr
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ providerId, action: key === null ? "clear" : "set", key }),
+  });
+  await refreshCatalog();
+  return r;
+}
+
+export async function addProvider(data: { id: string; displayName: string; apiBase: string; authEnv: string; enabled?: boolean }): Promise<{ ok: boolean; error?: string; message?: string }> {
+  const r = await getJSON<{ ok: boolean; error?: string; message?: string }>("/api/providers/add", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  await refreshCatalog();
+  return r;
+}
+
+export async function removeProvider(providerId: string): Promise<{ ok: boolean; error?: string; message?: string }> {
+  const r = await getJSON<{ ok: boolean; error?: string; message?: string }>("/api/providers/remove", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id: providerId }),
   });
   await refreshCatalog();
   return r;

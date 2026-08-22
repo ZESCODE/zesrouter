@@ -10,6 +10,12 @@ Rebuild ZESRouter dashboard (Next.js 16 + Tailwind v4 + Zustand) using ZES Frost
 ## Reference Files
 All OmniRoute source at: https://github.com/ZESCODE/zesrouter/tree/main/omniroute-provider-source
 
+original repo:
+https://github.com/diegosouzapw/OmniRoute
+
+Design: frost design card 
+https://github.com/ZESCODE/Zes-Dashboard
+
 Key files to study:
 - pages/providers-page.tsx (84KB) - Full provider list
 - pages/ProviderDetailPageClient.tsx (36KB) - Provider detail

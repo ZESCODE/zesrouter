@@ -8,7 +8,7 @@ Rebuild ZESRouter dashboard (Next.js 16 + Tailwind v4 + Zustand) using ZES Frost
 - Control panel: port 8080 (server.py)
 
 ## Reference Files
-All OmniRoute source at: /storage/emulated/0/Download/zes-project/zesrouter/update/
+All OmniRoute source at: https://github.com/ZESCODE/zesrouter/tree/main/omniroute-provider-source
 
 Key files to study:
 - pages/providers-page.tsx (84KB) - Full provider list

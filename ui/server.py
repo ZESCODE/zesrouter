@@ -18,7 +18,12 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
 from urllib.request import urlopen
 
-import yaml
+try:
+    import yaml
+except ImportError:
+    yaml = None  # type: ignore
+
+import dash_api
 
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else int(os.environ.get("ZESROUTER_PORT", "8080"))
 BR_BIN = os.path.expanduser("~/.local/bin/bitrouter.orig")
@@ -39,6 +44,8 @@ _lock = threading.Lock()
 def load_ui_token():
     """Token gating the dashboard API. Env > token file > auto-generate (persisted)."""
     tok = os.environ.get("ZESROUTER_UI_TOKEN", "").strip()
+    if tok.lower() in ("open", "none", "off"):
+        return ""
     if not tok and os.path.isfile(AUTH_TOKEN_FILE):
         try:
             tok = open(AUTH_TOKEN_FILE).read().strip()
@@ -100,8 +107,22 @@ def db_conn(write=False):
 
 
 def load_config():
+    if yaml is None or not os.path.isfile(CFG_HOST):
+        return {}
     with open(CFG_HOST) as f:
         return yaml.safe_load(f) or {}
+
+
+def yaml_load(text):
+    if yaml is None:
+        raise RuntimeError("PyYAML not installed")
+    return yaml.safe_load(text)
+
+
+def yaml_dump(obj, f):
+    if yaml is None:
+        raise RuntimeError("PyYAML not installed")
+    yaml.safe_dump(obj, f, sort_keys=False, allow_unicode=True)
 
 
 def env_keys_set():
@@ -137,8 +158,15 @@ def api_models():
     if not st.get("ok"):
         return {"ok": False, "error": st.get("error")}
     out = []
+    hidden = (dash_api.load_state().get("hiddenModels") or {})
+    hidden_ids = set()
+    for _pid, ids in hidden.items():
+        if isinstance(ids, list):
+            hidden_ids.update(ids)
     for m in st.get("models", []):
         mid = m["id"]
+        if mid in hidden_ids:
+            continue
         tier = "flagship" if mid in flagship else "cheap" if mid in cheap else None
         out.append({"id": mid, "providers": m.get("providers", []), "tier": tier})
     return {"ok": True, "models": out}
@@ -605,7 +633,7 @@ def api_provider_add(body):
 
     try:
         with open(CFG_HOST, "w") as f:
-            yaml.safe_dump(cfg, f, sort_keys=False, allow_unicode=True)
+            yaml_dump(cfg, f)
     except Exception as e:
         return {"ok": False, "error": f"write failed: {e}"}
 
@@ -662,7 +690,7 @@ def api_provider_remove(body):
 
     try:
         with open(CFG_HOST, "w") as f:
-            yaml.safe_dump(cfg, f, sort_keys=False, allow_unicode=True)
+            yaml_dump(cfg, f)
     except Exception as e:
         return {"ok": False, "error": f"write failed: {e}"}
 
@@ -684,7 +712,7 @@ def api_config_save(body, reload_after):
     if not yaml_text.strip():
         return {"ok": False, "error": "empty config"}
     try:
-        yaml.safe_load(yaml_text)  # syntax gate
+        yaml_load(yaml_text)  # syntax gate
     except Exception as e:
         return {"ok": False, "error": f"yaml invalid: {e}"}
     with open(CFG_HOST, "w") as f:
@@ -697,7 +725,7 @@ def api_config_save(body, reload_after):
 def api_config_validate(body):
     yaml_text = body.get("yaml", "")
     try:
-        yaml.safe_load(yaml_text)
+        yaml_load(yaml_text)
     except Exception as e:
         return {"ok": False, "error": f"yaml invalid: {e}"}
     tmp_host = f"/data/data/com.termux/files/usr/tmp/zr-validate-{os.getpid()}.yaml"
@@ -767,7 +795,15 @@ class Handler(BaseHTTPRequestHandler):
             self._json(403, {"ok": False, "error": "forbidden"})
             return
         if os.path.isfile(fp):
-            ctype = "text/html" if fp.endswith(".html") else "application/javascript" if fp.endswith(".js") else "text/css" if fp.endswith(".css") else "application/json" if fp.endswith(".json") else "image/svg+xml" if fp.endswith(".svg") else "application/octet-stream"
+            ctype = (
+                "text/html" if fp.endswith(".html")
+                else "application/javascript" if fp.endswith(".js")
+                else "text/css" if fp.endswith(".css")
+                else "application/manifest+json" if fp.endswith(".webmanifest")
+                else "application/json" if fp.endswith(".json")
+                else "image/svg+xml" if fp.endswith(".svg")
+                else "application/octet-stream"
+            )
             data = open(fp, "rb").read()
             self.send_response(200)
             self.send_header("Content-Type", ctype)
@@ -789,6 +825,34 @@ class Handler(BaseHTTPRequestHandler):
         with _lock:
             u = urlparse(self.path)
             self._route_api(u, self._read_body())
+
+    def _playground(self, body):
+        stream = bool((body or {}).get("stream", True))
+        try:
+            upstream = dash_api.playground_request(body or {}, timeout=90)
+        except Exception as e:
+            self._json(502, {"ok": False, "error": str(e)[:400]})
+            return
+        ctype = upstream.headers.get("Content-Type", "application/json")
+        self.send_response(upstream.status)
+        self.send_header("Content-Type", ctype)
+        if stream:
+            self.send_header("Cache-Control", "no-cache")
+            self.send_header("X-Accel-Buffering", "no")
+        self.end_headers()
+        try:
+            while True:
+                chunk = upstream.read(1024)
+                if not chunk:
+                    break
+                self.wfile.write(chunk)
+                self.wfile.flush()
+        except Exception:
+            pass
+        try:
+            upstream.close()
+        except Exception:
+            pass
 
     def _authorized(self):
         """Bearer token check for API routes. Static assets stay public."""
@@ -861,6 +925,25 @@ class Handler(BaseHTTPRequestHandler):
                 self._json(200, api_backup_restore(body or {}))
             elif p == "/api/daemon":
                 self._json(200, api_daemon(body or {}))
+            elif p == "/api/dash/state" and self.command == "GET":
+                self._json(200, {"ok": True, "state": dash_api.load_state()})
+            elif p == "/api/dash/state":
+                st = (body or {}).get("state") if isinstance(body, dict) else None
+                self._json(200, {"ok": True, "state": dash_api.save_state(st or {})})
+            elif p == "/api/dash/export":
+                self._json(200, dash_api.api_export(CFG_HOST, DB_HOST))
+            elif p == "/api/dash/import":
+                self._json(200, dash_api.api_import(body or {}, CFG_HOST))
+            elif p == "/api/health/metrics":
+                self._json(200, dash_api.api_metrics(db_conn))
+            elif p == "/api/agents":
+                self._json(200, dash_api.api_agents())
+            elif p == "/api/oauth/repair":
+                self._json(200, dash_api.api_oauth_repair(body or {}, MASTER_ENV))
+            elif p == "/api/cli-tools":
+                self._json(200, dash_api.api_cli_tools(body or {}))
+            elif p == "/api/playground":
+                self._playground(body or {})
             else:
                 self._json(404, {"ok": False, "error": f"no such endpoint {p}"})
         except Exception as e:

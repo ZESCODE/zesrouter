@@ -39,13 +39,13 @@ API keys come from `~/.secure-credentials/master.env` (OPENCODE_ZEN_API_KEY, ANT
 
 ## Web UI
 
-`ui/` is a self-contained dashboard (React 19 single-file build served by
-zero-dep Python3 backend `ui/server.py`):
+`ui/` is a self-contained Frost dashboard (React 19 single-file build served by
+zero-dep Python3 backend `ui/server.py`). Frost-blue cards, PWA, mobile bottom nav.
 
 | Endpoint | What |
 |----------|------|
-| http://localhost:8080 | Dashboard — daemon status, traffic, models, policy, keys, config editor, backups, restore |
-| /api/* | JSON API (health, status, models, providers, policy, requests, route, keys, config, validate, backups, daemon) |
+| http://localhost:8080 | Dashboard — providers, 19 combos, playground, translator, agents, analytics, health, CLI, context relay, free tiers, 7-tab settings |
+| /api/* | JSON API (health, status, models, providers, policy, requests, route, keys, config, backups, daemon, dash state, playground, agents) |
 
 Rebuild UI from source: `cd ui && npm install && npm run build` (node_modules + lockfile ignored; dist committed).
 

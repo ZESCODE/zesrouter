@@ -1,7 +1,14 @@
 import { useSyncExternalStore } from "react";
+import { applyAppearance } from "./appearance";
 import type {
+  AgentStatus,
   Backup,
+  Combo,
   CostStats,
+  CustomAgent,
+  DashboardState,
+  DashSettings,
+  HealthMetrics,
   HealthState,
   LogLine,
   ModelRoute,
@@ -12,7 +19,9 @@ import type {
   RequestRecord,
   SSEEvent,
   VirtualKey,
+  Webhook,
 } from "./types";
+import { defaultDashboardState } from "./types";
 
 interface StoreState {
   health: HealthState;
@@ -32,6 +41,9 @@ interface StoreState {
   logs: LogLine[];
   logUpdatedAt: number;
   prevErrors: Set<string>;
+  dash: DashboardState;
+  metrics: HealthMetrics | null;
+  agents: AgentStatus[];
 }
 
 export const TOKEN_KEY = "zesrouter_ui_token";
@@ -106,6 +118,9 @@ const state: StoreState = {
   logs: [],
   logUpdatedAt: 0,
   prevErrors: new Set<string>(),
+  dash: defaultDashboardState(),
+  metrics: null,
+  agents: [],
 };
 
 const listeners = new Set<() => void>();
@@ -150,8 +165,6 @@ async function refreshRequests() {
       total: number;
       cost_sum: number;
       rows: RequestRecord[];
-      models: string[];
-      providers: string[];
     }>("/api/requests?hours=24&page_size=500");
     if (!r.ok) return;
     state.requests = r.rows;
@@ -162,16 +175,20 @@ async function refreshRequests() {
       circuit_breakers: state.providers.map((p) => {
         const per = state.requests.filter((q) => q.provider_id === p.id);
         const errs = per.filter((q) => q.error).length;
+        const last = per.find((q) => q.error)?.created_at ?? null;
+        const cool = state.dash.cooldown[p.id];
         return {
           provider_id: p.id,
-          state: errs > 5 ? "open" : errs > 0 ? "half-open" : "closed",
+          state: (errs > (state.dash.settings.resilience.cbFailures || 5) ? "open" : errs > 0 ? "half-open" : "closed") as "open" | "half-open" | "closed",
           failure_count: errs,
-          last_failure_at: per.find((q) => q.error)?.created_at ?? null,
+          last_failure_at: last,
+          cooldown_until: cool ?? null,
+          lockout_models: state.dash.lockout[p.id] ?? [],
         };
       }),
     };
   } catch {
-    /* daemon down — keep last */
+    /* keep */
   }
   emit();
 }
@@ -267,6 +284,58 @@ async function refreshEvents() {
   emit();
 }
 
+async function refreshDash() {
+  try {
+    const r = await getJSON<{ ok: boolean; state: DashboardState }>("/api/dash/state");
+    if (r.ok && r.state) {
+      state.dash = { ...defaultDashboardState(), ...r.state, settings: { ...defaultDashboardState().settings, ...(r.state.settings || {}) } };
+      applyAppearance(state.dash.settings.appearance);
+    }
+  } catch {
+    applyAppearance(state.dash.settings.appearance);
+  }
+  emit();
+}
+
+async function refreshMetrics() {
+  try {
+    const r = await getJSON<{ ok: boolean } & HealthMetrics>("/api/health/metrics");
+    if (r.ok) state.metrics = r;
+  } catch {
+    /* keep */
+  }
+  emit();
+}
+
+async function refreshAgents() {
+  try {
+    const r = await getJSON<{ ok: boolean; agents: AgentStatus[] }>("/api/agents");
+    if (r.ok) state.agents = r.agents;
+  } catch {
+    /* keep */
+  }
+  emit();
+}
+
+export async function saveDash(patch: Partial<DashboardState>) {
+  state.dash = { ...state.dash, ...patch };
+  if (patch.settings) applyAppearance(state.dash.settings.appearance);
+  emit();
+  try {
+    await getJSON("/api/dash/state", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ state: state.dash }),
+    });
+  } catch {
+    /* keep local */
+  }
+}
+
+export async function saveSettings(settings: DashSettings) {
+  await saveDash({ settings });
+}
+
 export function startEngine() {
   if (started) return;
   started = true;
@@ -278,6 +347,9 @@ export function startEngine() {
   refreshCosts();
   refreshLogs();
   refreshEvents();
+  refreshDash();
+  refreshMetrics();
+  refreshAgents();
   setInterval(refreshHealth, 10_000);
   setInterval(refreshRequests, 15_000);
   setInterval(refreshKeys, 30_000);
@@ -286,6 +358,8 @@ export function startEngine() {
   setInterval(refreshCosts, 60_000);
   setInterval(refreshLogs, 5_000);
   setInterval(refreshEvents, 5_000);
+  setInterval(refreshMetrics, 20_000);
+  setInterval(refreshAgents, 60_000);
 }
 
 export async function setDaemonRunning(running: boolean) {
@@ -417,6 +491,29 @@ export async function testProvider(providerId: string): Promise<ProviderTestResu
   }
 }
 
+export async function repairOAuth(providerId: string): Promise<{ ok: boolean; message?: string; error?: string }> {
+  return getJSON("/api/oauth/repair", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ providerId }),
+  });
+}
+
+export async function applyCliTool(toolId: string, action: "apply" | "reset"): Promise<{ ok: boolean; preview?: string; message?: string; error?: string }> {
+  return getJSON("/api/cli-tools", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ toolId, action }),
+  });
+}
+
+export function authHeaders(): HeadersInit {
+  const tok = getToken();
+  return tok ? { Authorization: `Bearer ${tok}` } : {};
+}
+
 export function useStore(): StoreState {
   return useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
 }
+
+export type { Combo, CustomAgent, Webhook };

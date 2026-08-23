@@ -1,13 +1,9 @@
-// ZESRouter Control Panel — shared types
-// Mirrors the API contract described in BUILD_PROMPT.md (server.py endpoints),
-// implemented here as a self-contained, in-browser simulation of the daemon.
-
 export type Tier = "cheap" | "flagship";
 
 export interface ModelRoute {
   id: string;
-  providers: string[]; // fallback chain, in order
-  tier: Tier;
+  providers: string[];
+  tier: Tier | null;
 }
 
 export interface ProviderConfig {
@@ -17,6 +13,11 @@ export interface ProviderConfig {
   apiBase?: string;
   authEnvVar: string;
   hasKey: boolean;
+  requests?: number;
+  errors?: number;
+  errorRate?: number;
+  avgLatency?: number | null;
+  cost?: number;
 }
 
 export interface RequestRecord {
@@ -35,7 +36,7 @@ export interface RequestRecord {
   latency_ms: number;
   generation_time_ms: number;
   error: string | null;
-  created_at: string; // RFC3339
+  created_at: string;
 }
 
 export interface VirtualKey {
@@ -49,6 +50,7 @@ export interface VirtualKey {
   expires_at: string | null;
   active: boolean;
   created_at: string;
+  plaintext?: string;
 }
 
 export interface PolicyTable {
@@ -64,6 +66,8 @@ export interface CircuitBreaker {
   state: "closed" | "open" | "half-open";
   failure_count: number;
   last_failure_at: string | null;
+  cooldown_until?: string | null;
+  lockout_models?: string[];
 }
 
 export interface OmniRouteState {
@@ -75,13 +79,7 @@ export interface OmniRouteState {
   cache: { size_mb: number; ttl_sec: number; hit_ratio: number; evictions: number };
 }
 
-export type SSEEventType =
-  | "request"
-  | "route"
-  | "failover"
-  | "error"
-  | "cache_hit"
-  | "cache_miss";
+export type SSEEventType = "request" | "route" | "failover" | "error" | "cache_hit" | "cache_miss";
 
 export interface SSEEvent {
   id: string;
@@ -111,6 +109,8 @@ export interface CostRow {
   requests: number;
   cost_micro: number;
   avg_latency_ms?: number | null;
+  prompt_tokens?: number;
+  completion_tokens?: number;
 }
 
 export interface DailyCost {
@@ -140,4 +140,153 @@ export interface ProviderTestResult {
   latencyMs?: number;
   status?: number;
   detail?: string;
+  error?: string;
+}
+
+export interface ComboStep {
+  provider: string;
+  model: string;
+  connection: string;
+}
+
+export interface Combo {
+  id: string;
+  name: string;
+  strategy: string;
+  steps: ComboStep[];
+  defaultTier: "cheap" | "flagship";
+  fallbackTier: "cheap" | "flagship";
+  enabled: boolean;
+  createdAt: string;
+}
+
+export interface CustomAgent {
+  id: string;
+  name: string;
+  binary: string;
+  versionCmd: string;
+  spawnArgs: string;
+}
+
+export interface Webhook {
+  id: string;
+  name: string;
+  url: string;
+  events: string[];
+  enabled: boolean;
+}
+
+export interface ContextRelayConfig {
+  enabled: boolean;
+  handoffThreshold: number;
+  maxMessages: number;
+  summaryModel: string;
+  injectAsSystem: boolean;
+}
+
+export interface AppearanceSettings {
+  theme: "dark" | "light" | "system";
+  accent: string;
+  customHex: string;
+  showHealthLog: boolean;
+  sidebar: "auto" | "visible" | "hidden";
+}
+
+export interface SecuritySettings {
+  protectEndpoint: boolean;
+  blockedProviders: string[];
+  ipAllow: string;
+  ipDeny: string;
+}
+
+export interface ResilienceSettings {
+  persistRateLimits: boolean;
+  cbFailures: number;
+  cbCooldownSec: number;
+  autoDisableBanned: boolean;
+  watchExpiration: boolean;
+  relayThreshold: number;
+}
+
+export interface DashSettings {
+  appearance: AppearanceSettings;
+  security: SecuritySettings;
+  resilience: ResilienceSettings;
+  aliases: Record<string, string>;
+  degradeBackground: boolean;
+  fallbackDegrade: boolean;
+  auditEnabled: boolean;
+  proxyUrl: string;
+  proxyEnforce: boolean;
+  tokenHealthCheck: boolean;
+  oauthRefresh: boolean;
+  compressionDefault: string;
+  compressionLevel: number;
+}
+
+export interface HealthMetrics {
+  p50: number;
+  p95: number;
+  p99: number;
+  cacheHit: number;
+  cacheRead: number;
+  cacheWrite: number;
+  quotaSessions: number;
+  memoryMb: number;
+  version: string;
+}
+
+export interface AgentStatus {
+  id: string;
+  installed: boolean;
+  version: string | null;
+  fingerprint?: string;
+}
+
+export interface DashboardState {
+  combos: Combo[];
+  hiddenModels: Record<string, string[]>;
+  customAgents: CustomAgent[];
+  webhooks: Webhook[];
+  context: ContextRelayConfig;
+  settings: DashSettings;
+  freeEnabled: Record<string, boolean>;
+  cooldown: Record<string, string>;
+  lockout: Record<string, string[]>;
+}
+
+export function defaultDashSettings(): DashSettings {
+  return {
+    appearance: { theme: "dark", accent: "blue", customHex: "#3b82f6", showHealthLog: true, sidebar: "auto" },
+    security: { protectEndpoint: true, blockedProviders: [], ipAllow: "", ipDeny: "" },
+    resilience: { persistRateLimits: true, cbFailures: 5, cbCooldownSec: 30, autoDisableBanned: true, watchExpiration: true, relayThreshold: 85 },
+    aliases: {},
+    degradeBackground: true,
+    fallbackDegrade: true,
+    auditEnabled: true,
+    proxyUrl: "",
+    proxyEnforce: false,
+    tokenHealthCheck: true,
+    oauthRefresh: true,
+    compressionDefault: "rtk",
+    compressionLevel: 2,
+  };
+}
+
+export function defaultContext(): ContextRelayConfig {
+  return { enabled: true, handoffThreshold: 85, maxMessages: 24, summaryModel: "", injectAsSystem: true };
+}
+
+export function defaultDashboardState(): DashboardState {
+  return {
+    combos: [],
+    hiddenModels: {},
+    customAgents: [],
+    webhooks: [],
+    context: defaultContext(),
+    settings: defaultDashSettings(),
+    freeEnabled: {},
+    cooldown: {},
+    lockout: {},
+  };
 }

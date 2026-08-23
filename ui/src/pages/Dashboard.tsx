@@ -1,15 +1,17 @@
 import type { ReactNode } from "react";
-import { Activity, AlertTriangle, Clock, DollarSign, Gauge, Layers, Server, Zap } from "lucide-react";
-import GlassCard from "../components/ui/GlassCard";
+import { Activity, AlertTriangle, Clock, DollarSign, Gauge, Layers, Server, Zap, Play, Gift, Bot, Languages } from "lucide-react";
+import FrostCard from "../components/ui/FrostCard";
 import Badge from "../components/ui/Badge";
 import Sparkline from "../components/ui/Sparkline";
+import EmptyState from "../components/ui/EmptyState";
 import { useStore } from "../lib/store";
 import { avgLatency, costSum, errorRate, groupByModel, hourlyBuckets, withinHours } from "../lib/stats";
 import { localTime, truncate, usd, usdShort } from "../lib/format";
+import { STRATEGIES, COMPRESSION_ENGINES, FREE_POOLS } from "../lib/catalog";
 import type { PageId } from "../lib/nav";
 
-export default function Dashboard({ setPage }: { setPage: (p: PageId) => void }) {
-  const { health, requests, models } = useStore();
+export default function Dashboard({ setPage }: { setPage: (p: PageId, parts?: string[]) => void }) {
+  const { health, requests, models, providers, dash, metrics, agents } = useStore();
   const last24h = withinHours(requests, 24);
   const cost = costSum(last24h);
   const lat = avgLatency(last24h);
@@ -29,59 +31,62 @@ export default function Dashboard({ setPage }: { setPage: (p: PageId) => void })
     .sort((a, b) => b.count - a.count)
     .slice(0, 5);
   const maxTop = Math.max(...topModels.map((m) => m.count), 1);
-
   const recentErrors = last24h.filter((r) => r.error).slice(0, 5);
+  const enabledFree = FREE_POOLS.filter((p) => dash.freeEnabled[p.id] !== false && (dash.freeEnabled[p.id] || p.enabled)).length;
+  const installedAgents = agents.filter((a) => a.installed).length;
 
   return (
     <div className="space-y-4 sm:space-y-6">
-      {/* Status card */}
-      <GlassCard variant="blue" title="Daemon Status" subtitle="BitRouter 1.0.0-alpha.27 · ZES tuned" icon={<Server size={16} />}
+      <FrostCard variant="blue-bg" title="ZESRouter Gateway" subtitle="One OpenAI-compatible /v1 · BitRouter 1.0.0-alpha.27 · ZES tuned" icon={<Server size={16} />}
         action={<Badge variant={health.status === "ok" ? "green" : "red"} dot>{health.status.toUpperCase()}</Badge>}
       >
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           <Stat label="PID" value={String(health.pid)} />
           <Stat label="Listen" value={health.listen} mono />
-          <Stat label="Models" value={String(health.models)} />
-          <Stat label="Config" value={health.configName} mono />
+          <Stat label="Models" value={String(health.models || models.length)} />
+          <Stat label="Providers" value={`${providers.filter((p) => p.enabled).length}/${providers.length}`} />
         </div>
-      </GlassCard>
+      </FrostCard>
 
-      {/* Stats grid */}
       <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-        <GlassCard variant="blue" className="!p-4">
-          <MetricTile icon={<Activity size={16} />} label="Requests (24h)" value={last24h.length.toLocaleString()} color="text-blue-400" />
-        </GlassCard>
-        <GlassCard variant="green" className="!p-4">
-          <MetricTile icon={<DollarSign size={16} />} label="Cost (24h)" value={usd(cost)} color="text-green-400" />
-        </GlassCard>
-        <GlassCard variant="orange" className="!p-4">
-          <MetricTile icon={<Clock size={16} />} label="Avg Latency" value={`${lat}ms`} color="text-orange-400" />
-        </GlassCard>
-        <GlassCard variant="red" className="!p-4">
-          <MetricTile icon={<AlertTriangle size={16} />} label="Error Rate" value={`${errPct.toFixed(1)}%`} color="text-red-400" />
-        </GlassCard>
+        <FrostCard className="!p-4">
+          <MetricTile icon={<Activity size={16} />} label="Requests (24h)" value={last24h.length.toLocaleString()} color="text-blue-300" />
+        </FrostCard>
+        <FrostCard variant="green" className="!p-4">
+          <MetricTile icon={<DollarSign size={16} />} label="Cost (24h)" value={usd(cost)} color="text-green-300" />
+        </FrostCard>
+        <FrostCard variant="orange" className="!p-4">
+          <MetricTile icon={<Clock size={16} />} label={metrics ? "p95 latency" : "Avg latency"} value={`${metrics?.p95 ?? lat}ms`} color="text-orange-300" />
+        </FrostCard>
+        <FrostCard variant="red" className="!p-4">
+          <MetricTile icon={<AlertTriangle size={16} />} label="Error Rate" value={`${errPct.toFixed(1)}%`} color="text-red-300" />
+        </FrostCard>
       </div>
 
-      {/* Sparkline */}
-      <GlassCard variant="blue" title="Requests · last 24h" icon={<Gauge size={16} />}>
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <Quick href={() => setPage("playground")} icon={<Play size={15} />} label="Playground" sub="stream any model" />
+        <Quick href={() => setPage("combos")} icon={<Layers size={15} />} label="Combos" sub={`${STRATEGIES.length} strategies`} />
+        <Quick href={() => setPage("free-tiers")} icon={<Gift size={15} />} label="Free tiers" sub={`${enabledFree} pools live`} />
+        <Quick href={() => setPage("agents")} icon={<Bot size={15} />} label="ACP Agents" sub={`${installedAgents} installed`} />
+      </div>
+
+      <FrostCard title="Requests · last 24h" icon={<Gauge size={16} />}>
         <Sparkline values={buckets} color="#60a5fa" width={600} height={56} />
         <div className="mt-1 flex justify-between text-[10px] text-white/30">
           <span>-24h</span>
           <span>now</span>
         </div>
-      </GlassCard>
+      </FrostCard>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        {/* Tier split */}
-        <GlassCard variant="orange" title="Tier Split" subtitle="cheap vs flagship · 24h" icon={<Layers size={16} />}>
+        <FrostCard variant="orange" title="Tier Split" subtitle="cheap vs flagship · 24h" icon={<Layers size={16} />}>
           <div className="space-y-3">
             <TierBar label="Cheap" count={tierCount.cheap} total={totalTiered} color="bg-cyan-400" />
             <TierBar label="Flagship" count={tierCount.flagship} total={totalTiered} color="bg-orange-400" />
           </div>
-        </GlassCard>
+        </FrostCard>
 
-        {/* Top models */}
-        <GlassCard variant="green" title="Top 5 Models" subtitle="by request count · 24h" icon={<Zap size={16} />}>
+        <FrostCard variant="green" title="Top 5 Models" subtitle="by request count · 24h" icon={<Zap size={16} />}>
           {topModels.length === 0 ? (
             <EmptyState text="No requests in the last 24h yet." />
           ) : (
@@ -99,38 +104,63 @@ export default function Dashboard({ setPage }: { setPage: (p: PageId) => void })
               ))}
             </div>
           )}
-        </GlassCard>
+        </FrostCard>
       </div>
 
-      {/* Recent errors */}
-      <GlassCard variant="red" title="Recent Errors" subtitle="last 5 · 24h window" icon={<AlertTriangle size={16} />}
-        action={<button onClick={() => setPage("traffic")} className="text-xs text-red-300 hover:underline">View all →</button>}
-      >
-        {recentErrors.length === 0 ? (
-          <EmptyState text="No errors in the last 24h. Clean run! 🎉" good />
-        ) : (
-          <div className="space-y-2">
-            {recentErrors.map((r) => (
-              <div key={r.request_id} className="rounded-lg border border-red-400/15 bg-red-500/5 p-2.5 text-xs">
-                <div className="mb-1 flex flex-wrap items-center gap-2 text-white/50">
-                  <span className="font-mono">{localTime(r.created_at)}</span>
-                  <Badge variant="blue">{r.model_id}</Badge>
-                  <Badge variant="neutral">{r.provider_id}</Badge>
-                </div>
-                <p className="break-words text-red-300/90">{truncate(r.error ?? "", 120)}</p>
-              </div>
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <FrostCard title="Routing + compression" subtitle={`${STRATEGIES.length} strategies · ${COMPRESSION_ENGINES.length} engines`} icon={<Languages size={16} />}
+          action={<button onClick={() => setPage("analytics")} className="text-xs text-blue-300 hover:underline">Analytics →</button>}
+        >
+          <div className="flex flex-wrap gap-1.5">
+            {STRATEGIES.slice(0, 10).map((s) => (
+              <Badge key={s.id}>{s.name}</Badge>
             ))}
+            <Badge variant="neutral">+{STRATEGIES.length - 10}</Badge>
           </div>
-        )}
-      </GlassCard>
+          <p className="mt-3 text-[11px] text-white/40">
+            Default engine <span className="text-blue-200">{dash.settings.compressionDefault}</span> · level {dash.settings.compressionLevel} · RTK 15–95% savings
+          </p>
+        </FrostCard>
+
+        <FrostCard variant="red" title="Recent Errors" subtitle="last 5 · 24h window" icon={<AlertTriangle size={16} />}
+          action={<button onClick={() => setPage("traffic")} className="text-xs text-red-300 hover:underline">View all →</button>}
+        >
+          {recentErrors.length === 0 ? (
+            <EmptyState text="No errors in the last 24h. Clean run!" good />
+          ) : (
+            <div className="space-y-2">
+              {recentErrors.map((r) => (
+                <div key={r.request_id} className="rounded-lg border border-red-400/15 bg-red-500/5 p-2.5 text-xs">
+                  <div className="mb-1 flex flex-wrap items-center gap-2 text-white/50">
+                    <span className="font-mono">{localTime(r.created_at)}</span>
+                    <Badge>{r.model_id}</Badge>
+                    <Badge variant="neutral">{r.provider_id}</Badge>
+                  </div>
+                  <p className="break-words text-red-300/90">{truncate(r.error ?? "", 120)}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </FrostCard>
+      </div>
     </div>
+  );
+}
+
+function Quick({ href, icon, label, sub }: { href: () => void; icon: ReactNode; label: string; sub: string }) {
+  return (
+    <button onClick={href} className="frost-card frost-blue min-h-11 p-3 text-left active:scale-[0.99]">
+      <div className="mb-1 text-blue-200">{icon}</div>
+      <p className="text-sm font-semibold text-white">{label}</p>
+      <p className="text-[11px] text-white/40">{sub}</p>
+    </button>
   );
 }
 
 function Stat({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
   return (
-    <div className="rounded-xl bg-white/[0.04] p-2.5">
-      <p className="text-[10px] uppercase tracking-wide text-white/35">{label}</p>
+    <div className="rounded-xl bg-white/[0.06] p-2.5">
+      <p className="text-[10px] uppercase tracking-wide text-white/40">{label}</p>
       <p className={`mt-0.5 truncate text-sm font-semibold text-white/90 ${mono ? "font-mono" : ""}`}>{value}</p>
     </div>
   );
@@ -152,9 +182,7 @@ function TierBar({ label, count, total, color }: { label: string; count: number;
     <div>
       <div className="mb-1 flex justify-between text-xs text-white/60">
         <span>{label}</span>
-        <span>
-          {count} · {pct.toFixed(0)}%
-        </span>
+        <span>{count} · {pct.toFixed(0)}%</span>
       </div>
       <div className="h-2.5 w-full overflow-hidden rounded-full bg-white/5">
         <div className={`h-full rounded-full ${color}`} style={{ width: `${pct}%` }} />
@@ -163,14 +191,7 @@ function TierBar({ label, count, total, color }: { label: string; count: number;
   );
 }
 
-export function EmptyState({ text, good }: { text: string; good?: boolean }) {
-  return (
-    <p className={`rounded-lg border border-dashed p-4 text-center text-xs ${good ? "border-green-400/20 text-green-300/70" : "border-white/10 text-white/35"}`}>
-      {text}
-    </p>
-  );
-}
-
+export { EmptyState };
 export function fmtUsdShort(v: number) {
   return usdShort(v);
 }

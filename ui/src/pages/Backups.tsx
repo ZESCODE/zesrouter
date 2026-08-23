@@ -7,7 +7,7 @@ import { localTime } from "../lib/format";
 import { EmptyState } from "./Dashboard";
 
 export default function Backups() {
-  const { backups, config } = useStore();
+  const { backups } = useStore();
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<{ ok: boolean; text: string } | null>(null);
   const [confirmName, setConfirmName] = useState<string | null>(null);

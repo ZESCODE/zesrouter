@@ -4,6 +4,8 @@ Web control panel for the ZESRouter daemon (BitRouter 1.0.0-alpha.27).
 React 19 + Vite 7 single-file build, served by a zero-dependency Python3
 backend that shells the BitRouter CLI inside proot and reads its SQLite DB.
 
+Frost-blue card design (not plain glass). Mobile-first PWA with bottom nav.
+
 ## Run
 
 ```bash
@@ -16,26 +18,33 @@ proot-distro Debian with BitRouter running on :4356.
 
 ## Pages
 
-| Page | Data source |
-|------|-------------|
-| Dashboard | /health, CLI status, requests table (24h aggregates, tier split, top models, recent errors) |
-| Models | CLI `models`, `route` — routing table + test route |
-| Providers | config providers + env presence + requests table stats |
-| Policy | policy_table from config (tiers, fingerprints, adequacy) |
-| Keys | api_keys table + CLI `key sign` |
-| Traffic | requests table — filters, pagination, hourly sparkline |
-| Settings | config file read/write/validate/reload, .bak-* restore, daemon stop/start |
-| SystemHealth | provider error-derived health (no OmniRoute data — BitRouter has none) |
-| LiveEvents | derived from recent errored requests |
+| Hash | What |
+|------|------|
+| `#dashboard` | Gateway home — status, traffic, shortcuts |
+| `#providers` | Provider ecosystem (OAuth / API key / free) + wizard + models |
+| `#combos` | 19 routing strategies + step builder + auto-combo |
+| `#analytics` | Tokens / cost / providers + heatmap |
+| `#health` | p50/p95/p99, cache, circuit breakers, quota sessions |
+| `#playground` | Stream any model, abort, compression, timings |
+| `#translator` | Format converter, chat tester, test bench, live monitor |
+| `#agents` | 14 built-in ACP agents + custom registration |
+| `#cli-tools` | One-click CLI profiles + webhooks |
+| `#context` | Context Relay handoff settings |
+| `#free-tiers` | 43 pools / 500+ models, enable/disable |
+| `#settings/*` | General, Appearance, Security, Routing, Resilience, Advanced, Proxy |
+| `#logs` | Real-time daemon console |
+| `#keys` `#traffic` `#policy` `#backups` `#models` `#events` | Ops |
 
 ## API
 
-All under `/api/` (JSON): health, status, models, providers, policy, requests,
-stats/dashboard, route, keys, keys/create, keys/revoke, config,
-config/validate, config/save, backups, backups/restore, daemon.
+Existing: `/api/health`, `/api/status`, `/api/models`, `/api/providers`, `/api/policy`,
+`/api/requests`, `/api/stats/*`, `/api/route`, `/api/keys*`, `/api/config*`,
+`/api/backups*`, `/api/daemon`, `/api/logs`.
 
-CLI calls run as:
-`proot-distro login debian -- bitrouter.orig <cmd> --config /root/.bitrouter/bitrouter.yaml --json`
+New: `/api/dash/state`, `/api/dash/export`, `/api/dash/import`, `/api/health/metrics`,
+`/api/agents`, `/api/oauth/repair`, `/api/cli-tools`, `/api/playground`.
+
+Dashboard extras persist in `~/.zesrouter/dashboard-state.json`.
 
 ## Rebuild (only if editing src)
 
@@ -48,8 +57,9 @@ npm run build        # -> dist/index.html (single file, committed)
 ## Notes
 
 - No secrets: provider keys shown as set/missing only; created virtual keys shown once
-- requests table may be empty if daemon idle — UI renders empty states
-- Daemon data spans ~/logs/bitrouter/ + proot /root/.bitrouter/
+- Hidden models are dropped from `/api/models` (and therefore the dashboard catalog)
+- PWA: `manifest.webmanifest` + `sw.js` — Add to Home Screen on mobile
+- Headless: the Python API works without opening the UI
 
 ## License
 

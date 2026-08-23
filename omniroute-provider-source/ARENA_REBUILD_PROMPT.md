@@ -5,6 +5,7 @@ OmniRoute-Inspired ZESROUTE Rebuild — Complete Agent Prompt
 Project Overview
 
 Goal: Rebuild ZESROUTE (currently BitRouter v1.0.0-alpha.27 wrapper) as a full-featured AI gateway inspired by OmniRoute — a Next.js-based unified AI proxy supporting 290+ providers, 500+ models, 19 routing strategies, token compression (15–95% savings), and a comprehensive management dashboard.
+https://github.com/diegosouzapw/OmniRoute
 
 Target: Mobile-first Termux deployment with full PWA support, plus desktop (Electron) and headless server modes.frost card design..must use frost blue as main/default.DONT USE plain glass card.
 https://github.com/ZESCODE/frost-cards

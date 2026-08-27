@@ -10,7 +10,6 @@ LOG_DIR="$HOME/logs"
 NINEROUTER_PORT=20128
 ZESROUTER_PORT=5050
 NVIDIA_PORT=9456
-UI_PORT=8080
 ZEN_RELAY_PORT=7077
 
 mkdir -p "$LOG_DIR/bitrouter"
@@ -99,29 +98,12 @@ start_zen_relay() {
     fi
 }
 
-start_ui() {
-    if check_port $UI_PORT; then
-        echo -e "${GREEN}[OK]${NC} Dashboard already running on :$UI_PORT"
-        return 0
-    fi
-    echo -e "${YELLOW}[...]${NC} Starting dashboard..."
-    cd "$ZESROUTER_DIR/ui" && nohup python3 server.py > "$LOG_DIR/zesrouter-ui.log" 2>&1 &
-    sleep 2
-    if check_port $UI_PORT; then
-        echo -e "${GREEN}[OK]${NC} Dashboard running on :$UI_PORT"
-    else
-        echo -e "${RED}[FAIL]${NC} Dashboard failed — check $LOG_DIR/zesrouter-ui.log"
-        return 1
-    fi
-}
-
 stop_all() {
     echo "Stopping all services..."
     pkill -f "node.*9router" 2>/dev/null && echo "  Stopped 9Router" || true
     pkill -f "bitrouter.orig serve" 2>/dev/null && echo "  Stopped ZESRouter" || true
     pkill -f "nvidia_bridge.py" 2>/dev/null && echo "  Stopped NVIDIA bridge" || true
     pkill -f "zen_relay.py" 2>/dev/null && echo "  Stopped Zen relay" || true
-    pkill -f "server.py" 2>/dev/null && echo "  Stopped Dashboard" || true
     sleep 2
     echo -e "${GREEN}[OK]${NC} All services stopped"
 }
@@ -162,13 +144,6 @@ status() {
         echo -e "║  ${RED}●${NC} Zen Relay :$ZEN_RELAY_PORT   ${RED}STOPPED${NC}               ║"
     fi
 
-    # Dashboard
-    if check_port $UI_PORT; then
-        echo -e "║  ${GREEN}●${NC} Dashboard :$UI_PORT       ${GREEN}RUNNING${NC}                   ║"
-    else
-        echo -e "║  ${RED}●${NC} Dashboard :$UI_PORT       ${RED}STOPPED${NC}                   ║"
-    fi
-
     echo -e "${CYAN}╠══════════════════════════════════════════════════╣${NC}"
     echo -e "${CYAN}║  Routing: 9Router → ZESRouter → NVIDIA          ║${NC}"
     echo -e "${CYAN}╚══════════════════════════════════════════════════╝${NC}"
@@ -181,7 +156,6 @@ case "${1:-start}" in
         start_zesrouter
         start_nvidia
         start_zen_relay
-        start_ui
         status
         ;;
     stop)
@@ -194,7 +168,6 @@ case "${1:-start}" in
         start_zesrouter
         start_nvidia
         start_zen_relay
-        start_ui
         status
         ;;
     status)

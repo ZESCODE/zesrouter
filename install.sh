@@ -4,7 +4,7 @@
 #   - clones/updates repo to ~/zesrouter
 #   - installs python3 + pyyaml + proot-distro debian
 #   - fetches BitRouter binary (byte-verified) + config
-#   - starts daemon :4356, starts UI :8080
+#   - starts daemon :4356
 # Idempotent: safe to re-run; skips what already works.
 # Usage: curl -fsSL https://raw.githubusercontent.com/zesxdev/zesrouter/main/install.sh | bash
 # ============================================================
@@ -12,8 +12,6 @@ set -euo pipefail
 
 REPO_URL="https://github.com/zesxdev/zesrouter.git"
 APP_DIR="$HOME/zesrouter"
-UI_DIR="$APP_DIR/ui"
-UI_LOG="$HOME/logs/zesrouter-ui.log"
 DAEMON_URL="http://localhost:4356"
 
 C() { printf "\033[1;%sm%s\033[0m\n" "$1" "$2"; }
@@ -81,25 +79,11 @@ else
   bash "$APP_DIR/bin/zesrouter-start" || warn "daemon start returned non-zero — see ~/logs/bitrouter/bitrouter.log"
 fi
 
-# 7. ui server ----------------------------------------------------------
-info "ui :8080"
-UIPORT="${ZESROUTER_UI_PORT:-8080}"
-if curl -s --max-time 2 "http://localhost:$UIPORT/api/health" | grep -q ok; then
-  ok "already serving"
-else
-  mkdir -p "$HOME/logs"
-  nohup python3 "$UI_DIR/server.py" "$UIPORT" >> "$UI_LOG" 2>&1 &
-  sleep 2
-  curl -s --max-time 2 "http://localhost:$UIPORT/api/health" | grep -q ok || warn "ui failed to start — see $UI_LOG"
-fi
-ok "ui"
-
-# 8. done ---------------------------------------------------------------
+# 7. done ---------------------------------------------------------------
 echo
 C 32 "============================================="
 C 32 " ZESRouter ready"
 LAN_IP=$(ip -4 route get 1 2>/dev/null | grep -oE 'src [0-9.]+' | awk '{print $2}')
-C 32 "   UI:      http://localhost:$UIPORT   (LAN: http://${LAN_IP:-<ip>}:$UIPORT)"
 C 32 "   Daemon:  $DAEMON_URL  (OpenAI-compatible /v1)"
 C 32 "   Repo:    $APP_DIR   (rewind: git -C $APP_DIR pull)"
 C 32 "============================================="

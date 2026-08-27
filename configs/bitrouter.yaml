@@ -1,28 +1,24 @@
 server:
-  listen: 0.0.0.0:4356
+  listen: 0.0.0.0:5051
   skip_auth: true
 
 providers:
   opencode-zen:
-    enabled: true
-  openai:
-    enabled: true
-  anthropic:
     enabled: true
   openrouter:
     enabled: true
     auth:
       kind: bearer
       env: OPENROUTER_API_KEY
-  github-copilot:
-    enabled: true
   pollinations:
     id: pollinations
-    display_name: "Pollinations (no key)"
+    display_name: "Pollinations"
     class: "third-party-api"
     api_base: "https://gen.pollinations.ai/v1"
     protocol_endpoints:
       chat_completions: https://gen.pollinations.ai/v1
+    auth:
+      kind: none
     enabled: true
   opencode-zen-relay:
     id: opencode-zen-relay
@@ -69,25 +65,21 @@ models:
   anthropic/claude-sonnet-5:
     endpoints:
       - provider: opencode-zen-relay
-        service_id: deepseek-v4-flash-free
-      - provider: pollinations
-        service_id: deepseek
+        service_id: x-preview-f-free
+      - provider: nvidia
+        service_id: nvidia/nvidia/nemotron-3-super-120b-a12b
   deepseek/deepseek-v4-flash:
     endpoints:
       - provider: opencode-zen-relay
-        service_id: deepseek-v4-flash-free
-      - provider: pollinations
-        service_id: deepseek
+        service_id: muse-spark-1.2-contributor-free
   deepseek/deepseek-v4-flash-free:
     endpoints:
       - provider: opencode-zen-relay
-        service_id: deepseek-v4-flash-free
-      - provider: pollinations
-        service_id: deepseek
+        service_id: muse-spark-1.2-contributor-free
   opencode/deepseek-v4-flash-free:
     endpoints:
       - provider: opencode-zen-relay
-        service_id: deepseek-v4-flash-free
+        service_id: muse-spark-1.2-contributor-free
   opencode/hy3-free:
     endpoints:
       - provider: opencode-zen-relay
@@ -128,6 +120,50 @@ models:
     endpoints:
       - provider: pollinations
         service_id: qwen-vision
+  pollinations/claude-sonnet-5:
+    endpoints:
+      - provider: pollinations
+        service_id: claude-sonnet-5
+  pollinations/claude-opus-4.7:
+    endpoints:
+      - provider: pollinations
+        service_id: claude-opus-4.7
+  pollinations/gpt-5.6-terra:
+    endpoints:
+      - provider: pollinations
+        service_id: gpt-5.6-terra
+  pollinations/grok-4.6:
+    endpoints:
+      - provider: pollinations
+        service_id: grok-4.6
+  pollinations/gemini-large:
+    endpoints:
+      - provider: pollinations
+        service_id: gemini-large
+  pollinations/command-a-plus:
+    endpoints:
+      - provider: pollinations
+        service_id: command-a-plus
+  pollinations/kimi-k3:
+    endpoints:
+      - provider: pollinations
+        service_id: kimi-k3
+  pollinations/qwen3.8-max:
+    endpoints:
+      - provider: pollinations
+        service_id: qwen3.8-max
+  pollinations/mistral-large:
+    endpoints:
+      - provider: pollinations
+        service_id: mistral-large
+  pollinations/claude-fable-5:
+    endpoints:
+      - provider: pollinations
+        service_id: claude-fable-5
+  pollinations/gpt-5.6-luna:
+    endpoints:
+      - provider: pollinations
+        service_id: gpt-5.6-luna
   openrouter/nvidia/nemotron-nano-12b-v2-vl:free:
     endpoints:
       - provider: openrouter
@@ -219,7 +255,7 @@ models:
 
 policy_table:
   tiers:
-    cheap: deepseek/deepseek-v4-flash-free
+    cheap: opencode/muse-spark-1.2-contributor-free
     flagship: anthropic/claude-sonnet-5
   fingerprints:
     opening: flagship

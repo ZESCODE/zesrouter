@@ -1,4 +1,8 @@
 #!/data/data/com.termux/files/usr/bin/bash
-# zesrouter — ZESRouter CLI wrapper: runs the glibc BitRouter binary inside proot-distro Debian
-# Rebrand of bitrouter/bitrouter (Apache-2.0). See README.md for provenance.
+# zesrouter — ZESRouter CLI wrapper.
+#   no args  → open the REAL-DATA dashboard (not the BitRouter setup wizard)
+#   any args → pass through to the real BitRouter binary (e.g. `zesrouter serve`)
+if [ "$#" -eq 0 ]; then
+  exec "$HOME/.local/bin/zesdash" start
+fi
 exec proot-distro login debian -- /data/data/com.termux/files/home/.local/bin/bitrouter.orig "$@"

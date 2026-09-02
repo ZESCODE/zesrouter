@@ -6,7 +6,7 @@ Welcome to ZESRouter, the BitRouter‑based inference router running inside `pro
 **Failover / OmniRoute**: `http://127.0.0.1:20128/v1` (9Router)  
 **Relay ports**: Zen `:7077`, NVIDIA `:9456`, Pollinations `:7079`, AI Horde `:8078`  
 **Dashboard**: `http://127.0.0.1:8080` (Frost Control Panel)  
-**rproxy**: `http://127.0.0.1:5050` — reverse proxy: `/v1/*` → BitRouter `:5051`, rest → Frost `:8090`
+**rproxy**: `http://127.0.0.1:5050` — reverse proxy: `/v1/*` → BitRouter `:5051`, rest → Frost UI. **Schematic: `/topo` or `/schematic`**
 
 ---
 
@@ -49,9 +49,9 @@ curl -s http://127.0.0.1:5051/v1/chat/completions \
 
 | Section | Description |
 |---|---|
+| [Dashboard](/zesrouter-dash-server.mjs) | rproxy `:5050` + Frost UI — `/topo` or `/schematic` schematic |
 | [Providers](/zesrouter/docs/providers/) | Full model catalog (36 models, 8 providers) |
 | [Topology](/zesrouter/docs/topo/) | Architecture diagram, vertical schematic, port map |
-| [Dashboard](/zesrouter/docs/dashboard/) | rproxy `:5050` + Frost `:8080` overview |
 | [Bridges & Relays](/zesrouter/docs/providers/zesrouter.md#bridges--relays) | Zen, NVIDIA, 9Router, Pollinations, AI Horde |
 | [Usage](/zesrouter/docs/providers/zesrouter.md#usage) | Verify catalog, agent config, pinned form |
 | [Troubleshooting](/zesrouter/docs/providers/zesrouter.md#troubleshooting) | 503 upstream, 504 timeout, pgrep pitfalls |

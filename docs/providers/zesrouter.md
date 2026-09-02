@@ -80,7 +80,7 @@ client → :4356 (ZESRouter) → policy_table → provider → service_id
 | `opencode/laguna-s-2.1-free` | `opencode-zen-relay` | `laguna-s-2.1-free` | `laguna-s-2.1-free` | active* | 256,000 | **In ZESRouter but no longer in CLI curated list** (`opencode models opencode` hides it). Still served via zen API. |
 | `opencode/deepseek-v4-flash-free` | `opencode-zen-relay` | `deepseek-v4-flash-free` | `deepseek-v4-flash-free` | **deprecated** | 200,000 | **`status: deprecated` in `~/.cache/opencode/models.json:deepseek-v4-flash-free`**. CLI `opencode models opencode` **no longer lists it** (7-model curated list). Still routed via `deepseek/deepseek-v4-flash-free` aliases for compatibility, but migrate to `muse-spark-1.2-contributor-free`. |
 | *Not yet in ZESRouter (available upstream)* | — | — | `opencode/big-pickle` | active | 200,000 | **New free model** (CLI `opencode/big-pickle`, `~/.cache/opencode/models.json:big-pickle`). Not yet routed in `bitrouter.yaml`. Add as `opencode/big-pickle → opencode-zen-relay:big-pickle`. |
-| *Not yet in ZESRouter (available upstream)* | — | — | `opencode/x-preview-f-free` | active | 1,000,000 | **New free model** `Ox Alpha Free`, released 2026-08-21 (`~/.cache/opencode/models.json:x-preview-f-free`). CLI lists `opencode/x-preview-f-free`. Add as `opencode/x-preview-f-free → opencode-zen-relay:x-preview-f-free`. |
+| *Not yet in ZESRouter (available upstream)* | — | — | `opencode/muse-spark-1.2-contributor-free` | active | 1,048,576 | **Current flagship free** (replaces `x-preview-f-free`), released 2026-08-05. 1M context, multimodal, `reasoning` + `tool_call`. Already routed in `bitrouter.yaml:111`. |
 
 **Config entries in `~/zesrouter/configs/bitrouter.yaml:68`:**
 ```yaml
@@ -110,7 +110,7 @@ deepseek/deepseek-v4-flash-free:       #81
 
 | ID | Provider | `service_id` |
 |----|----------|--------------|
-| `anthropic/claude-sonnet-5` | `opencode-zen-relay` / `pollinations` | `deepseek-v4-flash-free` / `deepseek` |
+| `anthropic/claude-sonnet-5` | `opencode-zen-relay` / `pollinations` | `muse-spark-1.2-contributor-free` / `deepseek` |
 
 #### `pollinations` (4)
 
@@ -203,17 +203,15 @@ Class: `third-party-api`, keyless. Pollinations is the **pollinations free pool*
 - opencode/deepseek-v4-flash-free: { service_id: deepseek-v4-flash-free }
 + opencode/muse-spark-1.2-contributor-free: { service_id: muse-spark-1.2-contributor-free } # already exists
 + opencode/big-pickle: { provider: opencode-zen-relay, service_id: big-pickle }
-+ opencode/x-preview-f-free: { provider: opencode-zen-relay, service_id: x-preview-f-free }
 + laguna-s-2.1-free: keep or remove (CLI no longer advertises, but zen still serves)
 ```
 
-And in `~/zesrouter/relay/zen_relay.py:13` update `EXTRA_MODELS` to remove `deepseek-v4-flash-free` / `kimi-k2.5-free` and add `big-pickle`, `x-preview-f-free`:
+And in `~/zesrouter/relay/zen_relay.py:13` update `EXTRA_MODELS` to remove `deepseek-v4-flash-free` / `kimi-k2.5-free` and add `big-pickle`:
 
 ```python
 EXTRA_MODELS = [
     {"id": "opencode/muse-spark-1.2-contributor-free", ...},
     {"id": "opencode/big-pickle", ...},
-    {"id": "opencode/x-preview-f-free", ...},
 ]
 ```
 
@@ -225,7 +223,7 @@ EXTRA_MODELS = [
 # ~/zesrouter/configs/bitrouter.yaml:220
 policy_table:
   tiers:
-    cheap: deepseek/deepseek-v4-flash-free      # ← deprecated, update to muse-spark
+    cheap: opencode/muse-spark-1.2-contributor-free       # updated from deprecated deepseek
     flagship: anthropic/claude-sonnet-5
   fingerprints:
     opening: flagship

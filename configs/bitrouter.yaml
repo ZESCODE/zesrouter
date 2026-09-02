@@ -1,258 +1,343 @@
 server:
-  listen: 0.0.0.0:5051
+  listen: 127.0.0.1:5051
   skip_auth: true
-
 providers:
   opencode-zen:
     enabled: true
-  openrouter:
-    enabled: true
-    auth:
-      kind: bearer
-      env: OPENROUTER_API_KEY
   pollinations:
     id: pollinations
-    display_name: "Pollinations"
-    class: "third-party-api"
-    api_base: "https://gen.pollinations.ai/v1"
+    display_name: Pollinations
+    class: third-party-api
+    api_base: https://gen.pollinations.ai/v1
     protocol_endpoints:
       chat_completions: https://gen.pollinations.ai/v1
     auth:
       kind: none
-    enabled: true
+    enabled: false
   opencode-zen-relay:
     id: opencode-zen-relay
-    display_name: "OpenCode Zen (keyless relay)"
-    class: "third-party-api"
-    api_base: "http://127.0.0.1:7077/v1"
+    display_name: OpenCode Zen (keyless relay)
+    class: third-party-api
+    api_base: http://127.0.0.1:7077/v1
     protocol_endpoints:
       chat_completions: http://127.0.0.1:7077/v1
     enabled: true
+  aihorde:
+    id: aihorde
+    display_name: AI Horde (keyless anon)
+    class: third-party-api
+    api_base: http://127.0.0.1:8078/v1
+    protocol_endpoints:
+      chat_completions: http://127.0.0.1:8078/v1
+    auth:
+      kind: none
+    enabled: true
+  ninerouter:
+    id: ninerouter
+    display_name: 9Router (local :20128, keyless relay)
+    class: third-party-api
+    api_base: http://127.0.0.1:20128/v1
+    protocol_endpoints:
+      chat_completions: http://127.0.0.1:20128/v1
+    auth:
+      kind: none
+    enabled: true
+  llm7:
+    id: llm7
+    display_name: llm7.io (keyless turbo)
+    class: third-party-api
+    api_base: https://api.llm7.io/v1
+    protocol_endpoints:
+      chat_completions: https://api.llm7.io/v1
+    auth:
+      kind: none
+    models:
+    - id: gpt-oss
+      provider_model_id: gpt-oss
+    - id: meta/Llama-3.1-8B-Instruct-Turbo
+      provider_model_id: meta-Llama-3.1-8B-Instruct-Turbo
+    - id: mistral/Nemo-Instruct-2407
+      provider_model_id: mistral-Nemo-Instruct-2407
+    - id: codestral-latest
+      provider_model_id: codestral-latest
+    - id: minimax/m2.7
+      provider_model_id: minimax-m2.7
+    enabled: true
   nvidia:
     id: nvidia
-    display_name: "NVIDIA Build (nvapi)"
-    class: "third-party-api"
-    api_base: "http://127.0.0.1:9456/v1"
+    display_name: NVIDIA Build (nvapi)
+    class: third-party-api
+    api_base: http://127.0.0.1:9456/v1
     auth:
       kind: bearer
       env: NVIDIA_API_KEY
     protocol_endpoints:
       chat_completions: http://127.0.0.1:9456/v1
     models:
-      - { id: nvidia/z-ai/glm-5.2, provider_model_id: z-ai/glm-5.2 }
-      - { id: nvidia/google/gemma-4-31b-it, provider_model_id: google/gemma-4-31b-it }
-      - { id: nvidia/openai/gpt-oss-20b, provider_model_id: openai/gpt-oss-20b }
-      - { id: nvidia/nvidia/nemotron-3-super-120b-a12b, provider_model_id: nvidia/nemotron-3-super-120b-a12b }
-      - { id: nvidia/nvidia/nemotron-3-ultra-550b-a55b, provider_model_id: nvidia/nemotron-3-ultra-550b-a55b }
-      - { id: nvidia/meta/llama-3.1-8b-instruct, provider_model_id: meta/llama-3.1-8b-instruct }
-      - { id: nvidia/meta/llama-3.2-11b-vision-instruct, provider_model_id: meta/llama-3.2-11b-vision-instruct }
-      - { id: nvidia/mistralai/mistral-nemotron, provider_model_id: mistralai/mistral-nemotron }
-      - { id: nvidia/nvidia/llama-3.1-nemoguard-8b-content-safety, provider_model_id: nvidia/llama-3.1-nemoguard-8b-content-safety }
-      - { id: nvidia/nvidia/llama-3.1-nemoguard-8b-topic-control, provider_model_id: nvidia/llama-3.1-nemoguard-8b-topic-control }
-      - { id: nvidia/nvidia/llama-3.1-nemotron-nano-vl-8b-v1, provider_model_id: nvidia/llama-3.1-nemotron-nano-vl-8b-v1 }
-      - { id: nvidia/nvidia/llama-3.1-nemotron-safety-guard-8b-v3, provider_model_id: nvidia/llama-3.1-nemotron-safety-guard-8b-v3 }
-      - { id: nvidia/nvidia/llama-3.3-nemotron-super-49b-v1, provider_model_id: nvidia/llama-3.3-nemotron-super-49b-v1 }
-      - { id: nvidia/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning, provider_model_id: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning }
-      - { id: nvidia/nvidia/nemotron-3.5-content-safety, provider_model_id: nvidia/nemotron-3.5-content-safety }
-      - { id: nvidia/nvidia/nemotron-3-nano-30b-a3b, provider_model_id: nvidia/nemotron-3-nano-30b-a3b }
-      - { id: nvidia/nvidia/nemotron-mini-4b-instruct, provider_model_id: nvidia/nemotron-mini-4b-instruct }
-      - { id: nvidia/nvidia/nemotron-nano-12b-v2-vl, provider_model_id: nvidia/nemotron-nano-12b-v2-vl }
-      - { id: nvidia/deepseek-ai/deepseek-v4-flash-0731, provider_model_id: deepseek-ai/deepseek-v4-flash-0731 }
-      - { id: nvidia/minimaxai/minimax-m3, provider_model_id: minimaxai/minimax-m3 }
+    - id: nvidia/z-ai/glm-5.2
+      provider_model_id: z-ai/glm-5.2
+    - id: nvidia/google/gemma-4-31b-it
+      provider_model_id: google/gemma-4-31b-it
+    - id: nvidia/openai/gpt-oss-20b
+      provider_model_id: openai/gpt-oss-20b
+    - id: nvidia/nvidia/nemotron-3-super-120b-a12b
+      provider_model_id: nvidia/nemotron-3-super-120b-a12b
+    - id: nvidia/nvidia/nemotron-3-ultra-550b-a55b
+      provider_model_id: nvidia/nemotron-3-ultra-550b-a55b
+    - id: nvidia/meta/llama-3.1-8b-instruct
+      provider_model_id: meta/llama-3.1-8b-instruct
+    - id: nvidia/meta/llama-3.2-11b-vision-instruct
+      provider_model_id: meta/llama-3.2-11b-vision-instruct
+    - id: nvidia/mistralai/mistral-nemotron
+      provider_model_id: mistralai/mistral-nemotron
+    - id: nvidia/nvidia/llama-3.1-nemoguard-8b-content-safety
+      provider_model_id: nvidia/llama-3.1-nemoguard-8b-content-safety
+    - id: nvidia/nvidia/llama-3.1-nemoguard-8b-topic-control
+      provider_model_id: nvidia/llama-3.1-nemoguard-8b-topic-control
+    - id: nvidia/nvidia/llama-3.1-nemotron-nano-vl-8b-v1
+      provider_model_id: nvidia/llama-3.1-nemotron-nano-vl-8b-v1
+    - id: nvidia/nvidia/llama-3.1-nemotron-safety-guard-8b-v3
+      provider_model_id: nvidia/llama-3.1-nemotron-safety-guard-8b-v3
+    - id: nvidia/nvidia/llama-3.3-nemotron-super-49b-v1
+      provider_model_id: nvidia/llama-3.3-nemotron-super-49b-v1
+    - id: nvidia/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning
+      provider_model_id: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning
+    - id: nvidia/nvidia/nemotron-3.5-content-safety
+      provider_model_id: nvidia/nemotron-3.5-content-safety
+    - id: nvidia/nvidia/nemotron-3-nano-30b-a3b
+      provider_model_id: nvidia/nemotron-3-nano-30b-a3b
+    - id: nvidia/nvidia/nemotron-mini-4b-instruct
+      provider_model_id: nvidia/nemotron-mini-4b-instruct
+    - id: nvidia/nvidia/nemotron-nano-12b-v2-vl
+      provider_model_id: nvidia/nemotron-nano-12b-v2-vl
+    - id: nvidia/deepseek-ai/deepseek-v4-flash-0731
+      provider_model_id: deepseek-ai/deepseek-v4-flash-0731
+    - id: nvidia/minimaxai/minimax-m3
+      provider_model_id: minimaxai/minimax-m3
     enabled: true
-
+  pol:
+    id: pol
+    enabled: false
+    display_name: pol
 models:
   anthropic/claude-sonnet-5:
     endpoints:
-      - provider: opencode-zen-relay
-        service_id: x-preview-f-free
-      - provider: nvidia
-        service_id: nvidia/nvidia/nemotron-3-super-120b-a12b
+    - provider: opencode-zen-relay
+      service_id: muse-spark-1.2-contributor-free
+    - provider: nvidia
+      service_id: nvidia/nvidia/nemotron-3-super-120b-a12b
   deepseek/deepseek-v4-flash:
     endpoints:
-      - provider: opencode-zen-relay
-        service_id: muse-spark-1.2-contributor-free
+    - provider: opencode-zen-relay
+      service_id: muse-spark-1.2-contributor-free
   deepseek/deepseek-v4-flash-free:
     endpoints:
-      - provider: opencode-zen-relay
-        service_id: muse-spark-1.2-contributor-free
+    - provider: opencode-zen-relay
+      service_id: muse-spark-1.2-contributor-free
   opencode/deepseek-v4-flash-free:
     endpoints:
-      - provider: opencode-zen-relay
-        service_id: muse-spark-1.2-contributor-free
+    - provider: opencode-zen-relay
+      service_id: muse-spark-1.2-contributor-free
   opencode/hy3-free:
     endpoints:
-      - provider: opencode-zen-relay
-        service_id: hy3-free
+    - provider: opencode-zen-relay
+      service_id: hy3-free
   opencode/mimo-v2.5-free:
     endpoints:
-      - provider: opencode-zen-relay
-        service_id: mimo-v2.5-free
+    - provider: opencode-zen-relay
+      service_id: mimo-v2.5-free
   opencode/nemotron-3-ultra-free:
     endpoints:
-      - provider: opencode-zen-relay
-        service_id: nemotron-3-ultra-free
+    - provider: opencode-zen-relay
+      service_id: nemotron-3-ultra-free
   opencode/nemotron-3.5-lightning-free:
     endpoints:
-      - provider: opencode-zen-relay
-        service_id: nemotron-3.5-lightning-free
+    - provider: opencode-zen-relay
+      service_id: nemotron-3.5-lightning-free
   opencode/laguna-s-2.1-free:
     endpoints:
-      - provider: opencode-zen-relay
-        service_id: laguna-s-2.1-free
+    - provider: opencode-zen-relay
+      service_id: laguna-s-2.1-free
   opencode/muse-spark-1.2-contributor-free:
     endpoints:
-      - provider: opencode-zen-relay
-        service_id: muse-spark-1.2-contributor-free
-  pollinations/qwen-coder:
-    endpoints:
-      - provider: pollinations
-        service_id: qwen-coder
-  pollinations/openai-fast:
-    endpoints:
-      - provider: pollinations
-        service_id: openai-fast
-  pollinations/openai:
-    endpoints:
-      - provider: pollinations
-        service_id: openai
-  pollinations/qwen-vision:
-    endpoints:
-      - provider: pollinations
-        service_id: qwen-vision
+    - provider: opencode-zen-relay
+      service_id: muse-spark-1.2-contributor-free
   pollinations/claude-sonnet-5:
     endpoints:
-      - provider: pollinations
-        service_id: claude-sonnet-5
+    - provider: opencode-zen-relay
+      service_id: muse-spark-1.2-contributor-free
   pollinations/claude-opus-4.7:
     endpoints:
-      - provider: pollinations
-        service_id: claude-opus-4.7
+    - provider: opencode-zen-relay
+      service_id: muse-spark-1.2-contributor-free
   pollinations/gpt-5.6-terra:
     endpoints:
-      - provider: pollinations
-        service_id: gpt-5.6-terra
+    - provider: opencode-zen-relay
+      service_id: muse-spark-1.2-contributor-free
   pollinations/grok-4.6:
     endpoints:
-      - provider: pollinations
-        service_id: grok-4.6
+    - provider: opencode-zen-relay
+      service_id: muse-spark-1.2-contributor-free
   pollinations/gemini-large:
     endpoints:
-      - provider: pollinations
-        service_id: gemini-large
+    - provider: opencode-zen-relay
+      service_id: muse-spark-1.2-contributor-free
   pollinations/command-a-plus:
     endpoints:
-      - provider: pollinations
-        service_id: command-a-plus
+    - provider: opencode-zen-relay
+      service_id: muse-spark-1.2-contributor-free
   pollinations/kimi-k3:
     endpoints:
-      - provider: pollinations
-        service_id: kimi-k3
+    - provider: opencode-zen-relay
+      service_id: muse-spark-1.2-contributor-free
   pollinations/qwen3.8-max:
     endpoints:
-      - provider: pollinations
-        service_id: qwen3.8-max
+    - provider: opencode-zen-relay
+      service_id: muse-spark-1.2-contributor-free
   pollinations/mistral-large:
     endpoints:
-      - provider: pollinations
-        service_id: mistral-large
+    - provider: opencode-zen-relay
+      service_id: muse-spark-1.2-contributor-free
   pollinations/claude-fable-5:
     endpoints:
-      - provider: pollinations
-        service_id: claude-fable-5
+    - provider: opencode-zen-relay
+      service_id: muse-spark-1.2-contributor-free
   pollinations/gpt-5.6-luna:
     endpoints:
-      - provider: pollinations
-        service_id: gpt-5.6-luna
-  openrouter/nvidia/nemotron-nano-12b-v2-vl:free:
+    - provider: opencode-zen-relay
+      service_id: muse-spark-1.2-contributor-free
+  aihorde/llama-3.2-3b:
     endpoints:
-      - provider: openrouter
-        service_id: nvidia/nemotron-nano-12b-v2-vl:free
-  openrouter/google/gemma-4-31b-it:free:
+    - provider: aihorde
+      service_id: koboldcpp/Llama-3.2-3B
+  aihorde/gemma-4-31b:
     endpoints:
-      - provider: openrouter
-        service_id: google/gemma-4-31b-it:free
+    - provider: aihorde
+      service_id: koboldcpp/gemma-4-31B-it-heretic
+  aihorde/skyfall-31b:
+    endpoints:
+    - provider: aihorde
+      service_id: aphrodite/TheDrummer/Skyfall-31B-v4.2
+  ninerouter/auto-zes:
+    endpoints:
+    - provider: ninerouter
+      service_id: auto-zes
+  ninerouter/auto-best:
+    endpoints:
+    - provider: ninerouter
+      service_id: auto-best
+  ninerouter/auto-vision:
+    endpoints:
+    - provider: ninerouter
+      service_id: auto-vision
+  ninerouter/ag/gemini-3.7-flash-medium:
+    endpoints:
+    - provider: ninerouter
+      service_id: ag/gemini-3.7-flash-medium
+  ninerouter/ag/gemini-3.7-flash-low:
+    endpoints:
+    - provider: ninerouter
+      service_id: ag/gemini-3.7-flash-low
+  llm7/gpt-oss:
+    endpoints:
+    - provider: llm7
+      service_id: gpt-oss
+  llm7/llama-3.1-8b:
+    endpoints:
+    - provider: llm7
+      service_id: meta-Llama-3.1-8B-Instruct-Turbo
+  llm7/mistral-nemo:
+    endpoints:
+    - provider: llm7
+      service_id: mistral-Nemo-Instruct-2407
+  llm7/codestral:
+    endpoints:
+    - provider: llm7
+      service_id: codestral-latest
+  llm7/minimax-m2.7:
+    endpoints:
+    - provider: llm7
+      service_id: minimax/m2.7
   nvidia/z-ai/glm-5.2:
     endpoints:
-      - provider: nvidia
-        service_id: z-ai/glm-5.2
+    - provider: nvidia
+      service_id: z-ai/glm-5.2
   nvidia/google/gemma-4-31b-it:
     endpoints:
-      - provider: nvidia
-        service_id: google/gemma-4-31b-it
+    - provider: nvidia
+      service_id: google/gemma-4-31b-it
   nvidia/openai/gpt-oss-20b:
     endpoints:
-      - provider: nvidia
-        service_id: openai/gpt-oss-20b
+    - provider: nvidia
+      service_id: openai/gpt-oss-20b
   nvidia/nvidia/nemotron-3-super-120b-a12b:
     endpoints:
-      - provider: nvidia
-        service_id: nvidia/nemotron-3-super-120b-a12b
+    - provider: nvidia
+      service_id: nvidia/nemotron-3-super-120b-a12b
   nvidia/nvidia/nemotron-3-ultra-550b-a55b:
     endpoints:
-      - provider: nvidia
-        service_id: nvidia/nemotron-3-ultra-550b-a55b
+    - provider: nvidia
+      service_id: nvidia/nemotron-3-ultra-550b-a55b
   nvidia/meta/llama-3.1-8b-instruct:
     endpoints:
-      - provider: nvidia
-        service_id: meta/llama-3.1-8b-instruct
+    - provider: nvidia
+      service_id: meta/llama-3.1-8b-instruct
   nvidia/meta/llama-3.2-11b-vision-instruct:
     endpoints:
-      - provider: nvidia
-        service_id: meta/llama-3.2-11b-vision-instruct
+    - provider: nvidia
+      service_id: meta/llama-3.2-11b-vision-instruct
   nvidia/mistralai/mistral-nemotron:
     endpoints:
-      - provider: nvidia
-        service_id: mistralai/mistral-nemotron
+    - provider: nvidia
+      service_id: mistralai/mistral-nemotron
   nvidia/nvidia/llama-3.1-nemoguard-8b-content-safety:
     endpoints:
-      - provider: nvidia
-        service_id: nvidia/llama-3.1-nemoguard-8b-content-safety
+    - provider: nvidia
+      service_id: nvidia/llama-3.1-nemoguard-8b-content-safety
   nvidia/nvidia/llama-3.1-nemoguard-8b-topic-control:
     endpoints:
-      - provider: nvidia
-        service_id: nvidia/llama-3.1-nemoguard-8b-topic-control
+    - provider: nvidia
+      service_id: nvidia/llama-3.1-nemoguard-8b-topic-control
   nvidia/nvidia/llama-3.1-nemotron-nano-vl-8b-v1:
     endpoints:
-      - provider: nvidia
-        service_id: nvidia/llama-3.1-nemotron-nano-vl-8b-v1
+    - provider: nvidia
+      service_id: nvidia/llama-3.1-nemotron-nano-vl-8b-v1
   nvidia/nvidia/llama-3.1-nemotron-safety-guard-8b-v3:
     endpoints:
-      - provider: nvidia
-        service_id: nvidia/llama-3.1-nemotron-safety-guard-8b-v3
+    - provider: nvidia
+      service_id: nvidia/llama-3.1-nemotron-safety-guard-8b-v3
   nvidia/nvidia/llama-3.3-nemotron-super-49b-v1:
     endpoints:
-      - provider: nvidia
-        service_id: nvidia/llama-3.3-nemotron-super-49b-v1
+    - provider: nvidia
+      service_id: nvidia/llama-3.3-nemotron-super-49b-v1
   nvidia/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:
     endpoints:
-      - provider: nvidia
-        service_id: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning
+    - provider: nvidia
+      service_id: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning
   nvidia/nvidia/nemotron-3.5-content-safety:
     endpoints:
-      - provider: nvidia
-        service_id: nvidia/nemotron-3.5-content-safety
+    - provider: nvidia
+      service_id: nvidia/nemotron-3.5-content-safety
   nvidia/nvidia/nemotron-3-nano-30b-a3b:
     endpoints:
-      - provider: nvidia
-        service_id: nvidia/nemotron-3-nano-30b-a3b
+    - provider: nvidia
+      service_id: nvidia/nemotron-3-nano-30b-a3b
   nvidia/nvidia/nemotron-mini-4b-instruct:
     endpoints:
-      - provider: nvidia
-        service_id: nvidia/nemotron-mini-4b-instruct
+    - provider: nvidia
+      service_id: nvidia/nemotron-mini-4b-instruct
   nvidia/nvidia/nemotron-nano-12b-v2-vl:
     endpoints:
-      - provider: nvidia
-        service_id: nvidia/nemotron-nano-12b-v2-vl
+    - provider: nvidia
+      service_id: nvidia/nemotron-nano-12b-v2-vl
   nvidia/deepseek-ai/deepseek-v4-flash-0731:
     endpoints:
-      - provider: nvidia
-        service_id: deepseek-ai/deepseek-v4-flash-0731
+    - provider: nvidia
+      service_id: deepseek-ai/deepseek-v4-flash-0731
   nvidia/minimaxai/minimax-m3:
     endpoints:
-      - provider: nvidia
-        service_id: minimaxai/minimax-m3
-
+    - provider: nvidia
+      service_id: minimaxai/minimax-m3
 policy_table:
   tiers:
     cheap: opencode/muse-spark-1.2-contributor-free
@@ -268,11 +353,11 @@ policy_table:
     after_delegate_task: cheap
   default_tier: flagship
   tool_use_tier: flagship
-  tool_safe_tiers: [flagship]
+  tool_safe_tiers:
+  - flagship
   adequacy:
     enabled: true
     escalation_tier: flagship
-
 plugins:
   bitrouter-observe:
     otel:
@@ -288,4 +373,4 @@ plugins:
       metrics:
         enabled: true
         export_interval_ms: 10000
-      content_capture: "off"
+      content_capture: 'off'

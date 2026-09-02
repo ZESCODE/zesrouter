@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "ZESRouter \u2014 Inference Router Topology",
+    "subtitle": "rproxy :5050 \u2192 BitRouter :5051 \u2192 relays downstream",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1100,
+      900
+    ]
+  },
+  "components": [
+    {
+      "id": "client",
+      "type": "external",
+      "label": "Client",
+      "sublabel": "CLI / Codex / Hermes",
+      "pos": [
+        450,
+        40
+      ],
+      "size": [
+        160,
+        64
+      ]
+    },
+    {
+      "id": "rproxy",
+      "type": "frontend",
+      "label": "rproxy :5050",
+      "sublabel": "Frost Control Panel",
+      "pos": [
+        450,
+        180
+      ],
+      "size": [
+        160,
+        64
+      ]
+    },
+    {
+      "id": "bitrouter",
+      "type": "backend",
+      "label": "BitRouter :5051",
+      "sublabel": "policy router",
+      "pos": [
+        450,
+        340
+      ],
+      "size": [
+        160,
+        64
+      ]
+    },
+    {
+      "id": "zen",
+      "type": "cloud",
+      "label": "Zen :7077",
+      "sublabel": "opencode.ai/zen/v1",
+      "pos": [
+        120,
+        520
+      ],
+      "size": [
+        150,
+        60
+      ]
+    },
+    {
+      "id": "nvidia",
+      "type": "cloud",
+      "label": "NVIDIA :9456",
+      "sublabel": "integrate.api.nvidia.com",
+      "pos": [
+        450,
+        520
+      ],
+      "size": [
+        150,
+        60
+      ]
+    },
+    {
+      "id": "ninerouter",
+      "type": "backend",
+      "label": "9Router :20128",
+      "sublabel": "local LLM pool",
+      "pos": [
+        780,
+        520
+      ],
+      "size": [
+        150,
+        60
+      ]
+    },
+    {
+      "id": "pollinations",
+      "type": "cloud",
+      "label": "Poll :7079",
+      "sublabel": "gen.pollinations.ai",
+      "pos": [
+        120,
+        720
+      ],
+      "size": [
+        150,
+        60
+      ]
+    },
+    {
+      "id": "aihorde",
+      "type": "cloud",
+      "label": "AI Horde :8078",
+      "sublabel": "anonymous pool",
+      "pos": [
+        780,
+        720
+      ],
+      "size": [
+        150,
+        60
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "c1",
+      "from": "client",
+      "to": "rproxy",
+      "label": "/v1/*",
+      "labelAt": [
+        450,
+        130
+      ]
+    },
+    {
+      "id": "c2",
+      "from": "rproxy",
+      "to": "bitrouter",
+      "label": "/v1/*",
+      "labelAt": [
+        450,
+        260
+      ]
+    },
+    {
+      "id": "c3",
+      "from": "bitrouter",
+      "to": "zen",
+      "label": "cheap",
+      "labelAt": [
+        280,
+        400
+      ],
+      "fromSide": "left",
+      "toSide": "right"
+    },
+    {
+      "id": "c4",
+      "from": "bitrouter",
+      "to": "nvidia",
+      "label": "nvidia",
+      "labelAt": [
+        450,
+        600
+      ],
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "c5",
+      "from": "bitrouter",
+      "to": "ninerouter",
+      "label": "explicit",
+      "labelAt": [
+        700,
+        420
+      ],
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "c6",
+      "from": "bitrouter",
+      "to": "pollinations",
+      "label": "4 models",
+      "labelAt": [
+        280,
+        600
+      ],
+      "fromSide": "left",
+      "toSide": "bottom"
+    },
+    {
+      "id": "c7",
+      "from": "bitrouter",
+      "to": "aihorde",
+      "label": "anon",
+      "labelAt": [
+        700,
+        620
+      ],
+      "fromSide": "right",
+      "toSide": "bottom"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Ports",
+      "items": [
+        ":5050 rproxy",
+        ":5051 BitRouter",
+        ":7077 Zen",
+        ":9456 NVIDIA",
+        ":20128 9Router",
+        ":8078 AI Horde"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Models",
+      "items": [
+        "54 on BitRouter",
+        "muse-spark-1.2 free",
+        "minimax-m3, glm-5.2",
+        "auto-zes 9Router"
+      ]
+    }
+  ]
+}

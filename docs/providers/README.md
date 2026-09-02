@@ -14,6 +14,7 @@
 - **Relays:** `~/zesrouter/relay/zen_relay.py:1` (`:7077` → `https://opencode.ai/zen/v1`), `~/zesrouter/relay/nvidia_bridge.py:1` (`:9456` → `https://integrate.api.nvidia.com/v1`)
 - **Dashboard:** `http://127.0.0.1:8080` (Frost, provider keys via `POST /api/providers/key` in `~/zesrouter/ui/server.py:172`)
 - **Opencode free CLI:** `opencode models opencode` (curated 7) vs. `~/.cache/opencode/models.json:opencode` (29 free cost 0, incl. deprecated `deepseek-v4-flash-free`)
+- **Topology:** [`/zesrouter/docs/topo/overview.md`](/zesrouter/docs/topo/overview.md) — vertical schematic, component map, data flow
 
 ## Update Note (2026-08-21)
 

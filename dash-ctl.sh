@@ -19,8 +19,8 @@ case "$SVC" in
       port_up 5051 && { echo "already up"; exit 0; }
       cp -f "$ZR/configs/bitrouter.yaml" "$CONTAINER_CFG"
       proot-distro login debian -- rm -f /root/.bitrouter/bitrouter.sock /root/.bitrouter/bitrouter.pid 2>/dev/null
-      EV="export ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY OPENAI_API_KEY=$OPENAI_API_KEY OPENROUTER_API_KEY=$OPENROUTER_API_KEY NVIDIA_API_KEY=$NVIDIA_API_KEY"
-      setsid proot-distro login debian -- bash -c "$EV && /data/data/com.termux/files/home/.local/bin/bitrouter.orig serve --config /root/.bitrouter/bitrouter.yaml" > "$LOG/bitrouter/bitrouter.log" 2>&1 < /dev/null &
+      setsid proot-distro login debian -- bash /root/start-bitrouter.sh \
+        > "$LOG/bitrouter/bitrouter.log" 2>&1 < /dev/null &
     elif [ "$ACT" = "stop" ]; then
       pkill -f 'bitrouter[.]orig [s]erve' 2>/dev/null || true
     fi

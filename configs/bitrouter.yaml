@@ -6,14 +6,13 @@ providers:
     enabled: true
   pollinations:
     id: pollinations
-    display_name: Pollinations
+    display_name: pol
     class: third-party-api
     api_base: https://gen.pollinations.ai/v1
     protocol_endpoints:
       chat_completions: https://gen.pollinations.ai/v1
-    auth:
-      kind: none
-    enabled: false
+    skip_auth: true
+    enabled: true
   opencode-zen-relay:
     id: opencode-zen-relay
     display_name: OpenCode Zen (keyless relay)
@@ -29,8 +28,7 @@ providers:
     api_base: http://127.0.0.1:8078/v1
     protocol_endpoints:
       chat_completions: http://127.0.0.1:8078/v1
-    auth:
-      kind: none
+    skip_auth: true
     enabled: true
   ninerouter:
     id: ninerouter
@@ -117,7 +115,7 @@ providers:
     enabled: true
   pol:
     id: pol
-    enabled: false
+    enabled: true
     display_name: pol
 models:
   anthropic/claude-sonnet-5:

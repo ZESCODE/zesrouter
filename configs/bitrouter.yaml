@@ -164,48 +164,48 @@ models:
       service_id: muse-spark-1.2-contributor-free
   pollinations/claude-sonnet-5:
     endpoints:
-    - provider: opencode-zen-relay
-      service_id: muse-spark-1.2-contributor-free
+    - provider: pollinations
+      service_id: claude-sonnet-5
   pollinations/claude-opus-4.7:
     endpoints:
-    - provider: opencode-zen-relay
-      service_id: muse-spark-1.2-contributor-free
+    - provider: pollinations
+      service_id: claude-opus-4.7
   pollinations/gpt-5.6-terra:
     endpoints:
-    - provider: opencode-zen-relay
-      service_id: muse-spark-1.2-contributor-free
+    - provider: pollinations
+      service_id: gpt-5.6-terra
   pollinations/grok-4.6:
     endpoints:
-    - provider: opencode-zen-relay
-      service_id: muse-spark-1.2-contributor-free
+    - provider: pollinations
+      service_id: grok-4.6
   pollinations/gemini-large:
     endpoints:
-    - provider: opencode-zen-relay
-      service_id: muse-spark-1.2-contributor-free
+    - provider: pollinations
+      service_id: gemini-large
   pollinations/command-a-plus:
     endpoints:
-    - provider: opencode-zen-relay
-      service_id: muse-spark-1.2-contributor-free
+    - provider: pollinations
+      service_id: command-a-plus
   pollinations/kimi-k3:
     endpoints:
-    - provider: opencode-zen-relay
-      service_id: muse-spark-1.2-contributor-free
+    - provider: pollinations
+      service_id: kimi-k3
   pollinations/qwen3.8-max:
     endpoints:
-    - provider: opencode-zen-relay
-      service_id: muse-spark-1.2-contributor-free
+    - provider: pollinations
+      service_id: qwen3.8-max
   pollinations/mistral-large:
     endpoints:
-    - provider: opencode-zen-relay
-      service_id: muse-spark-1.2-contributor-free
+    - provider: pollinations
+      service_id: mistral-large
   pollinations/claude-fable-5:
     endpoints:
-    - provider: opencode-zen-relay
-      service_id: muse-spark-1.2-contributor-free
+    - provider: pollinations
+      service_id: claude-fable-5
   pollinations/gpt-5.6-luna:
     endpoints:
-    - provider: opencode-zen-relay
-      service_id: muse-spark-1.2-contributor-free
+    - provider: pollinations
+      service_id: gpt-5.6-luna
   aihorde/llama-3.2-3b:
     endpoints:
     - provider: aihorde
